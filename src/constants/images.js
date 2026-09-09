@@ -4,6 +4,7 @@ export const IMAGES = {
   },
   hero: {
     home: '/images/hero/home-hero.webp',
+    homeMobile: "/images/hero/HomeMobile.webp"
   },
   svgs:{
     shapeBlueSvg:"/images/svgs/shapeBlue.svg",

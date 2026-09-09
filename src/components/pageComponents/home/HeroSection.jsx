@@ -13,19 +13,22 @@ export const HeroSection = ({ onOpenAppointment }) => {
   };
 
   return (
-    <section className="relative flex h-[50dvh] min-[400px]:h-[50dvh] sm:h-[50dvh] md:h-[60dvh] lg:h-[100dvh] xl:h-[100dvh] 2xl:h-[100dvh] 3xl:h-[100dvh] 4k:h-[100dvh] w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat px-4 pb-6 sm:pb-7 md:pb-8 lg:pb-12 xl:pb-16 2xl:pb-20 3xl:pb-20 4k:pb-24 md:px-8 lg:px-12 xl:px-16 3xl:px-[60px] 4k:px-8">
+    <section className="relative flex h-[428px] min-[400px]:h-[428px] sm:h-[70dvh] md:h-[80dvh] lg:h-[90dvh] xl:h-[100dvh] 2xl:h-[100dvh] 3xl:h-[100dvh] 4k:h-[100dvh] w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat px-4 pb-6 sm:pb-7 md:pb-8 lg:pb-12 xl:pb-16 2xl:pb-20 3xl:pb-20 4k:pb-24 md:px-8 lg:px-12 xl:px-16 3xl:px-[60px] 4k:px-8">
       {/* Background Hero Image with Soft Cinematic Gradients */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 md:block hidden">
         <img
           src={IMAGES.hero.home}
           alt="Trusted Care, Every Step - Marengo Asia Hospitals"
           className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
         />
-        {/* Soft bottom vignette for crisp white text readability */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/30 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/30 to-black/20" /> */}
       </div>
-
+      <div className="absolute inset-0 z-0 md:hidden block">
+        <img
+          src={IMAGES.hero.homeMobile}
+          alt="Trusted Care, Every Step - Marengo Asia Hospitals"
+          className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
+        />
+      </div>
       {/* Hero Content Aligned to Bottom Center */}
       <Container className="relative z-10">
         <div className="flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6">
