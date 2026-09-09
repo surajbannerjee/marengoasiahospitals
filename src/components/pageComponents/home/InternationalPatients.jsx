@@ -49,16 +49,7 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
   const isInView = useInView(sectionRef, { once: true, margin: '-50px' });
   const [hoveredCountry, setHoveredCountry] = useState(null);
 
-  // Map pin locations positioned accurately on the world map coordinate space (0-100% relative)
-  const mapPins = [
-    { name: 'Kazakhstan', x: '72%', y: '24%', labelX: 'left' },
-    { name: 'Tajikistan', x: '76%', y: '32%', labelX: 'right' },
-    { name: 'Iraq', x: '65%', y: '36%', labelX: 'right' },
-    { name: 'Bangladesh', x: '79%', y: '40%', labelX: 'right' },
-    { name: 'Myanmar', x: '82%', y: '48%', labelX: 'right' },
-    { name: 'Oman', x: '69%', y: '52%', labelX: 'bottom' },
-    { name: 'Uganda', x: '60%', y: '65%', labelX: 'bottom' },
-  ];
+
 
   return (
     <section
@@ -159,40 +150,6 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
                 alt="World Map"
                 className="w-full h-full object-contain pointer-events-none select-none drop-shadow-xs"
               />
-
-              {/* Location Pins Overlay */}
-              {mapPins.map((pin, index) => (
-                <motion.div
-                  key={pin.name}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{
-                    delay: 0.3 + index * 0.1,
-                    type: 'spring',
-                    stiffness: 300,
-                    damping: 20,
-                  }}
-                  style={{ left: pin.x, top: pin.y }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 group z-10 cursor-pointer"
-                  onClick={() => onOpenAppointment && onOpenAppointment(`Patient Desk: ${pin.name}`)}
-                >
-                  {/* Glowing Marker Pin */}
-                  <div className="relative flex items-center justify-center">
-                    <motion.div
-                      animate={{ scale: [1, 1.15, 1] }}
-                      transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut', delay: index * 0.3 }}
-                      className="text-[#1E4E98] drop-shadow-sm group-hover:text-[#005BAA] transition-colors"
-                    >
-                      <MapPin className="w-4 h-4 sm:w-5 sm:h-5 fill-[#1E4E98] text-white stroke-[1.5]" />
-                    </motion.div>
-                  </div>
-
-                  {/* Pin Text Label */}
-                  <span className="text-[10px] sm:text-[11px] md:text-[12px] font-semibold text-[#1E4E98] whitespace-nowrap bg-white/70 backdrop-blur-[2px] px-1 py-0.5 rounded shadow-2xs group-hover:text-[#005BAA] group-hover:bg-white transition-all">
-                    {pin.name}
-                  </span>
-                </motion.div>
-              ))}
             </div>
 
             {/* Bottom 3 Stats Counters with Vertical Divider Bars */}
