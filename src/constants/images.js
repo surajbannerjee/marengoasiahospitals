@@ -3,7 +3,13 @@ export const IMAGES = {
     main: '/images/logo/logo.webp',
   },
   hero: {
-    home: '/images/hero/home-hero.jpg',
+    home: '/images/hero/home-hero.webp',
+  },
+  svgs:{
+    shapeBlueSvg:"/images/svgs/shapeBlue.svg",
+    shapeOrangeSvg:"/images/svgs/shapeOrange.svg",
+    shapeGreenSvg:"/images/svgs/shapedeepgreen.svg",
+    shapeGraySvg:"/images/svgs/shapeGray.svg"
   },
   hospitals: {
     ahmedabad: '/images/hospitals/ahmedabad.svg',
