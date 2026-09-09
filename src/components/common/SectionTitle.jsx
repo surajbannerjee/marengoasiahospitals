@@ -4,7 +4,6 @@ import { cn } from '../../util/cn';
 export const SectionTitle = ({
   title,
   subtitle,
-  badge,
   align = 'center',
   className = '',
   light = false,
@@ -17,30 +16,20 @@ export const SectionTitle = ({
 
   return (
     <div className={cn('flex flex-col mb-10 sm:mb-14 max-w-3xl', alignmentClasses[align], className)}>
-      {badge && (
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-3 bg-sky-100 text-sky-800">
-          {badge}
-        </span>
-      )}
+
       <h2
         className={cn(
-          'text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight',
+          'text-[20px] min-[360px]:text-[22px] font-bold leading-tight tracking-[0%] text-[#0258B9] sm:text-[32px] md:text-[36px] lg:text-[38px] xl:text-[42px] 2xl:text-[44px] 3xl:text-[52px] 4k:text-[62px]',
           light ? 'text-white' : 'text-[#003B73]'
         )}
       >
         {title}
       </h2>
-      {/* Decorative Brand Underline */}
-      <div
-        className={cn(
-          'h-1 w-16 sm:w-20 rounded-full mt-3.5 mb-3 bg-gradient-to-r from-[#0284C7] to-[#F37023]',
-          align === 'center' ? 'mx-auto' : ''
-        )}
-      />
+
       {subtitle && (
         <p
           className={cn(
-            'text-sm sm:text-base lg:text-lg leading-relaxed mt-1 font-normal',
+            'text-[14px] min-[360px]:text-[14px] font-normal leading-tight tracking-[0%] sm:text-[14px] md:text-[15px] lg:text-[15.5px] xl:text-[16px] 3xl:text-[20px] 4k:text-[24px]',
             light ? 'text-slate-200' : 'text-slate-600'
           )}
         >

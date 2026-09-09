@@ -117,7 +117,7 @@ export const Header = ({ onOpenAppointment }) => {
                     {/* 1. OUR HOSPITAL MEGA DROPDOWN (Matches 1st Reference Image) */}
                     {/* ========================================================= */}
                     {item.dropdownType === 'hospitals' && activeDropdown === 'hospitals' && (
-                      <div className="absolute right-0 top-[calc(100%+14px)] z-50 w-[780px] lg:w-[840px] xl:w-[900px] 2xl:w-[960px] 4k:w-[1280px] max-w-[calc(100vw-48px)] rounded-2xl 4k:rounded-3xl border border-neutral-100 bg-white p-6 lg:p-8 4k:p-10 shadow-2xl transition-all duration-300 animate-in fade-in ">
+                      <div className="absolute right-0 top-[calc(100%+2px)] z-50 w-[780px] lg:w-[840px] xl:w-[900px] 2xl:w-[960px] 4k:w-[1280px] max-w-[calc(100vw-48px)] rounded-2xl 4k:rounded-3xl border border-neutral-100 bg-white p-6 lg:p-8 4k:p-10 shadow-2xl transition-all duration-300 animate-in fade-in ">
                         <div className="grid grid-cols-4 gap-6">
                           {/* Column 1: SURAT & SAUDI ARABIA */}
                           <div className="space-y-6">

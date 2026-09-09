@@ -14,6 +14,11 @@ export const IMAGES = {
     findDoctor:"/images/svgs/Find-Doctor.svg",
     ourHospitalLocations:"/images/svgs/OurHospitalLocations.svg",
     ourSpecialties:"/images/svgs/OurSpecialties.svg",
+    Cancer:"/images/svgs/Cancer.svg",
+    Cardiac:"/images/svgs/Cardiac.svg",
+    Neuro:"/images/svgs/Neuro.svg",
+    Ortho:"/images/svgs/Orthopedics.svg",
+    shapeCard:"/images/svgs/shapeCArd.svg",
     
   },
   hospitals: {

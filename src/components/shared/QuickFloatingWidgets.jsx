@@ -64,14 +64,13 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
               href={widget.href}
               target={widget.id === 'chat' ? '_blank' : undefined}
               rel={widget.id === 'chat' ? 'noopener noreferrer' : undefined}
-              className={`pointer-events-auto flex items-center gap-3.5 pl-4 pr-5 py-3 rounded-l-2xl ${widget.bgColor} ${widget.hoverColor} text-white shadow-2xl transition-all duration-300 ease-out transform translate-x-[calc(100%-58px)] hover:translate-x-0 cursor-pointer select-none`}
+              className={`pointer-events-auto flex items-center gap-3.5 pl-4 pr-5 py-3 rounded-l-2xl ${widget.bgColor} ${widget.hoverColor} text-white shadow-2xl transition-all duration-300 ease-out transform translate-x-[calc(100%-70px)] hover:translate-x-0 cursor-pointer select-none`}
             >
               {/* Icon on Left (always visible in collapsed state) */}
-              <div className="w-7 h-7 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 flex items-center justify-center shrink-0">
                 <Icon
-                  className={`w-6 h-6 text-white ${
-                    widget.isPulse ? 'animate-pulse' : ''
-                  }`}
+                  className={`w-8 h-8 text-white ${widget.isPulse ? 'animate-pulse' : ''
+                    }`}
                 />
               </div>
 
@@ -89,7 +88,7 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
         })}
 
         {/* Scroll To Top Button (Desktop) */}
-        {showScrollTop && (
+        {/* {showScrollTop && (
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
@@ -97,7 +96,7 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
           >
             <ArrowUp className="w-4 h-4" />
           </button>
-        )}
+        )} */}
       </div>
 
       {/* ========================================================================= */}
