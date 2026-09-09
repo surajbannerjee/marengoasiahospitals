@@ -122,3 +122,24 @@
 .cardSlider .swiper-wrapper {
   padding: 10px 0 50px;
 }
+/* Continuous Rail Marquee Animation */
+@keyframes continuousRail {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-continuous-rail {
+  display: flex;
+  width: max-content;
+  animation: continuousRail 30s linear infinite;
+  will-change: transform;
+}
+
+/* .animate-continuous-rail:hover {
+  animation-play-state: paused;
+} */

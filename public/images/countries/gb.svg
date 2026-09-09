@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <clipPath id="circleClip_gb">
+      <circle cx="32" cy="32" r="30"/>
+    </clipPath>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="#012169" stroke="#E2E8F0" stroke-width="1"/>
+  <g clip-path="url(#circleClip_gb)">
+    <rect width="64" height="64" fill="#012169"/>
+    <!-- Diagonal white -->
+    <line x1="0" y1="0" x2="64" y2="64" stroke="#FFFFFF" stroke-width="10"/>
+    <line x1="64" y1="0" x2="0" y2="64" stroke="#FFFFFF" stroke-width="10"/>
+    <!-- Diagonal red -->
+    <line x1="0" y1="0" x2="64" y2="64" stroke="#C8102E" stroke-width="5"/>
+    <line x1="64" y1="0" x2="0" y2="64" stroke="#C8102E" stroke-width="5"/>
+    <!-- Cross white -->
+    <rect x="25" y="0" width="14" height="64" fill="#FFFFFF"/>
+    <rect x="0" y="25" width="64" height="14" fill="#FFFFFF"/>
+    <!-- Cross red -->
+    <rect x="27.5" y="0" width="9" height="64" fill="#C8102E"/>
+    <rect x="0" y="27.5" width="64" height="9" fill="#C8102E"/>
+  </g>
+</svg>

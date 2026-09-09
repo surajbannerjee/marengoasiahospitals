@@ -1,137 +1,224 @@
-import React from 'react';
-import { Plane, FileText, Globe, ShieldCheck, CheckCircle2, ArrowRight, UserPlus } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'motion/react';
+import { MapPin } from 'lucide-react';
 import { Container } from '../../common/Container';
-import { Button } from '../../common/Button';
 import { INTERNATIONAL_PATIENTS_DATA } from '../../../constants/config';
 import { IMAGES } from '../../../constants/images';
 
-export const InternationalPatients = ({ onOpenAppointment }) => {
-  return (
-    <section id="international" className="py-12 sm:py-16 bg-[#F0F6FA] relative overflow-hidden border-y border-slate-200/60">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Heading, Flags, Description, CTAs, Stats */}
-          <div className="lg:col-span-6 space-y-6">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-100 text-[#003B73] mb-3">
-                <Globe className="w-3.5 h-3.5 text-[#0284C7]" />
-                <span>Global Patient Services</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#003B73] tracking-tight">
-                {INTERNATIONAL_PATIENTS_DATA.heading}
-              </h2>
-              <div className="h-1 w-16 bg-gradient-to-r from-[#0284C7] to-[#F37023] rounded-full my-3" />
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                {INTERNATIONAL_PATIENTS_DATA.description}
-              </p>
-            </div>
+// Animated Counter Component with ease-out and comma formatting
+const AnimatedCounter = ({ target, suffix = '', isVisible }) => {
+  const [count, setCount] = useState(0);
 
-            {/* Country Flag Badges Carousel/Grid */}
-            <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">
-                Key Global Patient Regions:
-              </div>
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-2.5">
-                {INTERNATIONAL_PATIENTS_DATA.countries.map((c) => (
-                  <div
-                    key={c.code}
-                    className="flex flex-col items-center gap-1.5 p-2 bg-white rounded-xl border border-slate-200 shadow-2xs hover:shadow-md hover:border-sky-300 hover:scale-105 transition-all cursor-pointer group"
-                  >
-                    <img
-                      src={c.image}
-                      alt={c.name}
-                      className="w-7 h-7 rounded-full shadow-2xs object-cover"
-                    />
-                    <span className="text-[11px] font-semibold text-slate-700 group-hover:text-[#003B73] text-center truncate w-full">
-                      {c.name}
-                    </span>
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let startTime = null;
+    let frameId;
+    const duration = 2000;
+
+    const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = Math.floor(easeOutExpo(progress) * target);
+      setCount(current);
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(step);
+      } else {
+        setCount(target);
+      }
+    };
+
+    frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
+  }, [target, isVisible]);
+
+  return (
+    <span>
+      {count.toLocaleString()}
+      {suffix}
+    </span>
+  );
+};
+
+export const InternationalPatients = ({ onOpenAppointment }) => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-50px' });
+  const [hoveredCountry, setHoveredCountry] = useState(null);
+
+  // Map pin locations positioned accurately on the world map coordinate space (0-100% relative)
+  const mapPins = [
+    { name: 'Kazakhstan', x: '72%', y: '24%', labelX: 'left' },
+    { name: 'Tajikistan', x: '76%', y: '32%', labelX: 'right' },
+    { name: 'Iraq', x: '65%', y: '36%', labelX: 'right' },
+    { name: 'Bangladesh', x: '79%', y: '40%', labelX: 'right' },
+    { name: 'Myanmar', x: '82%', y: '48%', labelX: 'right' },
+    { name: 'Oman', x: '69%', y: '52%', labelX: 'bottom' },
+    { name: 'Uganda', x: '60%', y: '65%', labelX: 'bottom' },
+  ];
+
+  return (
+    <section
+      id="international"
+      ref={sectionRef}
+      className="py-10 sm:py-14 md:py-16 lg:py-20 bg-[#EEF2F6] relative overflow-hidden"
+    >
+      <Container>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
+
+          {/* LEFT COLUMN: Headings, 10 Country Flags, Action Buttons & Visa Link */}
+          <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Title */}
+            <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-bold text-[#1E4E98] tracking-tight leading-tight">
+              {INTERNATIONAL_PATIENTS_DATA.heading}
+            </h2>
+
+            {/* Description Paragraph */}
+            <p className="text-sm sm:text-base text-[#636466] leading-relaxed max-w-lg mt-3 sm:mt-4">
+              {INTERNATIONAL_PATIENTS_DATA.description}
+            </p>
+
+            {/* 10 Country Flags Grid (2 rows of 5) with Smooth Hover Animations */}
+            <div className="mt-6 sm:mt-8 w-full max-w-[340px] sm:max-w-[380px] lg:max-w-none">
+              <div className="grid grid-cols-5 gap-3 sm:gap-4 lg:gap-4.5 justify-items-center lg:justify-items-start">
+                {INTERNATIONAL_PATIENTS_DATA.countries.map((country, idx) => (
+                  <div key={country.code} className="relative group">
+                    <motion.div
+                      whileHover={{
+                        scale: 1.18,
+                        y: -3,
+                        transition: { type: 'spring', stiffness: 450, damping: 18 },
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      onHoverStart={() => setHoveredCountry(country.name)}
+                      onHoverEnd={() => setHoveredCountry(null)}
+                      onClick={() => onOpenAppointment && onOpenAppointment(`International Patient Desk (${country.name})`)}
+                      className="w-11 h-11 sm:w-13 sm:h-13 rounded-full cursor-pointer flex items-center justify-center p-0.5 bg-white shadow-sm hover:shadow-md border border-slate-200/80 transition-shadow overflow-hidden"
+                    >
+                      <img
+                        src={country.image}
+                        alt={country.name}
+                        className="w-full h-full rounded-full object-cover select-none pointer-events-none"
+                      />
+                    </motion.div>
+
+                    {/* Hover Country Tooltip */}
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2 py-0.5 bg-slate-800 text-white text-[10px] font-medium rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-30 shadow-sm">
+                      {country.name}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <Button
-                variant="primary"
-                size="md"
-                icon={Plane}
-                onClick={onOpenAppointment}
-                className="shadow-md shadow-sky-900/10"
+            {/* CTA Buttons */}
+            <div className="mt-8 sm:mt-10 flex flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full max-w-sm lg:max-w-none">
+              {/* Know More Button */}
+              <button
+                type="button"
+                onClick={() => onOpenAppointment && onOpenAppointment('International Patient Services')}
+                className="flex-1 sm:flex-initial min-w-[130px] sm:min-w-[150px] px-6 sm:px-8 py-3 bg-[#1E4E98] hover:bg-[#163B75] text-white font-semibold text-sm sm:text-[15px] rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer text-center"
               >
-                Plan Your Medical Visit
-              </Button>
-              <Button
-                variant="outline"
-                size="md"
-                icon={FileText}
-                onClick={onOpenAppointment}
+                Know More
+              </button>
+
+              {/* Get An Estimate Button */}
+              <button
+                type="button"
+                onClick={() => onOpenAppointment && onOpenAppointment('Get an Estimate')}
+                className="flex-1 sm:flex-initial min-w-[130px] sm:min-w-[150px] px-6 sm:px-8 py-3 bg-white hover:bg-slate-50 text-[#1E4E98] font-semibold text-sm sm:text-[15px] rounded-lg border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-center"
               >
-                Get a Free Medical Opinion & Quote
-              </Button>
+                Get An Estimate
+              </button>
             </div>
 
-            {/* Bottom 3 Big Stats */}
-            <div className="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-4">
-              {INTERNATIONAL_PATIENTS_DATA.stats.map((stat) => (
-                <div key={stat.label} className="text-left">
-                  <div className="text-xl sm:text-2xl lg:text-3xl font-black text-[#003B73]">
-                    {stat.value}
+            {/* VISA Invitation Letter Link */}
+            <div className="mt-6 sm:mt-8 text-xs sm:text-sm text-[#636466]">
+              Request For{' '}
+              <button
+                type="button"
+                onClick={() => onOpenAppointment && onOpenAppointment('VISA Invitation Letter')}
+                className="font-bold text-[#1E4E98] hover:text-[#163B75] underline underline-offset-4 cursor-pointer transition-colors"
+              >
+                VISA Invitation Letter
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: World Map with Location Pins & Bottom Stats Counters */}
+          <div className="lg:col-span-7 flex flex-col items-center">
+
+            {/* World Map Container with Interactive Pins */}
+            <div className="relative w-full aspect-[16/9] max-w-[700px] flex items-center justify-center select-none">
+              {/* World Map SVG Image */}
+              <img
+                src={IMAGES.svgs.map}
+                alt="World Map"
+                className="w-full h-full object-contain pointer-events-none select-none drop-shadow-xs"
+              />
+
+              {/* Location Pins Overlay */}
+              {mapPins.map((pin, index) => (
+                <motion.div
+                  key={pin.name}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{
+                    delay: 0.3 + index * 0.1,
+                    type: 'spring',
+                    stiffness: 300,
+                    damping: 20,
+                  }}
+                  style={{ left: pin.x, top: pin.y }}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-1 group z-10 cursor-pointer"
+                  onClick={() => onOpenAppointment && onOpenAppointment(`Patient Desk: ${pin.name}`)}
+                >
+                  {/* Glowing Marker Pin */}
+                  <div className="relative flex items-center justify-center">
+                    <motion.div
+                      animate={{ scale: [1, 1.15, 1] }}
+                      transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut', delay: index * 0.3 }}
+                      className="text-[#1E4E98] drop-shadow-sm group-hover:text-[#005BAA] transition-colors"
+                    >
+                      <MapPin className="w-4 h-4 sm:w-5 sm:h-5 fill-[#1E4E98] text-white stroke-[1.5]" />
+                    </motion.div>
                   </div>
-                  <div className="text-xs font-medium text-slate-500 mt-0.5">
-                    {stat.label}
-                  </div>
-                </div>
+
+                  {/* Pin Text Label */}
+                  <span className="text-[10px] sm:text-[11px] md:text-[12px] font-semibold text-[#1E4E98] whitespace-nowrap bg-white/70 backdrop-blur-[2px] px-1 py-0.5 rounded shadow-2xs group-hover:text-[#005BAA] group-hover:bg-white transition-all">
+                    {pin.name}
+                  </span>
+                </motion.div>
               ))}
             </div>
-          </div>
 
-          {/* Right Column: Interactive World Map Graphic */}
-          <div className="lg:col-span-6 relative">
-            <div className="bg-white rounded-3xl p-4 sm:p-6 shadow-xl border border-slate-200/80 relative overflow-hidden group">
-              {/* Map Title Tag */}
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
-                  <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                    Global Patient Network Map
-                  </span>
-                </div>
-                <span className="text-[11px] font-semibold text-[#0284C7] bg-sky-50 px-2.5 py-1 rounded-full">
-                  30+ International Desks
-                </span>
-              </div>
-
-              {/* Map SVG */}
-              <div className="relative w-full aspect-2/1 flex items-center justify-center">
-                <img
-                  src={IMAGES.common.worldMap}
-                  alt="Marengo Asia Hospitals International Patient Route Map"
-                  className="w-full h-auto object-contain"
-                />
-              </div>
-
-              {/* Highlights Feature Bar */}
-              <div className="mt-4 pt-3 border-t border-slate-100 grid grid-cols-2 gap-2 text-xs text-slate-600">
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Free Visa Assistance</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Airport Transfers & Guest House</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Multilingual Translators</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Tele-Consultation Follow-ups</span>
-                </div>
+            {/* Bottom 3 Stats Counters with Vertical Divider Bars */}
+            <div className="w-full mt-6 sm:mt-8 pt-6 border-t border-slate-300/80">
+              <div className="grid grid-cols-3 divide-x divide-slate-300 items-center text-center">
+                {INTERNATIONAL_PATIENTS_DATA.stats.map((stat) => (
+                  <div key={stat.label} className="px-2 sm:px-4">
+                    {/* Number Counter */}
+                    <div className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[36px] font-extrabold text-[#1E4E98] tracking-tight leading-none">
+                      <AnimatedCounter
+                        target={stat.target}
+                        suffix={stat.suffix}
+                        isVisible={isInView}
+                      />
+                    </div>
+                    {/* Label */}
+                    <div className="text-xs sm:text-sm font-medium text-[#1E4E98]/80 mt-1.5 sm:mt-2">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+
           </div>
+
         </div>
       </Container>
     </section>

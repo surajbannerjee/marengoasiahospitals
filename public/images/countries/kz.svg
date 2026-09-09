@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <clipPath id="circleClip_kz">
+      <circle cx="32" cy="32" r="30"/>
+    </clipPath>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="#00AFCA" stroke="#E2E8F0" stroke-width="1"/>
+  <g clip-path="url(#circleClip_kz)">
+    <rect width="64" height="64" fill="#00AFCA"/>
+    <circle cx="32" cy="28" r="8" fill="#FEC50C"/>
+    <path d="M20,38 Q32,32 44,38 Q32,35 20,38 Z" fill="#FEC50C"/>
+  </g>
+</svg>

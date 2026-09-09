@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <clipPath id="circleClip_us">
+      <circle cx="32" cy="32" r="30"/>
+    </clipPath>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+  <g clip-path="url(#circleClip_us)">
+    <!-- Red and white stripes -->
+    <rect x="0" y="0" width="64" height="4.92" fill="#B22234"/>
+    <rect x="0" y="4.92" width="64" height="4.92" fill="#FFFFFF"/>
+    <rect x="0" y="9.84" width="64" height="4.92" fill="#B22234"/>
+    <rect x="0" y="14.76" width="64" height="4.92" fill="#FFFFFF"/>
+    <rect x="0" y="19.68" width="64" height="4.92" fill="#B22234"/>
+    <rect x="0" y="24.6" width="64" height="4.92" fill="#FFFFFF"/>
+    <rect x="0" y="29.52" width="64" height="4.92" fill="#B22234"/>
+    <rect x="0" y="34.44" width="64" height="4.92" fill="#FFFFFF"/>
+    <rect x="0" y="39.36" width="64" height="4.92" fill="#B22234"/>
+    <rect x="0" y="44.28" width="64" height="4.92" fill="#FFFFFF"/>
+    <rect x="0" y="49.2" width="64" height="4.92" fill="#B22234"/>
+    <rect x="0" y="54.12" width="64" height="4.92" fill="#FFFFFF"/>
+    <rect x="0" y="59.04" width="64" height="4.96" fill="#B22234"/>
+    <!-- Blue canton -->
+    <rect x="0" y="0" width="28" height="34.44" fill="#3C3B6E"/>
+    <!-- Stars (simplified representation) -->
+    <circle cx="7" cy="8" r="1.5" fill="#FFFFFF"/>
+    <circle cx="14" cy="8" r="1.5" fill="#FFFFFF"/>
+    <circle cx="21" cy="8" r="1.5" fill="#FFFFFF"/>
+    <circle cx="10.5" cy="14" r="1.5" fill="#FFFFFF"/>
+    <circle cx="17.5" cy="14" r="1.5" fill="#FFFFFF"/>
+    <circle cx="7" cy="20" r="1.5" fill="#FFFFFF"/>
+    <circle cx="14" cy="20" r="1.5" fill="#FFFFFF"/>
+    <circle cx="21" cy="20" r="1.5" fill="#FFFFFF"/>
+    <circle cx="10.5" cy="26" r="1.5" fill="#FFFFFF"/>
+    <circle cx="17.5" cy="26" r="1.5" fill="#FFFFFF"/>
+  </g>
+</svg>

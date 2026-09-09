@@ -318,19 +318,6 @@ export const Header = ({ onOpenAppointment }) => {
                     )}
                   </div>
                 ))}
-
-                {/* Sidebar Drawer Toggle for Desktop */}
-                <button
-                  type="button"
-                  onClick={() => setIsMobileMenuOpen(true)}
-                  className={`p-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1 text-[13px] lg:text-[15px] xl:text-[17px] font-semibold ${
-                    isScrolled ? 'text-slate-700 hover:text-[#005BAA] hover:bg-sky-50' : 'text-slate-100 hover:text-white hover:bg-white/10'
-                  }`}
-                  title="Open Sidebar Menu"
-                  aria-label="Open Sidebar Menu"
-                >
-                  <Menu className="w-5 h-5" />
-                </button>
               </nav>
             </div>
 
