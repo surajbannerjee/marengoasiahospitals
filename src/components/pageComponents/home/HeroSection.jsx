@@ -37,7 +37,7 @@ export const HeroSection = ({ onOpenAppointment }) => {
           {/* Search Input and Book Appointment Button Form */}
           <form
             onSubmit={handleSearchSubmit}
-            className="w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-3.5 px-2 sm:px-0"
+            className="w-full flex flex-col sm:flex-row items-stretch justify-center sm:items-center gap-3 sm:gap-3.5 px-2 sm:px-0"
           >
             {/* Search Input Box with Magnifying Glass on the Right */}
             <div className="relative w-full max-w-[855px]">

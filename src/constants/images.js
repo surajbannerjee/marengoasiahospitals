@@ -9,7 +9,12 @@ export const IMAGES = {
     shapeBlueSvg:"/images/svgs/shapeBlue.svg",
     shapeOrangeSvg:"/images/svgs/shapeOrange.svg",
     shapeGreenSvg:"/images/svgs/shapedeepgreen.svg",
-    shapeGraySvg:"/images/svgs/shapeGray.svg"
+    shapeGraySvg:"/images/svgs/shapeGray.svg",
+    bookAppointment:"/images/svgs/Book-Your-Health-Checkup.svg",
+    findDoctor:"/images/svgs/Find-Doctor.svg",
+    ourHospitalLocations:"/images/svgs/OurHospitalLocations.svg",
+    ourSpecialties:"/images/svgs/OurSpecialties.svg",
+    
   },
   hospitals: {
     ahmedabad: '/images/hospitals/ahmedabad.svg',
