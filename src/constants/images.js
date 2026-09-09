@@ -1,0 +1,68 @@
+export const IMAGES = {
+  logo: {
+    main: '/images/logo/logo.webp',
+  },
+  hero: {
+    home: '/images/hero/home-hero.jpg',
+  },
+  hospitals: {
+    ahmedabad: '/images/hospitals/ahmedabad.svg',
+    gurgaon: '/images/hospitals/gurgaon.svg',
+    faridabad: '/images/hospitals/faridabad.svg',
+    surat: '/images/hospitals/surat.svg',
+    kolkata: '/images/hospitals/kolkata.svg',
+    noida: '/images/hospitals/noida.svg',
+    mumbai: '/images/hospitals/mumbai.svg',
+    delhi: '/images/hospitals/delhi.svg',
+  },
+  technologies: {
+    petCt: '/images/technologies/pet-ct.jpg',
+    cyberknife: '/images/technologies/cyberknife.jpg',
+    biplaneCathlab: '/images/technologies/biplane-cathlab.jpg',
+    roboticSurgery: '/images/technologies/robotic-surgery.jpg',
+  },
+  packages: {
+    cardiac: '/images/packages/cardiac-care.jpg',
+    executive: '/images/packages/executive-health.jpg',
+    cancer: '/images/packages/cancer-screening.jpg',
+    maternity: '/images/packages/maternity-care.jpg',
+  },
+  testimonials: {
+    patient1: '/images/testimonials/patient-1.svg',
+    patient2: '/images/testimonials/patient-2.jpg',
+    patient3: '/images/testimonials/patient-3.svg',
+  },
+  news: {
+    main: '/images/news/news-main.svg',
+    news1: '/images/news/news-1.svg',
+    news2: '/images/news/news-2.svg',
+    news3: '/images/news/news-3.svg',
+    news4: '/images/news/news-4.svg',
+  },
+  blogs: {
+    cardiac: '/images/blogs/blog-cardiac.svg',
+    robotic: '/images/blogs/blog-robotic.svg',
+    brain: '/images/blogs/blog-brain.svg',
+  },
+  countries: {
+    bd: '/images/countries/bd.svg',
+    om: '/images/countries/om.svg',
+    iq: '/images/countries/iq.svg',
+    uz: '/images/countries/uz.svg',
+    ke: '/images/countries/ke.svg',
+    fj: '/images/countries/fj.svg',
+    ng: '/images/countries/ng.svg',
+    tz: '/images/countries/tz.svg',
+    mu: '/images/countries/mu.svg',
+    ae: '/images/countries/ae.svg',
+    ye: '/images/countries/ye.svg',
+    mm: '/images/countries/mm.svg',
+    np: '/images/countries/np.svg',
+    et: '/images/countries/et.svg',
+    rw: '/images/countries/rw.svg',
+    cm: '/images/countries/cm.svg',
+  },
+  common: {
+    worldMap: '/images/common/world-map.svg',
+  },
+};

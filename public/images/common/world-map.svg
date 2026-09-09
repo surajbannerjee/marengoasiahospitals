@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500" fill="none">
+  <defs>
+    <linearGradient id="mapDotGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#003B73"/>
+    </linearGradient>
+    <filter id="glowEffect">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- World Continents Stylized Silhouette -->
+  <!-- North America -->
+  <path d="M120 80 Q180 60 220 90 Q240 140 210 180 Q170 190 140 210 Q120 180 100 130 Z" fill="#E2E8F0" opacity="0.85"/>
+  <!-- South America -->
+  <path d="M200 230 Q240 240 250 300 Q230 380 210 420 Q190 380 180 300 Z" fill="#E2E8F0" opacity="0.85"/>
+  <!-- Europe -->
+  <path d="M430 70 Q490 60 520 90 Q500 140 450 140 Q420 110 430 70 Z" fill="#E2E8F0" opacity="0.85"/>
+  <!-- Africa -->
+  <path d="M430 160 Q510 150 530 220 Q520 320 480 370 Q430 320 420 220 Z" fill="#E2E8F0" opacity="0.85"/>
+  <!-- Asia -->
+  <path d="M530 70 Q750 50 820 120 Q830 220 740 250 Q660 240 600 200 Q540 160 530 70 Z" fill="#E2E8F0" opacity="0.85"/>
+  <!-- India (Highlighted) -->
+  <path d="M630 170 Q670 180 680 230 Q650 280 630 260 Q615 220 630 170 Z" fill="#BAE6FD" stroke="#0284C7" stroke-width="1.5"/>
+  <!-- Australia -->
+  <path d="M780 300 Q860 300 870 360 Q820 400 770 380 Q760 330 780 300 Z" fill="#E2E8F0" opacity="0.85"/>
+
+  <!-- Flight / Patient Connecting Arcs to India (Hub at 650, 230) -->
+  <g stroke="#0284C7" stroke-width="1.8" stroke-dasharray="6 4" opacity="0.75">
+    <!-- Bangladesh -->
+    <path d="M650 230 Q680 200 700 215"/>
+    <!-- Oman / UAE / Middle East -->
+    <path d="M650 230 Q580 180 550 195"/>
+    <!-- Iraq -->
+    <path d="M650 230 Q560 150 520 160"/>
+    <!-- Uzbekistan / Central Asia -->
+    <path d="M650 230 Q620 130 600 120"/>
+    <!-- Kenya / East Africa -->
+    <path d="M650 230 Q560 280 500 270"/>
+    <!-- Nigeria / West Africa -->
+    <path d="M650 230 Q500 240 440 240"/>
+    <!-- Mauritius / Indian Ocean -->
+    <path d="M650 230 Q620 330 580 360"/>
+    <!-- Fiji / Pacific -->
+    <path d="M650 230 Q800 260 920 310"/>
+  </g>
+
+  <!-- Destination Markers & Pulses -->
+  <!-- India Main Hub Marker -->
+  <circle cx="650" cy="230" r="16" fill="#F37023" opacity="0.25">
+    <animate attributeName="r" values="12;22;12" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="650" cy="230" r="8" fill="#F37023" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="650" y="210" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#003B73" text-anchor="middle">MARENGO HUB (INDIA)</text>
+
+  <!-- International Nodes with City Labels -->
+  <g fill="#0284C7" stroke="#FFFFFF" stroke-width="2">
+    <circle cx="550" cy="195" r="5"/> <!-- Muscat / Dubai -->
+    <circle cx="520" cy="160" r="5"/> <!-- Baghdad -->
+    <circle cx="600" cy="120" r="5"/> <!-- Tashkent -->
+    <circle cx="700" cy="215" r="5"/> <!-- Dhaka -->
+    <circle cx="500" cy="270" r="5"/> <!-- Nairobi -->
+    <circle cx="440" cy="240" r="5"/> <!-- Lagos -->
+    <circle cx="580" cy="360" r="5"/> <!-- Port Louis -->
+    <circle cx="920" cy="310" r="5"/> <!-- Suva -->
+  </g>
+
+  <!-- Location Label Callouts -->
+  <g font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#334155">
+    <text x="545" y="185" text-anchor="end">Middle East</text>
+    <text x="515" y="150" text-anchor="end">Iraq</text>
+    <text x="600" y="110" text-anchor="middle">Uzbekistan</text>
+    <text x="710" y="210">Bangladesh</text>
+    <text x="490" y="285" text-anchor="end">Kenya</text>
+    <text x="430" y="255" text-anchor="end">Nigeria</text>
+    <text x="590" y="375">Mauritius</text>
+    <text x="920" y="325" text-anchor="middle">Fiji</text>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+    <defs>
+      <linearGradient id="newsGrad_news-main" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#0284C7"/>
+        <stop offset="100%" stop-color="#003B73"/>
+      </linearGradient>
+    </defs>
+    <rect width="600" height="400" fill="url(#newsGrad_news-main)"/>
+    <g stroke="rgba(255,255,255,0.15)" stroke-width="2">
+      <circle cx="450" cy="150" r="100" fill="none"/>
+      <circle cx="450" cy="150" r="160" fill="none"/>
+    </g>
+    <!-- Press/Microphone/Hospital Graphic -->
+    <rect x="60" y="80" width="480" height="240" rx="12" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+    <text x="300" y="170" font-family="'Outfit', sans-serif" font-size="24" font-weight="800" fill="#FFFFFF" text-anchor="middle">MARENGO ASIA PRESS</text>
+    <text x="300" y="210" font-family="'Inter', sans-serif" font-size="14" font-weight="600" fill="#38BDF8" text-anchor="middle">HEALTHCARE NEWS & INNOVATION</text>
+    <rect x="230" y="235" width="140" height="30" rx="15" fill="#F37023"/>
+    <text x="300" y="255" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">May 2026</text>
+  </svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+    <defs>
+      <linearGradient id="pGrad_patient-1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#E2E8F0"/>
+        <stop offset="100%" stop-color="#CBD5E1"/>
+      </linearGradient>
+    </defs>
+    <rect width="500" height="500" fill="url(#pGrad_patient-1)"/>
+    <circle cx="250" cy="200" r="90" fill="#94A3B8"/>
+    <path d="M120 450 C120 330, 380 330, 380 450 Z" fill="#64748B"/>
+    <circle cx="250" cy="180" r="65" fill="#FED7AA"/>
+    <!-- Joyful expression -->
+    <path d="M225 170 Q235 165 240 170" stroke="#78350F" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M260 170 Q265 165 275 170" stroke="#78350F" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M235 195 Q250 215 265 195" stroke="#DC2626" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <!-- Doctor Stethoscope / Recovery Badge -->
+    <rect x="50" y="410" width="400" height="60" rx="10" fill="#003B73" opacity="0.95"/>
+    <text x="250" y="438" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Mrs. Sunita Verma</text>
+    <text x="250" y="458" font-family="'Inter', sans-serif" font-size="12" font-weight="500" fill="#38BDF8" text-anchor="middle">Complex Cardiac Bypass</text>
+  </svg>
