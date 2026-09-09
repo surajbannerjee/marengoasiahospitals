@@ -148,10 +148,10 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                   <Search className="w-5 h-5 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
 
-                {/* Instant Bottom Search Dropdown - Opens only when input has text */}
+                {/* Instant Search Dropdown - Opens on top of input on mobile to prevent covering the keyboard, and below input on desktop */}
                 {isDropdownOpen && searchQuery.trim().length > 0 && (
-                  <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-2xl shadow-2xl border border-slate-100 z-50 overflow-hidden animate-in fade-in-50 slide-in-from-top-2 duration-150">
-                    <div className="max-h-72 overflow-y-auto divide-y divide-slate-100 py-1">
+                  <div className="absolute left-0 right-0 bottom-full mb-2 md:bottom-auto md:top-full md:mt-2 bg-white rounded-2xl shadow-2xl border border-slate-100 z-50 overflow-hidden animate-in fade-in-50 duration-150">
+                    <div className="max-h-60 sm:max-h-72 overflow-y-auto divide-y divide-slate-100 py-1">
 
                       {/* Doctors Section */}
                       {filteredDoctors.length > 0 && (
@@ -221,7 +221,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
             <div className="bg-[#1A549F] rounded-lg p-3 sm:p-4 lg:p-6 text-white shadow-lg border border-[#1d5ca8]">
               <div className="space-y-3 sm:space-y-3.5">
                 {keyboardRows.map((row, rowIndex) => (
-                  <div key={rowIndex} className="grid grid-cols-8 gap-2 sm:gap-2.5 md:gap-3">
+                  <div key={rowIndex} className="grid grid-cols-8 gap-2 sm:gap-2 md:gap-3">
                     {row.map((letter) => {
                       const isSelected = selectedLetter === letter;
                       return (
@@ -230,7 +230,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                           type="button"
                           onClick={() => handleKeyClick(letter)}
                           className={cn(
-                            'aspect-square w-full rounded-xl text-sm sm:text-base font-medium flex items-center border-2! border-white/40! justify-center transition-all duration-150 cursor-pointer select-none backdrop-blur-sm',
+                            'aspect-square w-full rounded-[8px] md:rounded-xl text-[14px] sm:text-base font-medium flex items-center border-2! border-white/40! justify-center transition-all duration-150 cursor-pointer select-none backdrop-blur-sm',
                             'bg-white/15 hover:bg-white/25 active:scale-95 text-white',
                             'border border-white/20 shadow-[inset_5px_-5px_15px_rgba(255,255,255,0.35),_5px_5px_5px_rgba(0,0,0,0.12)]',
                             isSelected &&
