@@ -110,7 +110,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
 
             {/* Left Column: Heading, Subtitle & Search Bar with Bottom Dropdown */}
             <div className="space-y-6">
-              <div>
+              <div className='md:text-left text-center'>
                 <h2 className="text-2xl sm:text-3xl lg:text-[2.25rem] font-extrabold text-[#10477A] tracking-tight leading-[1.2]">
                   Search by Specialty,<br className="hidden sm:inline" /> Condition or Treatment
                 </h2>
