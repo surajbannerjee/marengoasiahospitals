@@ -28,7 +28,7 @@ export const Header = ({ onOpenAppointment }) => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 w-full transition-all duration-300 ease-in-out font-sans ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-100 w-full transition-all duration-300 ease-in-out font-sans ${isScrolled
             ? 'bg-white text-slate-800 shadow-md py-2.5 sm:py-3'
             : 'bg-gradient-to-b from-black/70 via-black/35 to-transparent text-white py-3 sm:py-4'
           }`}

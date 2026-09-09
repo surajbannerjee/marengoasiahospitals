@@ -62,10 +62,10 @@ export const QuickActions = ({ onOpenAppointment }) => {
               <a
                 key={tab.id}
                 href={tab.href}
-                className="group relative flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-center gap-2 sm:gap-4 p-3.5 sm:p-5 transition-all duration-300 transform hover:-translate-y-1 text-white cursor-pointer overflow-visible h-[40px] min-[321px]:h-[80px] min-[361px]:h-[70px] min-[401px]:h-[80px] min-[501px]:h-[90px] sm:h-[120px] md:h-[100px] lg:h-[96px] xl:h-[110px] 2xl:h-[121.31px] 3xl:h-[170px] 4k:h-[220px]"
+                className="group relative flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-center gap-2 sm:gap-4 p-3.5 sm:p-5 transition-all duration-300 transform hover:-translate-y-1 text-white cursor-pointer overflow-visible h-[100px] min-[321px]:h-[80px] min-[361px]:h-[70px] min-[401px]:h-[80px] min-[501px]:h-[90px] sm:h-[120px] md:h-[100px] lg:h-[96px] xl:h-[110px] 2xl:h-[121.31px] 3xl:h-[170px] 4k:h-[220px]"
                 style={{ backgroundImage: `url(${tab.bg})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "contain" }}
               >
-                <div className="flex items-center gap-1 min-[360px]:gap-1.5 sm:gap-1.5 md:gap-2 lg:gap-3 xl:gap-4 2xl:gap-5 3xl:gap-8 4k:gap-12 px-1 min-[360px]:px-1.5 sm:px-1.5 md:px-2 lg:px-3 xl:px-5 2xl:px-6 3xl:px-10 4k:px-14">
+                <div className="flex items-center gap-2 min-[360px]:gap-2 sm:gap-2 md:gap-2 lg:gap-3 xl:gap-4 2xl:gap-5 3xl:gap-8 4k:gap-12 px-1 min-[360px]:px-1.5 sm:px-1.5 md:px-2 lg:px-3 xl:px-5 2xl:px-6 3xl:px-10 4k:px-14">
                   {/* Icon Container */}
                   <div className="shrink-0 h-6 w-6 min-[360px]:h-8 min-[360px]:w-8 sm:h-10 sm:w-10 md:h-8 md:w-8 lg:h-9 lg:w-9 xl:h-12 xl:w-12 2xl:h-[58px] 2xl:w-[62px] 3xl:h-[84px] 3xl:w-[90px] 4k:h-[125px] 4k:w-[135px]">
                     <img src={Icon} alt={tab.title} className=" object-contain w-full h-full" />

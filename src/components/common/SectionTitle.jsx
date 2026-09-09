@@ -15,7 +15,7 @@ export const SectionTitle = ({
   };
 
   return (
-    <div className={cn('flex flex-col mb-10 sm:mb-14 max-w-3xl', alignmentClasses[align], className)}>
+    <div className={cn('flex flex-col mb-5 sm:mb-10 lg:mb-14 max-w-3xl', alignmentClasses[align], className)}>
 
       <h2
         className={cn(

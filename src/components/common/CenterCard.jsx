@@ -7,10 +7,11 @@ export const CenterCard = ({ center, onClick, className = '' }) => {
   const iconSrc = IMAGES.svgs[center.icon] || IMAGES.svgs.Cardiac;
 
   return (
+    <div>
     <div
       onClick={() => onClick && onClick(center.title)}
       className={cn(
-        'group relative flex flex-col justify-between w-full h-[370px] sm:h-[390px] p-6 sm:p-7 select-none cursor-pointer',
+        'group relative flex flex-col justify-between w-full pt-[30px] pb-[70px] pl-6 pr-6 select-none cursor-pointer',
         className
       )}
     >
@@ -31,7 +32,7 @@ export const CenterCard = ({ center, onClick, className = '' }) => {
       {/* Main Content Area */}
       <div className="flex flex-col items-center text-center pt-2">
         {/* Medical SVG Icon */}
-        <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center mb-3 group-hover:scale-108 transition-transform duration-300">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 lg:h-18 lg:w-18 xl:h-20 xl:w-20 2xl:h-24 2xl:w-24 3xl:h-24 3xl:w-24  flex items-center justify-center mb-3 group-hover:scale-108 transition-transform duration-300">
           <img
             src={iconSrc}
             alt={center.title}
@@ -40,12 +41,12 @@ export const CenterCard = ({ center, onClick, className = '' }) => {
         </div>
 
         {/* Stat Number */}
-        <h3 className="text-2xl sm:text-[28px] font-bold text-[#2D3748] tracking-tight leading-tight">
+          <h3 className="text-2xl sm:text-[28px] font-bold text-[#666666] tracking-tight leading-tight">
           {center.stat}
         </h3>
 
         {/* Subtitle / Stat Label */}
-        <p className="text-xs sm:text-[13px] font-normal text-slate-500 mt-1">
+          <p className="text-xs sm:text-[13px] font-normaltext-[#666666] mt-1">
           {center.statLabel || 'Patients treated'}
         </p>
 
@@ -53,13 +54,13 @@ export const CenterCard = ({ center, onClick, className = '' }) => {
         <div className="w-9 h-[1.5px] bg-slate-400/60 my-3 rounded-full" />
 
         {/* Specialty Title */}
-        <h4 className="text-[17px] sm:text-[19px] font-bold text-[#4B73BC] group-hover:text-[#003B73] transition-colors leading-snug">
+          <h4 className="text-[17px] sm:text-[19px] font-bold text-[#7589CC] group-hover:text-[#224F9F] transition-colors leading-snug">
           {center.title}
         </h4>
       </div>
-
+      </div>
       {/* Read More Link situated in the bottom-right notch */}
-      <div className="flex justify-end items-center pb-0.5 pr-0.5">
+      <div className="flex justify-end items-center mt-[-10px] pr-0.5">
         <span className="inline-flex items-center gap-1.5 text-xs sm:text-[13.5px] font-medium text-[#2563EB] group-hover:text-[#003B73] transition-colors">
           Read More
           <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1.5" />

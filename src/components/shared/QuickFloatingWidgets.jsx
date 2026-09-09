@@ -64,12 +64,12 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
               href={widget.href}
               target={widget.id === 'chat' ? '_blank' : undefined}
               rel={widget.id === 'chat' ? 'noopener noreferrer' : undefined}
-              className={`pointer-events-auto flex items-center gap-3.5 pl-4 pr-5 py-3 rounded-l-2xl ${widget.bgColor} ${widget.hoverColor} text-white shadow-2xl transition-all duration-300 ease-out transform translate-x-[calc(100%-70px)] hover:translate-x-0 cursor-pointer select-none`}
+              className={`pointer-events-auto flex items-center gap-3.5 pl-4 pr-5 py-3 rounded-l-2xl ${widget.bgColor} ${widget.hoverColor} text-white shadow-2xl transition-all duration-300 ease-out transform lg:translate-x-[calc(100%-70px)] md:translate-x-[calc(100%-60px)] sm:translate-x-[calc(100%-50px)] hover:translate-x-0 cursor-pointer select-none`}
             >
               {/* Icon on Left (always visible in collapsed state) */}
-              <div className="w-10 h-10 flex items-center justify-center shrink-0">
+              <div className=" w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 flex items-center justify-center shrink-0">
                 <Icon
-                  className={`w-8 h-8 text-white ${widget.isPulse ? 'animate-pulse' : ''
+                  className={`lg:w-8 lg:h-8 w-5 h-5 md:w-6 md:h-6 sm:w-5 sm:h-5 text-white ${widget.isPulse ? 'animate-pulse' : ''
                     }`}
                 />
               </div>

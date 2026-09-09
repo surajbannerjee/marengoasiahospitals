@@ -13,7 +13,7 @@ export const HeroSection = ({ onOpenAppointment }) => {
   };
 
   return (
-    <section className="relative flex h-[50dvh] min-[400px]:h-[50dvh] sm:h-[50dvh] md:h-[60dvh] lg:h-[70dvh] xl:h-[80dvh] 2xl:h-[100dvh] 3xl:h-[100dvh] 4k:h-[100dvh] w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat px-4 pb-6 sm:pb-7 md:pb-8 lg:pb-10 xl:pb-12 2xl:pb-16 3xl:pb-20 4k:pb-24 md:px-8 lg:px-12 xl:px-16 3xl:px-[60px] 4k:px-8">
+    <section className="relative flex h-[50dvh] min-[400px]:h-[50dvh] sm:h-[50dvh] md:h-[60dvh] lg:h-[100dvh] xl:h-[100dvh] 2xl:h-[100dvh] 3xl:h-[100dvh] 4k:h-[100dvh] w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat px-4 pb-6 sm:pb-7 md:pb-8 lg:pb-12 xl:pb-16 2xl:pb-20 3xl:pb-20 4k:pb-24 md:px-8 lg:px-12 xl:px-16 3xl:px-[60px] 4k:px-8">
       {/* Background Hero Image with Soft Cinematic Gradients */}
       <div className="absolute inset-0 z-0">
         <img
@@ -27,8 +27,8 @@ export const HeroSection = ({ onOpenAppointment }) => {
       </div>
 
       {/* Hero Content Aligned to Bottom Center */}
-      <Container className="relative z-10 pt-28 sm:pt-36 lg:pt-48 pb-12 sm:pb-16 lg:pb-20">
-        <div className="max-w-[1520px] mx-auto flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6">
+      <Container className="relative z-10">
+        <div className="flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6">
           {/* Main Centered Headline */}
           <h1 className="text-center w-full text-[22px] min-[360px]:text-[26px] sm:text-[30px] md:text-[36px] lg:text-[42px] xl:text-[48px] 2xl:text-[68px] 3xl:text-[60px] 4k:text-[64px] font-bold leading-[1.2] text-white [text-shadow:0px_17px_39px_rgba(34,79,159,1)] lg:leading-tight lg:whitespace-nowrap">
             Trusted Care, Every Step
@@ -37,10 +37,10 @@ export const HeroSection = ({ onOpenAppointment }) => {
           {/* Search Input and Book Appointment Button Form */}
           <form
             onSubmit={handleSearchSubmit}
-            className="w-full flex flex-col sm:flex-row items-stretch justify-center sm:items-center gap-3 sm:gap-3.5 px-2 sm:px-0"
+            className="flex w-full max-w-[420px] min-[400px]:max-w-[480px] sm:max-w-[560px] md:max-w-[620px] lg:max-w-[700px] xl:max-w-[780px] 2xl:max-w-[80%] 3xl:max-w-[80%] flex-col items-center justify-center gap-2 sm:gap-2.5 md:gap-3 2xl:gap-5 3xl:gap-6 4k:gap-7 sm:flex-row"
           >
             {/* Search Input Box with Magnifying Glass on the Right */}
-            <div className="relative w-full max-w-[855px]">
+            <div className="relative w-full min-w-0 flex-1">
               <input
                 type="text"
                 value={searchQuery}

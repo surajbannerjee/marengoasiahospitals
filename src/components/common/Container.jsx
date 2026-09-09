@@ -43,7 +43,7 @@ export const Container = ({
   return (
     <Component
       className={cn(
-        'w-full mx-auto px-4 sm:px-6 lg:px-8',
+        'w-full mx-auto px-4 sm:px-[70px]',
         sizeClass || (fluid ? 'max-w-full' : 'max-w-[1520px]'),
         customClass,
         className

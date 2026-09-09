@@ -26,23 +26,14 @@ export const CentersOfExcellence = ({ onSelectSpecialty }) => {
     <section id="specialties" className=" pb-6 min-[360px]:pb-7 min-[400px]:pb-8 sm:pb-9 md:pb-11 lg:pb-14 xl:pb-16 2xl:pb-[80px] 3xl:pb-[70px] 4k:pb-[85px] relative">
       <Container>
         {/* Section Header with Slider Controls on Desktop */}
-        <div className="flex flex-col md:flex-row items-center justify-between mb-8">
+        <div className="flex flex-col md:flex-row items-center justify-between">
           <SectionTitle
             title="Centers of Excellence"
             subtitle="Trusted care for 25+ years"
             align="center"
-            className="mb-0 max-w-2xl"
+            className=""
           />
 
-          <div className="hidden md:flex items-center gap-3 mt-4 md:mt-0">
-            <SliderNavigation
-              onPrev={() => swiperRef.current?.slidePrev()}
-              onNext={() => swiperRef.current?.slideNext()}
-              isBeginning={isBeginning}
-              isEnd={isEnd}
-              
-            />
-          </div>
         </div>
 
         {/* Swiper Slider */}
@@ -56,13 +47,17 @@ export const CentersOfExcellence = ({ onSelectSpecialty }) => {
               setIsBeginning(swiper.isBeginning);
               setIsEnd(swiper.isEnd);
             }}
-            loop={true}
+            loop={false}
             speed={600}
             spaceBetween={20}
             slidesPerView={1}
             pagination={{ clickable: true, dynamicBullets: true }}
-            autoplay={{ delay: 4500, disableOnInteraction: false }}
+            // autoplay={{ delay: 4500, disableOnInteraction: false }}
             breakpoints={{
+              420: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
               640: {
                 slidesPerView: 2,
                 spaceBetween: 20,
