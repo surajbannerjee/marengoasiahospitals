@@ -18,7 +18,7 @@ import ExpertCareCTA from '../components/pageComponents/home/ExpertCareCTA';
 
 export const Home = () => {
   const context = useOutletContext();
-  const handleOpenAppointment = context?.handleOpenAppointment || (() => {});
+  const handleOpenAppointment = context?.handleOpenAppointment || (() => { });
 
   return (
     <>
@@ -50,16 +50,16 @@ export const Home = () => {
       <PatientStories />
 
       {/* 10. News & Events */}
-      {/* <NewsEvents /> */}
+      <NewsEvents />
 
       {/* 11. Blogs */}
-      {/* <Blogs /> */}
+      <Blogs />
 
       {/* 12. Our Hospitals */}
-      {/* <OurHospitals /> */}
+      <OurHospitals />
 
       {/* 13. Expert Medical Care CTA */}
-      {/* <ExpertCareCTA onOpenAppointment={() => handleOpenAppointment()} /> */}
+      <ExpertCareCTA onOpenAppointment={() => handleOpenAppointment()} />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Play, Star, Smile, SmilePlus, Award, HeartHandshake, Sparkles, Heart } from 'lucide-react';
 import { cn } from '../../util/cn';
 
@@ -11,10 +11,54 @@ const iconMap = {
   Heart: Heart,
 };
 
-export const StoryCard = ({ story, onPlayVideo, className = '' }) => {
-  const BadgeIcon = iconMap[story.badgeIcon] || Smile;
+const getEmbedUrl = (url) => {
+  if (!url) return 'https://www.youtube.com/embed/Bv-J4XSRLx4?autoplay=1';
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  const videoId = match && match[2].length === 11 ? match[2] : null;
+  if (videoId) {
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  }
+  return url.includes('?') ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+};
+
+const renderBadge = (badge) => {
+  if (!badge) return null;
+
+  const isImagePath =
+    typeof badge === 'string' &&
+    (badge.startsWith('/') ||
+      badge.includes('.') ||
+      badge.startsWith('http') ||
+      badge.startsWith('data:'));
+
+  if (isImagePath) {
+    return (
+      <img
+        src={badge}
+        alt="Badge"
+        className="w-full h-full object-contain pointer-events-none"
+      />
+    );
+  }
+
+  const IconComponent = iconMap[badge] || Smile;
+  return <IconComponent className="w-7 h-7 text-[#00A896] stroke-[2]" />;
+};
+
+export const StoryCard = ({ story, onPlay, className = '' }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleStartPlay = () => {
+    setIsPlaying(true);
+    if (onPlay) {
+      onPlay();
+    }
+  };
 
   if (story.type === 'video') {
+    const videoSrc = getEmbedUrl(story.videoUrl);
+
     return (
       <div
         className={cn(
@@ -22,32 +66,53 @@ export const StoryCard = ({ story, onPlayVideo, className = '' }) => {
           className
         )}
       >
-        {/* Main Video Thumbnail Container */}
-        <div className="relative w-full h-full rounded-[22px] sm:rounded-3xl overflow-hidden shadow-xs border border-slate-200/60 bg-slate-100">
-          <img
-            src={story.image}
-            alt={story.patientName || 'Patient Video Story'}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-          />
+        {/* Main Video / Poster Container */}
+        <div className="relative w-full h-full rounded-[22px] sm:rounded-3xl overflow-hidden shadow-xs border border-slate-200/60 bg-slate-900">
+          {isPlaying ? (
+            <iframe
+              src={videoSrc}
+              title={story.title || `${story.patientName || 'Patient'} Recovery Story`}
+              className="w-full h-full object-cover border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          ) : (
+            <div
+              onClick={handleStartPlay}
+              className="relative w-full h-full cursor-pointer overflow-hidden"
+            >
+              {/* Video Poster Image */}
+              <img
+                src={story.image}
+                alt={story.patientName || 'Patient Video Story'}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+              />
 
-          {/* Dark Overlay on Hover */}
-          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors" />
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-colors" />
 
-          {/* Center Circular Play Button */}
-          <button
-            type="button"
-            onClick={() => onPlayVideo && onPlayVideo(story)}
-            aria-label={`Watch video story of ${story.patientName}`}
-            className="absolute inset-0 m-auto w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-[#1E4E98] shadow-md group-hover:scale-110 group-hover:bg-white transition-all cursor-pointer z-10"
-          >
-            <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-[#1E4E98] translate-x-0.5" />
-          </button>
+              {/* Center Circular Play Button */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleStartPlay();
+                }}
+                aria-label={`Watch video story of ${story.patientName || 'patient'}`}
+                className="absolute inset-0 m-auto w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-[#1E4E98] shadow-lg group-hover:scale-110 group-hover:bg-white transition-all cursor-pointer z-10"
+              >
+                <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-[#1E4E98] translate-x-0.5" />
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Floating Overlapping Circular Badge on the Right */}
-        <div className="absolute -right-3.5 sm:-right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-slate-100/90 flex items-center justify-center text-[#00A896] z-20 group-hover:scale-110 transition-transform">
-          <BadgeIcon className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]" />
-        </div>
+        {story.badgeIcon && (
+          <div className="absolute -right-8 sm:-right-10 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white shadow-md border border-slate-100/90 flex items-center justify-center p-1.5 z-20 hover:scale-110 transition-transform overflow-hidden">
+            {renderBadge(story.badgeIcon)}
+          </div>
+        )}
       </div>
     );
   }
@@ -81,9 +146,11 @@ export const StoryCard = ({ story, onPlayVideo, className = '' }) => {
       </div>
 
       {/* Floating Overlapping Circular Badge on the Right */}
-      <div className="absolute -right-3.5 sm:-right-4.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-slate-100/90 flex items-center justify-center text-[#00A896] z-20 hover:scale-110 transition-transform">
-        <BadgeIcon className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]" />
-      </div>
+      {story.badgeIcon && (
+        <div className="absolute -right-8 sm:-right-10 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white shadow-md border border-slate-100/90 flex items-center justify-center p-1.5 z-20 hover:scale-110 transition-transform overflow-hidden">
+          {renderBadge(story.badgeIcon)}
+        </div>
+      )}
     </div>
   );
 };

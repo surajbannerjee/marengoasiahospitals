@@ -122,6 +122,20 @@
 .cardSlider .swiper-wrapper {
   padding: 10px 0 50px;
 }
+
+.newsEventsSlider .swiper-pagination-bullet {
+  background: #CBD5E1;
+  opacity: 1;
+  width: 8px;
+  height: 8px;
+  transition: all 0.3s ease;
+}
+
+.newsEventsSlider .swiper-pagination-bullet-active {
+  background: #0258B9;
+  width: 22px;
+  border-radius: 4px;
+}
 /* Continuous Rail Marquee Animation */
 @keyframes continuousRail {
   0% {

@@ -1,82 +1,92 @@
-import React from 'react';
-import { Calendar, Clock, ArrowRight, BookOpen, User } from 'lucide-react';
+import React, { useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Container } from '../../common/Container';
 import { SectionTitle } from '../../common/SectionTitle';
+import { BlogCard } from '../../common/BlogCard';
 import { BLOGS_DATA } from '../../../constants/config';
-import { Card } from '../../common/Card';
-import { Badge } from '../../common/Badge';
 
-export const Blogs = () => {
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+export const Blogs = ({ onSelectBlog }) => {
+  const swiperRef = useRef(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  // Multiply slides if array is small so Swiper loop works seamlessly
+  const loopCards = BLOGS_DATA.length > 0 && BLOGS_DATA.length <= 4
+    ? [...BLOGS_DATA, ...BLOGS_DATA]
+    : BLOGS_DATA;
+
   return (
-    <section id="blogs" className="py-12 sm:py-16 bg-slate-50">
+    <section id="blogs" className="pb-6 min-[360px]:pb-7 min-[400px]:pb-8 sm:pb-9 md:pb-11 lg:pb-14 xl:pb-16 2xl:pb-[80px] 3xl:pb-[70px] 4k:pb-[85px] relative">
       <Container>
         {/* Section Header */}
-        <SectionTitle
-          badge="Health Library"
-          title="Medical Insights & Blogs"
-          subtitle="Expert advice, health tips, and clinical updates authored by our senior consultants"
-          align="center"
-        />
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <SectionTitle
+            title="Blogs"
+            subtitle="Expert insights for every step of your health journey"
+            align="center"
+            className=""
+          />
+        </div>
 
-        {/* 3-Column Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {BLOGS_DATA.map((blog) => (
-            <Card
-              key={blog.id}
-              className="flex flex-col justify-between overflow-hidden border border-slate-200/90 hover:border-sky-300 hover:shadow-xl group bg-white"
-            >
-              <div>
-                {/* Blog Image */}
-                <div className="relative aspect-16/10 w-full overflow-hidden bg-slate-100">
-                  <img
-                    src={blog.image}
-                    alt={blog.title}
-                    className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute top-3 left-3">
-                    <Badge variant="blue" className="bg-white/95 font-bold shadow-xs">
-                      {blog.category}
-                    </Badge>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-5 sm:p-6">
-                  {/* Meta: Date & Read Time */}
-                  <div className="flex items-center gap-4 text-xs text-slate-500 mb-2.5">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 text-[#0284C7]" />
-                      <span>{blog.date}</span>
-                    </div>
-                    <span>•</span>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-[#0284C7]" />
-                      <span>{blog.readTime}</span>
-                    </div>
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-bold text-slate-800 group-hover:text-[#003B73] transition-colors mb-2 line-clamp-2 leading-snug">
-                    {blog.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4">
-                    {blog.excerpt}
-                  </p>
-
-                  <div className="text-[11px] font-semibold text-slate-500 pt-3 border-t border-slate-100 flex items-center gap-1.5 truncate">
-                    <User className="w-3.5 h-3.5 text-[#003B73] shrink-0" />
-                    <span className="truncate">{blog.author}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Read More Link */}
-              <div className="px-5 sm:px-6 pb-5 pt-2 flex items-center justify-between text-xs sm:text-sm font-bold text-[#003B73] group-hover:text-[#0284C7]">
-                <span>Read Full Article</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-              </div>
-            </Card>
-          ))}
+        {/* Swiper Slider matching Technologies slider and card design */}
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            onSlideChange={(swiper) => {
+              setIsBeginning(swiper.isBeginning);
+              setIsEnd(swiper.isEnd);
+            }}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+            }}
+            speed={600}
+            spaceBetween={20}
+            slidesPerView={1}
+            pagination={{ clickable: true, dynamicBullets: true }}
+            breakpoints={{
+              420: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+              },
+            }}
+            className="cardSlider"
+          >
+            {loopCards.map((blog, index) => (
+              <SwiperSlide key={`${blog.id}-${index}`} className="h-auto">
+                <BlogCard
+                  blog={blog}
+                  onClick={onSelectBlog}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </Container>
     </section>
