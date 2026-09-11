@@ -21,8 +21,8 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
     {
       id: 'emergency',
       label: 'Emergency',
-      number: '8003090309',
-      href: 'tel:8003090309',
+      number: '1800 309 9999',
+      href: 'tel:18003099999',
       icon: Siren,
       bgColor: 'bg-[#FF3333]',
       hoverColor: 'hover:bg-[#E60000]',
@@ -31,8 +31,8 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
     {
       id: 'helpline',
       label: 'Helpline Support',
-      number: '1800-309-5999',
-      href: 'tel:18003095999',
+      number: '1800-309-9999',
+      href: 'tel:18003099999',
       icon: Phone,
       bgColor: 'bg-[#1D4ED8]',
       hoverColor: 'hover:bg-[#1E40AF]',
@@ -41,8 +41,8 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
     {
       id: 'chat',
       label: 'Chat with Us',
-      number: '8003090309',
-      href: 'https://wa.me/918003090309',
+      number: '1800 309 9999',
+      href: 'https://wa.me/9118003099999',
       icon: MessageCircle,
       bgColor: 'bg-[#F97316]',
       hoverColor: 'hover:bg-[#EA580C]',
@@ -106,34 +106,34 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
         <div className="grid grid-cols-3 text-white text-center">
           {/* Emergency Column */}
           <a
-            href="tel:8003090309"
+            href="tel:18003099999"
             className="bg-[#FF3333] active:bg-[#E60000] py-2.5 px-1 flex flex-col items-center justify-center transition-colors cursor-pointer"
           >
             <Siren className="w-4 h-4 text-white animate-pulse mb-0.5" />
             <span className="text-[11px] font-bold uppercase tracking-wider leading-none">Emergency</span>
-            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight">8003090309</span>
+            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight">1800 309 9999</span>
           </a>
 
           {/* Helpline Support Column */}
           <a
-            href="tel:18003095999"
+            href="tel:18003099999"
             className="bg-[#1D4ED8] active:bg-[#1E40AF] py-2.5 px-1 flex flex-col items-center justify-center transition-colors cursor-pointer border-x border-white/15"
           >
             <Phone className="w-4 h-4 text-white mb-0.5" />
             <span className="text-[11px] font-bold uppercase tracking-wider leading-none truncate w-full">Helpline Support</span>
-            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight truncate w-full">1800-309-5999</span>
+            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight truncate w-full">1800-309-9999</span>
           </a>
 
           {/* Chat with Us Column */}
           <a
-            href="https://wa.me/918003090309"
+            href="https://wa.me/9118003099999"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#F97316] active:bg-[#EA580C] py-2.5 px-1 flex flex-col items-center justify-center transition-colors cursor-pointer"
           >
             <MessageCircle className="w-4 h-4 text-white mb-0.5" />
             <span className="text-[11px] font-bold uppercase tracking-wider leading-none">Chat with Us</span>
-            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight">8003090309</span>
+            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight">1800 309 9999</span>
           </a>
         </div>
       </div>

@@ -37,7 +37,7 @@ export const NewsEvents = () => {
     <section id="news" className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col items-center justify-center text-center mb-8 sm:mb-12">
+        <div className="flex flex-col items-center justify-center text-center sm:mb-12">
           <SectionTitle
             title="News & Events"
             subtitle="Discover Our Latest News & Events"

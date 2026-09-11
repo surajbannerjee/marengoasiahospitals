@@ -15,7 +15,7 @@ export const OurHospitals = ({ onSelectHospital }) => {
     <section id="hospitals" className="pb-6 min-[360px]:pb-7 min-[400px]:pb-8 sm:pb-9 md:pb-11 lg:pb-14 xl:pb-16 2xl:pb-[80px] 3xl:pb-[70px] 4k:pb-[85px] bg-white relative">
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col items-center justify-center text-center mb-8 sm:mb-12">
+        <div className="flex flex-col items-center justify-center text-center ">
           <SectionTitle
             title="Our Hospitals"
             subtitle="Explore Our Network of Advanced Healthcare Facilities"
@@ -50,8 +50,8 @@ export const OurHospitals = ({ onSelectHospital }) => {
           </Swiper>
         </div>
 
-        {/* Desktop / Tablet View: 4x2 Grid */}
-        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+        {/* Desktop / Tablet View: 3x2 Grid for 6 Hospitals */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {HOSPITALS_DATA.map((hosp) => (
             <HospitalCard
               key={hosp.id}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Phone, Calendar, Search, ChevronDown, Menu, User, Siren, ArrowRight } from 'lucide-react';
 import {
   SITE_CONFIG,
@@ -9,13 +9,12 @@ import {
 import { IMAGES } from '../../constants/images';
 import { Button } from '../common/Button';
 import { MobileMenu } from './MobileMenu';
-import { SearchBar } from './SearchBar';
 
 export const Header = ({ onOpenAppointment }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,9 +24,47 @@ export const Header = ({ onOpenAppointment }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleMenuHover = (dropdownType) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    if (dropdownType) {
+      setActiveDropdown(dropdownType);
+    } else {
+      setActiveDropdown(null);
+    }
+  };
+
+  const handleMenuLeave = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  };
+
+  const handleSearchClick = (e) => {
+    e?.preventDefault?.();
+    const searchSection = document.getElementById('specialty-search');
+    const searchInput = document.getElementById('specialty-search-input');
+    if (searchSection) {
+      searchSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (searchInput) {
+        setTimeout(() => {
+          searchInput.focus();
+        }, 400);
+      }
+    } else {
+      window.location.href = '/#specialty-search';
+    }
+  };
+
   return (
     <>
       <header
+        onMouseLeave={handleMenuLeave}
         className={`fixed top-0 left-0 right-0 z-100 w-full transition-all duration-300 ease-in-out font-sans ${isScrolled
             ? 'bg-white text-slate-800 shadow-md py-2.5 sm:py-3'
             : 'bg-gradient-to-b from-black/70 via-black/35 to-transparent text-white py-3 sm:py-4'
@@ -37,11 +74,11 @@ export const Header = ({ onOpenAppointment }) => {
           <div className="w-full flex items-center justify-between">
             {/* Left: Brand Logo */}
             <a href="#" className="flex items-center shrink-0 group">
-              <div className="md:w-[150px] w-[100px]">
+              <div className="max-w-[150px] w-full">
                 <img
                   src={IMAGES.logo.main}
                   alt={SITE_CONFIG.name}
-                  className="h-[44px] sm:h-[60px] md:h-[75px] lg:h-[85px] xl:h-[95px] 3xl:h-[125px] 4k:h-[135px] w-auto max-w-[100px] sm:max-w-[120px] lg:max-w-[130px] 3xl:max-w-[240px] 4k:max-w-[250px] shrink-0 object-contain opacity-100 transition-transform duration-200 hover:opacity-90"
+                  className="h-full w-full max-w-[100px] sm:max-w-[120px] lg:max-w-[130px] lg:max-w-[150px] shrink-0 object-contain opacity-100 transition-transform duration-200 hover:opacity-90"
                 />
               </div>
             </a>
@@ -52,8 +89,8 @@ export const Header = ({ onOpenAppointment }) => {
               <div className="flex items-center gap-6">
                 {/* 24/7 Emergency */}
                 <a
-                  href={`tel:8003090309`}
-                  className="flex items-center gap-1.5 text-[13px] lg:text-[15px] xl:text-[17px] 2xl:text-[18px] 3xl:text-[21px] 4k:text-[24px] font-semibold leading-[29px] 3xl:leading-[34px] 4k:leading-[38px] tracking-[0%] whitespace-nowrap transition-colors text-[#FF3333] hover:text-[#E60000] cursor-pointer"
+                  href={`tel:18003099999`}
+                  className="flex items-center gap-1.5 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors text-[#FF3333] hover:text-[#E60000] cursor-pointer"
                 >
                   <Siren className="w-4 h-4 text-[#FF3333] animate-pulse" />
                   <span className="uppercase tracking-wider">24/7 Emergency</span>
@@ -61,18 +98,19 @@ export const Header = ({ onOpenAppointment }) => {
 
                 {/* Helpline Phone */}
                 <a
-                  href={`tel:8003090309`}
-                  className={`flex items-center gap-1.5 text-[13px] lg:text-[15px] xl:text-[17px] 2xl:text-[18px] 3xl:text-[21px] 4k:text-[24px] font-semibold leading-[29px] 3xl:leading-[34px] 4k:leading-[38px] tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
+                  href={`tel:18003099999`}
+                  className={`flex items-center gap-1.5 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
                     }`}
                 >
                   <Phone className="w-3.5 h-3.5 text-[#38BDF8]" />
-                  <span>8003090309</span>
+                  <span>1800 309 9999</span>
                 </a>
 
                 {/* Search Toggle */}
                 <button
-                  onClick={() => setIsSearchOpen(!isSearchOpen)}
-                  className={`flex items-center gap-1.5 text-[13px] lg:text-[15px] xl:text-[17px] 2xl:text-[18px] 3xl:text-[21px] 4k:text-[24px] font-semibold leading-[29px] 3xl:leading-[34px] 4k:leading-[38px] tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
+                  type="button"
+                  onClick={handleSearchClick}
+                  className={`flex items-center gap-1.5 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
                     }`}
                 >
                   <Search className="w-3.5 h-3.5" />
@@ -82,7 +120,7 @@ export const Header = ({ onOpenAppointment }) => {
                 {/* Login */}
                 <a
                   href="#login"
-                  className={`flex items-center gap-1.5 text-[13px] lg:text-[15px] xl:text-[17px] 2xl:text-[18px] 3xl:text-[21px] 4k:text-[24px] font-semibold leading-[29px] 3xl:leading-[34px] 4k:leading-[38px] tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
+                  className={`flex items-center gap-1.5 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
                     }`}
                 >
                   <User className="w-3.5 h-3.5" />
@@ -95,227 +133,29 @@ export const Header = ({ onOpenAppointment }) => {
                 {HEADER_NAV_ITEMS.map((item) => (
                   <div
                     key={item.label}
-                    className=" group py-1"
-                    onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.dropdownType)}
-                    onMouseLeave={() => item.hasDropdown && setActiveDropdown(null)}
+                        className={`group py-1 cursor-pointer ${item.hasDropdown
+                          ? "relative after:absolute after:content-[''] after:w-full after:h-full after:bg-transparent after:z-1 after:bottom-0 after:left-0 after:right-0"
+                          : ""
+                          }`}
+                    onMouseEnter={() => handleMenuHover(item.hasDropdown ? item.dropdownType : null)}
+                    onMouseLeave={handleMenuLeave}
                   >
                     <a
                       href={item.href}
-                      className={`flex items-center gap-1 text-[13px] lg:text-[15px] xl:text-[17px] 2xl:text-[18px] 3xl:text-[21px] 4k:text-[24px] font-semibold leading-[29px] 3xl:leading-[34px] 4k:leading-[38px] tracking-[0%] whitespace-nowrap transition-colors ${isScrolled
-                          ? 'text-slate-700 hover:text-[#003B73]'
-                          : 'text-slate-100 hover:text-white drop-shadow-sm'
+                      className={`flex items-center gap-1 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors ${isScrolled
+                        ? 'text-slate-700 hover:text-[#003B73]'
+                        : 'text-slate-100 hover:text-white drop-shadow-sm'
                         }`}
                     >
                       <span>{item.label}</span>
                       {/* ChevronDown renders ONLY for menu items that have a dropdown */}
                       {item.hasDropdown && (
-                        <ChevronDown className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 group-hover:rotate-180 transition-transform duration-200" />
+                        <ChevronDown
+                          className={`w-3.5 h-3.5 opacity-70 transition-transform duration-200 ${activeDropdown === item.dropdownType ? 'rotate-180 opacity-100 text-[#005BAA]' : 'group-hover:opacity-100'
+                            }`}
+                        />
                       )}
                     </a>
-
-                    {/* ========================================================= */}
-                    {/* 1. OUR HOSPITAL MEGA DROPDOWN (Matches 1st Reference Image) */}
-                    {/* ========================================================= */}
-                    {item.dropdownType === 'hospitals' && activeDropdown === 'hospitals' && (
-                      <div className="absolute right-0 top-[calc(100%+2px)] z-50 w-[780px] lg:w-[840px] xl:w-[900px] 2xl:w-[960px] 4k:w-[1280px] max-w-[calc(100vw-48px)] rounded-2xl 4k:rounded-3xl border border-neutral-100 bg-white p-6 lg:p-8 4k:p-10 shadow-2xl transition-all duration-300 animate-in fade-in ">
-                        <div className="grid grid-cols-4 gap-6">
-                          {/* Column 1: SURAT & SAUDI ARABIA */}
-                          <div className="space-y-6">
-                            {HOSPITAL_MEGA_MENU.column1.map((section) => (
-                              <div key={section.region} className="space-y-2">
-                                <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
-                                  {section.region}
-                                </h4>
-                                {section.items.map((h) => (
-                                  <a
-                                    key={h.name}
-                                    href={h.href}
-                                    className="block group/link py-1 hover:text-[#005BAA] transition-colors"
-                                  >
-                                    <div className="text-xs font-bold text-slate-800 group-hover/link:text-[#005BAA] leading-snug">
-                                      {h.name}
-                                    </div>
-                                    <div className="text-[10px] text-slate-500 uppercase mt-0.5 leading-tight">
-                                      {h.subtitle}
-                                    </div>
-                                  </a>
-                                ))}
-                              </div>
-                            ))}
-                          </div>
-
-                          {/* Column 2: DELHI/NCR */}
-                          <div className="space-y-2">
-                            <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
-                              {HOSPITAL_MEGA_MENU.column2.region}
-                            </h4>
-                            <div className="space-y-4 pt-1">
-                              {HOSPITAL_MEGA_MENU.column2.items.map((h) => (
-                                <a
-                                  key={h.name}
-                                  href={h.href}
-                                  className="block group/link hover:text-[#005BAA] transition-colors"
-                                >
-                                  <div className="text-xs font-bold text-slate-800 group-hover/link:text-[#005BAA] leading-snug">
-                                    {h.name}
-                                  </div>
-                                  <div className="text-[11px] text-slate-500 mt-0.5 leading-relaxed font-normal">
-                                    {h.address}
-                                  </div>
-                                </a>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Column 3: AHMEDABAD */}
-                          <div className="space-y-2">
-                            <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
-                              {HOSPITAL_MEGA_MENU.column3.region}
-                            </h4>
-                            <div className="space-y-4 pt-1">
-                              {HOSPITAL_MEGA_MENU.column3.items.map((h) => (
-                                <a
-                                  key={h.name}
-                                  href={h.href}
-                                  className="block group/link hover:text-[#005BAA] transition-colors"
-                                >
-                                  <div className="text-xs font-bold text-slate-800 group-hover/link:text-[#005BAA] leading-snug">
-                                    {h.name}
-                                  </div>
-                                  <div className="text-[11px] text-slate-500 mt-0.5 leading-relaxed font-normal">
-                                    {h.address}
-                                  </div>
-                                </a>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Column 4: CTAs (BOOK AN APPOINTMENT & FIND A DOCTOR) */}
-                          <div className="border-l border-slate-100 pl-6 space-y-6">
-                            {/* Appointment CTA */}
-                            <div className="space-y-2">
-                              <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
-                                {HOSPITAL_MEGA_MENU.ctaColumn.appointment.title}
-                              </h4>
-                              <p className="text-[11px] text-slate-600 leading-relaxed">
-                                {HOSPITAL_MEGA_MENU.ctaColumn.appointment.description}
-                              </p>
-                              <button
-                                onClick={() => onOpenAppointment()}
-                                className="inline-flex items-center justify-center px-5 py-2 bg-[#005BAA] hover:bg-[#00427A] text-white text-xs font-bold rounded-full transition-colors shadow-sm cursor-pointer"
-                              >
-                                {HOSPITAL_MEGA_MENU.ctaColumn.appointment.buttonText}
-                              </button>
-                            </div>
-
-                            {/* Find Doctor CTA */}
-                            <div className="space-y-2">
-                              <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
-                                {HOSPITAL_MEGA_MENU.ctaColumn.findDoctor.title}
-                              </h4>
-                              <p className="text-[11px] text-slate-600 leading-relaxed">
-                                {HOSPITAL_MEGA_MENU.ctaColumn.findDoctor.description}
-                              </p>
-                              <a
-                                href={HOSPITAL_MEGA_MENU.ctaColumn.findDoctor.href}
-                                className="inline-flex items-center justify-center px-5 py-2 bg-[#005BAA] hover:bg-[#00427A] text-white text-xs font-bold rounded-full transition-colors shadow-sm cursor-pointer"
-                              >
-                                {HOSPITAL_MEGA_MENU.ctaColumn.findDoctor.buttonText}
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* ========================================================= */}
-                    {/* 2. SPECIALITIES MEGA DROPDOWN (Matches 2nd Reference Image) */}
-                    {/* ========================================================= */}
-                    {item.dropdownType === 'specialties' && activeDropdown === 'specialties' && (
-                      <div className="absolute top-full right-0 w-[860px] xl:w-[920px] bg-white rounded-2xl shadow-2xl border border-slate-100 p-7 text-slate-800 animate-in fade-in-50 zoom-in-95 z-50 text-left font-sans">
-                        <div className="grid grid-cols-3 gap-8">
-                          {/* Column 1: CENTRE OF EXCELLENCE */}
-                          <div className="space-y-3">
-                            <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
-                              {SPECIALITIES_MEGA_MENU.centersOfExcellence.title}
-                            </h4>
-                            <div className="space-y-2 pt-1">
-                              {SPECIALITIES_MEGA_MENU.centersOfExcellence.items.map((sp) => (
-                                <a
-                                  key={sp.name}
-                                  href={sp.href}
-                                  className="flex items-center gap-2.5 py-1 text-xs font-semibold text-slate-700 hover:text-[#005BAA] transition-colors group/item"
-                                >
-                                  <span className="text-sm shrink-0">{sp.icon}</span>
-                                  <span className="group-hover/item:translate-x-0.5 transition-transform">{sp.name}</span>
-                                </a>
-                              ))}
-                            </div>
-                            <div className="pt-2">
-                              <a
-                                href={SPECIALITIES_MEGA_MENU.centersOfExcellence.viewAllHref}
-                                className="text-xs font-bold text-[#005BAA] hover:underline"
-                              >
-                                View All
-                              </a>
-                            </div>
-                          </div>
-
-                          {/* Column 2: KEY SPECIALITIES */}
-                          <div className="space-y-3">
-                            <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
-                              {SPECIALITIES_MEGA_MENU.keySpecialities.title}
-                            </h4>
-                            <div className="space-y-2 pt-1">
-                              {SPECIALITIES_MEGA_MENU.keySpecialities.items.map((sp) => (
-                                <a
-                                  key={sp.name}
-                                  href={sp.href}
-                                  className="flex items-center gap-2.5 py-1 text-xs font-semibold text-slate-700 hover:text-[#005BAA] transition-colors group/item"
-                                >
-                                  <span className="text-sm shrink-0">{sp.icon}</span>
-                                  <span className="group-hover/item:translate-x-0.5 transition-transform">{sp.name}</span>
-                                </a>
-                              ))}
-                            </div>
-                            <div className="pt-2">
-                              <a
-                                href={SPECIALITIES_MEGA_MENU.keySpecialities.viewAllHref}
-                                className="text-xs font-bold text-[#005BAA] hover:underline"
-                              >
-                                View All
-                              </a>
-                            </div>
-                          </div>
-
-                          {/* Column 3: PROCEDURES */}
-                          <div className="space-y-3">
-                            <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
-                              {SPECIALITIES_MEGA_MENU.procedures.title}
-                            </h4>
-                            <div className="space-y-2.5 pt-1">
-                              {SPECIALITIES_MEGA_MENU.procedures.items.map((proc) => (
-                                <a
-                                  key={proc.name}
-                                  href={proc.href}
-                                  className="block py-1 text-xs font-semibold text-slate-700 hover:text-[#005BAA] transition-colors"
-                                >
-                                  {proc.name}
-                                </a>
-                              ))}
-                            </div>
-                            <div className="pt-2">
-                              <a
-                                href={SPECIALITIES_MEGA_MENU.procedures.viewAllHref}
-                                className="text-xs font-bold text-[#005BAA] hover:underline"
-                              >
-                                View All
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 ))}
               </nav>
@@ -325,7 +165,7 @@ export const Header = ({ onOpenAppointment }) => {
             <div className="flex lg:hidden items-center gap-2 sm:gap-3">
               {/* Emergency Siren */}
               <a
-                href={`tel:8003090309`}
+                href={`tel:18003099999`}
                 aria-label="24/7 Emergency"
                 className="p-1.5 text-red-500 hover:text-red-400 transition-colors cursor-pointer"
               >
@@ -334,8 +174,8 @@ export const Header = ({ onOpenAppointment }) => {
 
               {/* Helpline Phone */}
               <a
-                href={`tel:8003090309`}
-                aria-label="Call 8003090309"
+                href={`tel:18003099999`}
+                aria-label="Call 1800 309 9999"
                 className={`p-1.5 transition-colors cursor-pointer ${isScrolled ? 'text-slate-700' : 'text-white'
                   }`}
               >
@@ -344,7 +184,8 @@ export const Header = ({ onOpenAppointment }) => {
 
               {/* Search Toggle */}
               <button
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                type="button"
+                onClick={handleSearchClick}
                 aria-label="Search"
                 className={`p-1.5 transition-colors cursor-pointer ${isScrolled ? 'text-slate-700' : 'text-white'
                   }`}
@@ -373,16 +214,254 @@ export const Header = ({ onOpenAppointment }) => {
               </button>
             </div>
           </div>
+        </div>
 
-          {/* Quick Search Slideout */}
-          {isSearchOpen && (
-            <div className="mt-3 pt-3 border-t border-slate-200/30 bg-white/95 text-slate-800 rounded-2xl shadow-xl p-4 animate-in slide-in-from-top duration-200">
-              <div className="max-w-3xl mx-auto flex items-center justify-center">
-                <SearchBar variant="compact" className="w-full max-w-xl" />
+        {/* ========================================================= */}
+        {/* 1. OUR HOSPITAL MEGA DROPDOWN (Full Screen Width) */}
+        {/* ========================================================= */}
+        {activeDropdown === 'hospitals' && (
+          <div
+            onMouseEnter={() => handleMenuHover('hospitals')}
+            onMouseLeave={handleMenuLeave}
+            className="absolute left-0 right-0 top-full w-full bg-white border-t border-slate-100 shadow-2xl z-50 text-slate-800 animate-in fade-in-50 slide-in-from-top-1 duration-200"
+          >
+            <div className="max-w-[1920px] 3xl:max-w-[2100px] 4k:max-w-none mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-[72px] 3xl:px-[60px] 4k:px-[72px] py-8 lg:py-10">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 text-left items-start">
+
+                {/* Left Section: 6 Hospital Locations (3 Columns of 2 items) */}
+                <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
+                  {/* Column 1: Ahmedabad & Surat */}
+                  <div className="space-y-6">
+                    {HOSPITAL_MEGA_MENU.column1.map((item) => (
+                      <div key={item.name}>
+                        <a
+                          href={item.href}
+                          className="inline-block group/link py-1 hover:text-[#005BAA] transition-colors"
+                        >
+                          <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit group-hover/link:translate-x-0.5 transition-transform">
+                            {item.name}
+                          </h4>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Column 2: Gurugram & Vadodara */}
+                  <div className="space-y-6">
+                    {HOSPITAL_MEGA_MENU.column2.map((item) => (
+                      <div key={item.name}>
+                        <a
+                          href={item.href}
+                          className="inline-block group/link py-1 hover:text-[#005BAA] transition-colors"
+                        >
+                          <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit group-hover/link:translate-x-0.5 transition-transform">
+                            {item.name}
+                          </h4>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Column 3: Faridabad & Saudi Arabia */}
+                  <div className="space-y-6">
+                    {HOSPITAL_MEGA_MENU.column3.map((item) => (
+                      <div key={item.name}>
+                        <a
+                          href={item.href}
+                          className="inline-block group/link py-1 hover:text-[#005BAA] transition-colors"
+                        >
+                          <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit group-hover/link:translate-x-0.5 transition-transform">
+                            {item.name}
+                          </h4>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right Section: 2 CTA Boxes Side-by-Side in a Row */}
+                <div className="lg:col-span-7 border-t lg:border-t-0 lg:border-l border-slate-200/80 pt-6 lg:pt-0 lg:pl-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-start">
+                    {/* Box 1: BOOK AN APPOINTMENT */}
+                    <div className="flex flex-col justify-between h-full space-y-4">
+                      <div className="space-y-2.5">
+                        <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
+                          {HOSPITAL_MEGA_MENU.ctaColumn.appointment.title}
+                        </h4>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          {HOSPITAL_MEGA_MENU.ctaColumn.appointment.description}
+                        </p>
+                      </div>
+                      <div className="pt-1">
+                        <button
+                          onClick={() => onOpenAppointment()}
+                          className="inline-flex items-center justify-center px-6 py-2.5 bg-[#005BAA] hover:bg-[#00427A] text-white text-xs font-bold rounded-full transition-colors shadow-sm cursor-pointer hover:shadow-md active:scale-95"
+                        >
+                          {HOSPITAL_MEGA_MENU.ctaColumn.appointment.buttonText}
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Box 2: FIND A DOCTOR */}
+                    <div className="flex flex-col justify-between h-full space-y-4">
+                      <div className="space-y-2.5">
+                        <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
+                          {HOSPITAL_MEGA_MENU.ctaColumn.findDoctor.title}
+                        </h4>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          {HOSPITAL_MEGA_MENU.ctaColumn.findDoctor.description}
+                        </p>
+                      </div>
+                      <div className="pt-1">
+                        <a
+                          href={HOSPITAL_MEGA_MENU.ctaColumn.findDoctor.href}
+                          className="inline-flex items-center justify-center px-6 py-2.5 bg-[#005BAA] hover:bg-[#00427A] text-white text-xs font-bold rounded-full transition-colors shadow-sm cursor-pointer hover:shadow-md active:scale-95"
+                        >
+                          {HOSPITAL_MEGA_MENU.ctaColumn.findDoctor.buttonText}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* 2. SPECIALITIES MEGA DROPDOWN (Full Screen Width) */}
+        {/* ========================================================= */}
+        {activeDropdown === 'specialties' && (
+          <div
+            onMouseEnter={() => handleMenuHover('specialties')}
+            onMouseLeave={handleMenuLeave}
+            className="absolute left-0 right-0 top-full w-full bg-white border-t border-slate-100 shadow-2xl z-50 text-slate-800 animate-in fade-in-50 slide-in-from-top-1 duration-200"
+          >
+            <div className="max-w-[1920px] 3xl:max-w-[2100px] 4k:max-w-none mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-[72px] 3xl:px-[60px] 4k:px-[72px] py-8 lg:py-10 text-left">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+
+                {/* Column 1: CENTRE OF EXCELLENCE */}
+                <div className="space-y-3">
+                  <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
+                    {SPECIALITIES_MEGA_MENU.centersOfExcellence.title}
+                  </h4>
+                  <div className="space-y-2 pt-1">
+                    {SPECIALITIES_MEGA_MENU.centersOfExcellence.items.map((sp) => (
+                      <a
+                        key={sp.name}
+                        href={sp.href}
+                        className="flex items-center gap-3 py-1.5 text-xs font-semibold text-slate-700 hover:text-[#005BAA] transition-colors group/item"
+                      >
+                        <span className="w-5 h-5 flex items-center justify-center shrink-0 group-hover/item:scale-110 transition-transform">
+                          {sp.icon}
+                        </span>
+                        <span className="group-hover/item:translate-x-0.5 transition-transform">{sp.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                  <div className="pt-2">
+                    <a
+                      href={SPECIALITIES_MEGA_MENU.centersOfExcellence.viewAllHref}
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#005BAA] hover:underline"
+                    >
+                      View All <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Column 2: KEY SPECIALITIES */}
+                <div className="space-y-3">
+                  <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
+                    {SPECIALITIES_MEGA_MENU.keySpecialities.title}
+                  </h4>
+                  <div className="space-y-2 pt-1">
+                    {SPECIALITIES_MEGA_MENU.keySpecialities.items.map((sp) => (
+                      <a
+                        key={sp.name}
+                        href={sp.href}
+                        className="flex items-center gap-3 py-1.5 text-xs font-semibold text-slate-700 hover:text-[#005BAA] transition-colors group/item"
+                      >
+                        <span className="w-5 h-5 flex items-center justify-center shrink-0 group-hover/item:scale-110 transition-transform">
+                          {sp.icon}
+                        </span>
+                        <span className="group-hover/item:translate-x-0.5 transition-transform">{sp.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                  <div className="pt-2">
+                    <a
+                      href={SPECIALITIES_MEGA_MENU.keySpecialities.viewAllHref}
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#005BAA] hover:underline"
+                    >
+                      View All <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Column 3: PROCEDURES */}
+                <div className="space-y-3">
+                  <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
+                    {SPECIALITIES_MEGA_MENU.procedures.title}
+                  </h4>
+                  <div className="space-y-2 pt-1">
+                    {SPECIALITIES_MEGA_MENU.procedures.items.map((proc) => (
+                      <a
+                        key={proc.name}
+                        href={proc.href}
+                        className="block py-1.5 text-xs font-semibold text-slate-700 hover:text-[#005BAA] group-hover:translate-x-0.5 transition-all"
+                      >
+                        {proc.name}
+                      </a>
+                    ))}
+                  </div>
+                  <div className="pt-2">
+                    <a
+                      href={SPECIALITIES_MEGA_MENU.procedures.viewAllHref}
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#005BAA] hover:underline"
+                    >
+                      View All <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Column 4: Quick Action & Guidance Box */}
+                <div className="border-l border-slate-100 pl-8 space-y-6 flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit">
+                      Need Medical Guidance?
+                    </h4>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Connect with our top specialists across India or book a personalized consultation today.
+                    </p>
+                    <div className="pt-2 space-y-2.5">
+                      <button
+                        onClick={() => onOpenAppointment()}
+                        className="w-full inline-flex items-center justify-center px-5 py-2.5 bg-[#005BAA] hover:bg-[#00427A] text-white text-xs font-bold rounded-full transition-colors shadow-sm cursor-pointer"
+                      >
+                        Book Consultation
+                      </button>
+                      <a
+                        href="#doctors"
+                        className="w-full inline-flex items-center justify-center px-5 py-2.5 bg-sky-50 hover:bg-sky-100 text-[#005BAA] text-xs font-bold rounded-full transition-colors border border-sky-100 cursor-pointer"
+                      >
+                        Find a Doctor
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-sky-50/70 rounded-xl border border-sky-100">
+                    <div className="text-[11px] font-bold text-[#005BAA] uppercase tracking-wider">24/7 Care Helpline</div>
+                    <a href="tel:18003099999" className="text-sm font-extrabold text-slate-800 hover:text-[#005BAA] transition-colors mt-0.5 block">
+                      1800 309 9999
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Smooth Sliding and Fading Mobile Menu */}

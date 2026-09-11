@@ -105,7 +105,10 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
   ];
 
   return (
-    <section className="pb-6 min-[360px]:pb-7 min-[400px]:pb-8 sm:pb-9 md:pb-11 lg:pb-14 xl:pb-16 2xl:pb-[80px] 3xl:pb-[70px] 4k:pb-[85px] bg-white">
+    <section
+      id="specialty-search"
+      className="pb-6 min-[360px]:pb-7 min-[400px]:pb-8 sm:pb-9 md:pb-11 lg:pb-14 xl:pb-16 2xl:pb-[80px] 3xl:pb-[70px] 4k:pb-[85px] bg-white scroll-mt-24 sm:scroll-mt-28"
+    >
       <Container>
         {/* Main Ice-Blue Search Card */}
         <div ref={containerRef} className="rounded-[2rem] sm:rounded-3xl bg-[#EEF5FB] border border-sky-100/80 p-3 sm:p-6 md:p-6 xl:p-12 shadow-sm">
@@ -126,6 +129,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
               <div className="relative w-full max-w-xl">
                 <div className="relative">
                   <input
+                    id="specialty-search-input"
                     ref={inputRef}
                     type="text"
                     value={searchQuery}

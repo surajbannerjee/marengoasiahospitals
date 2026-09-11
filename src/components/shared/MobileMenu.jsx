@@ -145,7 +145,7 @@ export const MobileMenu = ({ isOpen, onClose, onOpenAppointment }) => {
                 href={`tel:${SITE_CONFIG.emergencyNumber}`}
                 className="px-3 py-1 bg-white text-red-700 rounded-full text-xs font-black shadow-xs hover:bg-red-50 transition-colors"
               >
-                8003090309
+                1800 309 9999
               </a>
             </div>
 
@@ -392,8 +392,8 @@ export const MobileMenu = ({ isOpen, onClose, onOpenAppointment }) => {
 
               <div className="text-center text-xs text-slate-500">
                 Helpline Support:{' '}
-                <a href={`tel:18003090309`} className="font-bold text-[#005BAA]">
-                  1800-309-0309
+                <a href={`tel:${SITE_CONFIG.tollFree}`} className="font-bold text-[#005BAA]">
+                  1800 309 9999
                 </a>
               </div>
             </div>

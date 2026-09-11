@@ -47,7 +47,6 @@ export const IMAGES = {
   packages: {
     health360: '/images/packages/360health.svg',
     healthyHeart: '/images/packages/Healthy.svg',
-    maternityCare: '/images/packages/MaternityCare.svg',
     specialScreening: '/images/packages/SpecialScreening.svg',
   },
   testimonials: {

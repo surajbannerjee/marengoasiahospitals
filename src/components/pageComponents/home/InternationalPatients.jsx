@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { MapPin } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 import { Container } from '../../common/Container';
 import { INTERNATIONAL_PATIENTS_DATA } from '../../../constants/config';
 import { IMAGES } from '../../../constants/images';
+
+// Import Swiper styles
+import 'swiper/css';
 
 // Animated Counter Component with ease-out and comma formatting
 const AnimatedCounter = ({ target, suffix = '', isVisible }) => {
@@ -49,8 +53,6 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
   const isInView = useInView(sectionRef, { once: true, margin: '-50px' });
   const [hoveredCountry, setHoveredCountry] = useState(null);
 
-
-
   return (
     <section
       id="international"
@@ -60,7 +62,7 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
 
-          {/* LEFT COLUMN: Headings, 10 Country Flags, Action Buttons & Visa Link */}
+          {/* LEFT COLUMN: Headings, 10 Country Flags Automatic Carousel, Action Buttons & Visa Link */}
           <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Title */}
             <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-bold text-[#1E4E98] tracking-tight leading-tight">
@@ -72,37 +74,58 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
               {INTERNATIONAL_PATIENTS_DATA.description}
             </p>
 
-            {/* 10 Country Flags Grid (2 rows of 5) with Smooth Hover Animations */}
-            <div className="mt-6 sm:mt-8 w-full max-w-[340px] sm:max-w-[380px] lg:max-w-none">
-              <div className="grid grid-cols-5 gap-3 sm:gap-4 lg:gap-4.5 justify-items-center lg:justify-items-start">
+            {/* 10 Country Flags Automatic Carousel with Smooth Hover Tooltips */}
+            <div className="mt-6 sm:mt-8 w-full max-w-[340px] sm:max-w-[420px] lg:max-w-full overflow-hidden">
+              <Swiper
+                modules={[Autoplay]}
+                loop={true}
+                autoplay={{
+                  delay: 2000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                speed={700}
+                spaceBetween={12}
+                slidesPerView={4}
+                breakpoints={{
+                  320: { slidesPerView: 4, spaceBetween: 10 },
+                  480: { slidesPerView: 5, spaceBetween: 12 },
+                  640: { slidesPerView: 5, spaceBetween: 14 },
+                  1024: { slidesPerView: 4, spaceBetween: 12 },
+                  1280: { slidesPerView: 5, spaceBetween: 14 },
+                }}
+                className="w-full py-2 select-none"
+              >
                 {INTERNATIONAL_PATIENTS_DATA.countries.map((country, idx) => (
-                  <div key={country.code} className="relative group">
-                    <motion.div
-                      whileHover={{
-                        scale: 1.18,
-                        y: -3,
-                        transition: { type: 'spring', stiffness: 450, damping: 18 },
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      onHoverStart={() => setHoveredCountry(country.name)}
-                      onHoverEnd={() => setHoveredCountry(null)}
-                      onClick={() => onOpenAppointment && onOpenAppointment(`International Patient Desk (${country.name})`)}
-                      className="w-11 h-11 sm:w-13 sm:h-13 rounded-full cursor-pointer flex items-center justify-center p-0.5 bg-white shadow-sm hover:shadow-md border border-slate-200/80 transition-shadow overflow-hidden"
-                    >
-                      <img
-                        src={country.image}
-                        alt={country.name}
-                        className="w-full h-full rounded-full object-cover select-none pointer-events-none"
-                      />
-                    </motion.div>
+                  <SwiperSlide key={`flag-${country.code}-${idx}`} className="flex justify-center">
+                    <div className="relative group py-1">
+                      <motion.div
+                        whileHover={{
+                          scale: 1.18,
+                          y: -3,
+                          transition: { type: 'spring', stiffness: 450, damping: 18 },
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                        onHoverStart={() => setHoveredCountry(country.name)}
+                        onHoverEnd={() => setHoveredCountry(null)}
+                        onClick={() => onOpenAppointment && onOpenAppointment(`International Patient Desk (${country.name})`)}
+                        className="w-12 h-12 sm:w-13 sm:h-13 rounded-full cursor-pointer flex items-center justify-center p-0.5 bg-white shadow-sm hover:shadow-md border border-slate-200/80 transition-shadow overflow-hidden"
+                      >
+                        <img
+                          src={country.image}
+                          alt={country.name}
+                          className="w-full h-full rounded-full object-cover select-none pointer-events-none"
+                        />
+                      </motion.div>
 
-                    {/* Hover Country Tooltip */}
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2 py-0.5 bg-slate-800 text-white text-[10px] font-medium rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-30 shadow-sm">
-                      {country.name}
+                      {/* Hover Country Tooltip */}
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 px-2 py-0.5 bg-slate-800 text-white text-[10px] font-medium rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap z-30 shadow-sm">
+                        {country.name}
+                      </div>
                     </div>
-                  </div>
+                  </SwiperSlide>
                 ))}
-              </div>
+              </Swiper>
             </div>
 
             {/* CTA Buttons */}

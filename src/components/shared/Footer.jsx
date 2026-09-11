@@ -118,8 +118,6 @@ export const Footer = () => {
               <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">Marengo Asia Hospital, Surat</a></li>
               <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">Marengo Asia Hospital, Vadodara</a></li>
               <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">Marengo Asia Hospital, Saudi Arabia</a></li>
-              <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">METIS- The Medicity Hospital, Varanasi</a></li>
-              <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">KK Patel Super Speciality Hospital, Bhuj</a></li>
             </ul>
           </div>
         </div>
@@ -250,7 +248,7 @@ export const Footer = () => {
               className="flex items-center gap-2 hover:text-[#003B73] transition-colors"
             >
               <Phone className="w-4 h-4 text-[#224F9F] shrink-0" />
-              <span>24/7 Patient Helpline (1800-309-9999)</span>
+              <span>24/7 Patient Helpline: 1800 309 9999</span>
             </a>
           </div>
         </div>
