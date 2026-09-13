@@ -33,7 +33,7 @@ export const IMAGES = {
     gurugram: '/images/hospitals/Gurugram.svg',
     faridabad: '/images/hospitals/Faridabad.svg',
     saudiArabia: '/images/hospitals/Saudi-Arabia.svg',
-    surat: '/images/hospitals/Surat.svg',
+    Surat: '/images/hospitals/Surat.svg',
     vadodara: '/images/hospitals/Vadodara.svg',
 
   },

@@ -768,7 +768,7 @@ export const HOSPITALS_DATA = [
     address: 'Ring Road, Majura Gate, Surat',
     beds: '200+ Beds',
     specialties: 'Mother & Child, Gastro Sciences, Dialysis',
-    image: IMAGES.hospitals.surat,
+    image: IMAGES.hospitals.Surat,
     phone: '+91 261 270 5000', 
   },
   {
