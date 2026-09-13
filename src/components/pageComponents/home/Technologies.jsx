@@ -55,9 +55,9 @@ export const Technologies = ({ onSelectTechnology }) => {
             slidesPerView={1}
             pagination={{ clickable: true, dynamicBullets: true }}
             breakpoints={{
-              420: {
+              330: {
                 slidesPerView: 2,
-                spaceBetween: 20,
+                spaceBetween: 10,
               },
               640: {
                 slidesPerView: 2,

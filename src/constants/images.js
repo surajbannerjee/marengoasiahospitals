@@ -110,5 +110,9 @@ export const IMAGES = {
     OrthopaedicsIcon: "/images/menusIcon/OrthopaedicsIcon.svg",
     RenalSciencesIcon: "/images/menusIcon/RenalSciencesIcon.svg",
     RheumatologyIcon: "/images/menusIcon/RheumatologyIcon.svg",
+  },
+  footer: {
+    apple: "/images/svgs/apple.webp",
+    googlePlay: "/images/svgs/google-play.webp",
   }
 };

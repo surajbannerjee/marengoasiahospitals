@@ -13,10 +13,11 @@ export const SITE_CONFIG = {
 
 // Main Desktop Header Navigation Items
 export const HEADER_NAV_ITEMS = [
-  { label: 'Our Hospital', href: '#hospitals', dropdownType: 'hospitals', hasDropdown: true },
-  { label: 'Specialities', href: '#specialties', dropdownType: 'specialties', hasDropdown: true },
-  { label: 'Find Doctor', href: '#doctors', dropdownType: null, hasDropdown: false },
-  { label: 'Blogs', href: '#blogs', dropdownType: null, hasDropdown: false },
+  { label: 'About Us', href: 'https://marengoasiahospitals.com/about-us', dropdownType: null, hasDropdown: false },
+  { label: 'Our Hospital', href: '#', dropdownType: 'hospitals', hasDropdown: true },
+  { label: 'Specialities', href: '#', dropdownType: 'specialties', hasDropdown: true },
+  { label: 'Find Doctor', href: '#specialty-search', dropdownType: null, hasDropdown: false },
+  { label: 'Blogs', href: 'https://marengoasiahospitals.com/blogs', dropdownType: null, hasDropdown: false },
   { label: 'Health Check-Up', href: '#packages', dropdownType: null, hasDropdown: false },
 ];
 
@@ -25,29 +26,29 @@ export const HOSPITAL_MEGA_MENU = {
   column1: [
     {
       name: 'Marengo Asia Hospitals, Faridabad',
-      href: '#hospitals',
+      href: 'https://marengoasiahospitals.com/hospital/marengo-asia-hospital-faridabad',
     },
     {
       name: 'Marengo CIMS Hospital, Ahmedabad',
-      href: '#hospitals',
+      href: 'https://marengoasiahospitals.com/hospital/marengo-cims-hospital-ahmedabad',
     },
     {
       name: 'Marengo Asia Hospitals, Gurugram',
-      href: '#hospitals',
+      href: 'https://marengoasiahospitals.com/hospital/marengo-asia-hospitals-gurugram',
     },
     {
       name: 'Sunshine Global Hospital, Surat',
-      href: '#hospitals',
+      href: 'https://marengoasiahospitals.com/hospital/sunshine-global-marengo-asia-hospital',
     },
   ],
   column2: [
     {
-      name: 'Marengo Asia Hospitals, Vadodara',
-      href: '#hospitals',
+      name: 'Sunshine Global Hospital, Vadodara',
+      href: 'https://marengoasiahospitals.com/hospital/sunshine-global-hospital-vadodara',
     },
     {
-      name: 'Specialized Najran Hospital',
-      href: '#hospitals',
+      name: 'Specialized Najran Hospital, Saudi Arabia',
+      href: 'https://marengoasiahospitals.com/hospital/specialized-najran-hospital',
     },
   ],
   ctaColumn: {
@@ -55,12 +56,13 @@ export const HOSPITAL_MEGA_MENU = {
       title: 'BOOK AN APPOINTMENT',
       description: "Marengo Asia Hospitals is always looking to make things easier for you. Please click on 'Book Now' and fill in the details, we will get back to you.",
       buttonText: 'Book Now',
+      href: 'https://marengoasiahospitals.com/bookanappointment',
     },
     findDoctor: {
       title: 'FIND A DOCTOR',
       description: 'Medicines cure diseases but only doctors can cure patients, Click Find Now for the best cure.',
       buttonText: 'Find Now',
-      href: '#doctors',
+      href: 'https://marengoasiahospitals.com/doctor',
     },
   },
 };
@@ -69,7 +71,7 @@ export const HOSPITAL_MEGA_MENU = {
 export const SPECIALITIES_MEGA_MENU = {
   centersOfExcellence: {
     title: 'CENTRE OF EXCELLENCE',
-    viewAllHref: '#specialties',
+    viewAllHref: 'https://marengoasiahospitals.com/speciality',
     items: [
       {
         name: 'Cancer Care / Oncology',
@@ -80,7 +82,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/medical-oncology'
       },
       {
         name: 'Cardiac Sciences',
@@ -91,7 +93,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/cardiac-sciences'
       },
       {
         name: 'Gastroenterology',
@@ -102,7 +104,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/gastroenterology'
       },
       {
         name: 'Liver Transplant and Biliary Sciences',
@@ -113,7 +115,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/liver-transplant-and-biliary-sciences'
       },
       {
         name: 'Orthopaedics & Joint Replacement',
@@ -124,7 +126,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/orthopaedics-and-joint-replacement'
       },
       {
         name: 'Renal Sciences',
@@ -135,7 +137,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/renal-sciences'
       },
       {
         name: 'Neurosciences',
@@ -146,13 +148,13 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/neurosciences'
       },
     ],
   },
   keySpecialities: {
     title: 'KEY SPECIALITIES',
-    viewAllHref: '#specialties',
+    viewAllHref: 'https://marengoasiahospitals.com/speciality',
     items: [
       {
         name: 'Bone Marrow Transplant',
@@ -163,7 +165,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/bone-marrow-transplant'
       },
       {
         name: 'Bariatric Surgery',
@@ -174,7 +176,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/bariatric-surgery'
       },
       {
         name: 'Clinical Psychology',
@@ -185,7 +187,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/clinical-psychology'
       },
       {
         name: 'Rheumatology',
@@ -196,7 +198,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/rheumatology'
       },
       {
         name: 'Diabetic Foot',
@@ -207,7 +209,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/diabetic-foot'
       },
       {
         name: 'Dental',
@@ -218,7 +220,7 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/dental'
       },
       {
         name: 'Dermatology',
@@ -229,13 +231,13 @@ export const SPECIALITIES_MEGA_MENU = {
             className="w-4 h-4 object-contain"
           />
         ),
-        href: '#specialties'
+        href: 'https://marengoasiahospitals.com/speciality/dermatology'
       },
     ],
   },
   procedures: {
     title: 'PROCEDURES',
-    viewAllHref: '#specialties',
+    viewAllHref: '',
     items: [
       { name: 'Medical Oncology', href: '#specialties' },
       { name: 'Surgical Oncology', href: '#specialties' },
@@ -247,11 +249,11 @@ export const SPECIALITIES_MEGA_MENU = {
 };
 
 export const NAV_LINKS = [
-  { label: 'About Us', href: '#about', hasDropdown: true },
+  { label: 'About Us', href: 'https://marengoasiahospitals.com/about-us', hasDropdown: true },
   { label: 'Specialties', href: '#specialties', hasDropdown: true },
   { label: 'Hospitals', href: '#hospitals', hasDropdown: true },
-  { label: 'International Patients', href: '#international', hasDropdown: false },
-  { label: 'Doctors', href: '#doctors', hasDropdown: false },
+  { label: 'International Patients', href: 'https://marengoasiahospitals.com/internationalpatients', hasDropdown: false },
+  { label: 'Doctors', href: '#specialty-search', hasDropdown: false },
   { label: 'Academics & Research', href: '#research', hasDropdown: true },
 ];
 
@@ -263,7 +265,7 @@ export const QUICK_ACTIONS = [
     icon: 'UserCheck',
     color: 'bg-[#F37023] hover:bg-[#E05D10]',
     textColor: 'text-white',
-    href: '#doctors',
+    href: '#specialty-search',
   },
   {
     id: 'specialties',
@@ -410,7 +412,7 @@ export const TECHNOLOGIES = [
     description: 'Biosensors help in the continuous monitoring ..',
     image: IMAGES.technologies.biosensor,
     tag: 'Vital Monitoring',
-    link: '#',
+    link: 'https://marengoasiahospitals.com/technologydetail#technologynew0',
   },
   {
     id: 'laparoscopic-surgical',
@@ -419,7 +421,7 @@ export const TECHNOLOGIES = [
     description: 'The Laparoscopic Surgical Robot is a cutting-edge robotic...',
     image: IMAGES.technologies.laparoscopic,
     tag: 'Advanced Imaging',
-    link: '#',
+    link: 'https://marengoasiahospitals.com/technologydetail#technologynew1',
   },
   {
     id: 'pet-ct',
@@ -428,7 +430,7 @@ export const TECHNOLOGIES = [
     description: 'This advanced machine combines two imaging techniques in one...',
     image: IMAGES.technologies.petCt,
     tag: 'Robotic Oncology',
-    link: '#',
+    link: 'https://marengoasiahospitals.com/technologydetail#technologynew2',
   },
   {
     id: 'cuvis-joint',
@@ -437,7 +439,7 @@ export const TECHNOLOGIES = [
     description: 'CUVIS Fully Active Robotic Joint Replacement System enables precise cutting and milling... ',
     image: IMAGES.technologies.cuvis,
     tag: 'Cardiac & Neuro Suite',
-    link: '#',
+    link: 'https://marengoasiahospitals.com/technologydetail#technologynew3',
   },
 
 ];
@@ -795,60 +797,99 @@ export const HOSPITALS_DATA = [
 
 export const FOOTER_SECTIONS = [
   {
-    title: 'Patient Care',
-    links: [
-      { label: 'Find a Doctor', href: '#doctors' },
-      { label: 'Book Appointment', href: '#appointment' },
-      { label: 'Centers of Excellence', href: '#specialties' },
-      { label: 'International Patients', href: '#international' },
-      { label: 'Second Medical Opinion', href: '#second-opinion' },
-      { label: 'Emergency Services (1066)', href: 'tel:1066' },
-      { label: 'Patient Rights & Responsibilities', href: '#legal' },
+    column: 1,
+    sections: [
+      {
+        title: 'Patient Care',
+        links: [
+          { label: 'Find A Doctor', href: 'https://marengoasiahospitals.com/doctor' },
+          { label: 'Patient Testimonials', href: 'https://marengoasiahospitals.com/patientstories' },
+          { label: 'Doctor Bytes', href: 'https://marengoasiahospitals.com/doctorvideos' },
+        ],
+      },
+      {
+        title: 'International Patients',
+        links: [
+          { label: 'Specialities', href: 'https://marengoasiahospitals.com/speciality' },
+          { label: 'Our Doctors', href: 'https://marengoasiahospitals.com/doctor' },
+          { label: 'Patient Stories', href: 'https://marengoasiahospitals.com/patientstories' },
+          { label: 'International Patient Process', href: 'https://marengoasiahospitals.com/internationalpatient' },
+        ],
+      },
+      {
+        title: 'Research and Academics',
+        links: [
+          { label: 'DNB/FNB Programmes', href: 'https://marengoasiahospitals.com/static/web/img/DNB.pdf' },
+        ],
+      },
     ],
   },
   {
-    title: 'About Us',
-    links: [
-      { label: 'About Marengo Asia', href: '#about' },
-      { label: 'Leadership & Vision', href: '#leadership' },
-      { label: 'Awards & Accreditations', href: '#awards' },
-      { label: 'Corporate Social Responsibility', href: '#csr' },
-      { label: 'Careers at Marengo', href: '#careers' },
-      { label: 'Media & Newsroom', href: '#news' },
-      { label: 'Bio-Medical Waste Reports', href: '#waste' },
+    column: 2,
+    sections: [
+      {
+        title: 'About Us',
+        links: [
+          { label: 'Know Us', href: 'https://marengoasiahospitals.com/about-us' },
+          { label: 'Marengo Pledge', href: 'https://marengoasiahospitals.com/marengo-pledge' },
+          { label: 'Message from MD desk', href: 'https://marengoasiahospitals.com/md-desk' },
+          { label: 'Marengovation', href: 'https://marengoasiahospitals.com/marengovation' },
+          { label: 'ESG', href: 'https://marengoasiahospitals.com/esg' },
+          { label: 'Foundation', href: 'https://marengoasiahospitals.com/foundation' },
+        ],
+      },
+      {
+        title: 'Legal',
+        links: [
+          { label: 'Privacy Policy', href: 'https://marengoasiahospitals.com/privacypolicy' },
+          { label: 'Terms And Conditions', href: 'https://marengoasiahospitals.com/termsandconditions' },
+          { label: 'Disclaimer', href: 'https://marengoasiahospitals.com/disclaimer' },
+          { label: 'DPDP Act', href: 'https://marengoasiahospitals.com/dpdp-act' },
+          { label: 'Legal Entities', href: 'https://marengoasiahospitals.com/legal-entities' },
+          { label: 'Environment Compliance', href: 'https://marengoasiahospitals.com/environment-compliance' },
+        ],
+      },
     ],
   },
   {
-    title: 'Manage Your Health',
-    links: [
-      { label: 'Health Check-Up Packages', href: '#packages' },
-      { label: 'Patient Portal Login', href: '#login' },
-      { label: 'Download Lab Reports', href: '#reports' },
-      { label: 'Pay Hospital Bills Online', href: '#pay-online' },
-      { label: 'Health Blogs & Insights', href: '#blogs' },
-      { label: 'Medical Insurance & TPA Desk', href: '#insurance' },
+    column: 3,
+    sections: [
+      {
+        title: 'Marengo Asia Updates',
+        links: [
+          { label: 'Print', href: 'https://marengoasiahospitals.com/marengoupdates' },
+          { label: 'Digital', href: 'https://marengoasiahospitals.com/marengoupdates' },
+          { label: 'Electronic', href: 'https://marengoasiahospitals.com/marengoupdates' },
+          { label: 'Event', href: 'https://marengoasiahospitals.com/marengoupdates' },
+          { label: 'Blogs', href: 'https://marengoasiahospitals.com/blogs' },
+        ],
+      },
+      {
+        title: 'Get in Touch',
+        links: [
+          { label: 'Post A Query', href: 'https://marengoasiahospitals.com/contactus#contactusPatients' },
+          { label: 'Contact Us', href: 'https://marengoasiahospitals.com/contactus#contactusPatients' },
+          { label: 'Book An Appointment', href: 'https://marengoasiahospitals.com/bookanappointment' },
+          { label: 'Careers', href: 'https://marengoasiahospitals.com/career' },
+        ],
+      },
     ],
   },
   {
-    title: 'Our Hospitals',
-    links: [
-      { label: 'Ahmedabad - CIMS Hospital', href: '#hospitals' },
-      { label: 'Gurugram - Sector 56', href: '#hospitals' },
-      { label: 'Faridabad - Sector 16', href: '#hospitals' },
-      { label: 'Surat - Specialty Clinic', href: '#hospitals' },
-      { label: 'Kolkata - Health Apex', href: '#hospitals' },
-      { label: 'Noida - Super Speciality', href: '#hospitals' },
-      { label: 'Delhi NCR - Apex Hospital', href: '#hospitals' },
-    ],
-  },
-  {
-    title: 'Academics & Research',
-    links: [
-      { label: 'Clinical Trials & Research', href: '#research' },
-      { label: 'DNB & Fellowship Programs', href: '#academics' },
-      { label: 'Nursing & Allied Training', href: '#nursing' },
-      { label: 'Medical Journal Publications', href: '#publications' },
-      { label: 'CME & Academic Conferences', href: '#cme' },
+    column: 4,
+    sections: [
+      {
+        title: 'Our Hospitals',
+        links: [
+          { label: 'Marengo CIMS Hospital, Ahmedabad', href: 'https://marengoasiahospitals.com/hospital/marengo-cims-hospital-ahmedabad' },
+          { label: 'Marengo Asia Hospitals, Gurugram', href: 'https://marengoasiahospitals.com/hospital/marengo-asia-hospitals-gurugram' },
+          { label: 'Marengo Asia Hospitals, Faridabad', href: 'https://marengoasiahospitals.com/hospital/marengo-asia-hospital-faridabad' },
+          { label: 'Marengo Asia Hospital, Surat', href: 'https://marengoasiahospitals.com/hospital/sunshine-global-marengo-asia-hospital' },
+          { label: 'Marengo Asia Hospital, Vadodara', href: 'https://marengoasiahospitals.com/hospital/sunshine-global-hospital-vadodara' },
+          { label: 'Marengo Asia Hospital, Saudi Arabia', href: 'https://marengoasiahospitals.com/hospital/specialized-najran-hospital' },
+        ],
+      },
     ],
   },
 ];
+

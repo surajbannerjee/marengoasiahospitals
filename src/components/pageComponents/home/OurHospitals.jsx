@@ -36,6 +36,28 @@ export const OurHospitals = ({ onSelectHospital }) => {
             speed={600}
             spaceBetween={16}
             slidesPerView={1}
+            breakpoints={{
+              330: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+              },
+              1280: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+              },
+            }}
             pagination={{ clickable: true, dynamicBullets: true }}
             className="cardSlider !pb-9 select-none"
           >

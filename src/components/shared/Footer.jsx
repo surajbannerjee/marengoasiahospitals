@@ -1,132 +1,45 @@
 import React from 'react';
 import { Mail, Phone } from 'lucide-react';
 import { Container } from '../common/Container';
+import { IMAGES } from '../../constants/images';
+import { FOOTER_SECTIONS } from '../../constants/config';
 
 export const Footer = () => {
   return (
     <footer className="bg-[#EAF2F8] text-[#555555] pt-12 sm:pt-14 md:pt-16 pb-6 select-none">
       <Container>
-        {/* 4 Column Top Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-10 sm:pb-12 text-center sm:text-left">
-          {/* Column 1: Patient Care, International Patients, Research and Academics */}
-          <div className="space-y-6 sm:space-y-8">
-            {/* Patient Care */}
-            <div>
-              <h4 className="text-[15px] sm:text-[16px] font-bold text-[#224F9F] mb-3">
-                Patient Care
-              </h4>
-              <ul className="space-y-2 text-xs sm:text-[13px] text-[#666666]">
-                <li><a href="#doctors" className="hover:text-[#224F9F] transition-colors">Find A Doctor</a></li>
-                <li><a href="#patient-stories" className="hover:text-[#224F9F] transition-colors">Patient Testimonials</a></li>
-                <li><a href="#doctor-bytes" className="hover:text-[#224F9F] transition-colors">Doctor Bytes</a></li>
-              </ul>
+        {/* 2 Columns on mobile (left 1 right 1), 4 Columns on desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-8 lg:gap-10 gap-y-6 sm:gap-y-8 lg:gap-y-10 pb-8 sm:pb-6 text-left">
+          {FOOTER_SECTIONS.map((colGroup, colIdx) => (
+            <div key={colIdx} className="space-y-5 sm:space-y-6 lg:space-y-8">
+              {colGroup.sections.map((sec, secIdx) => (
+                <div key={secIdx}>
+                  <h4 className="text-[13px] sm:text-[15px] lg:text-[16px] font-bold text-[#224F9F] mb-2 sm:mb-3">
+                    {sec.title}
+                  </h4>
+                  <ul className="space-y-1.5 sm:space-y-2 text-[11px] sm:text-xs lg:text-[13px] text-[#666666]">
+                    {sec.links.map((link, linkIdx) => (
+                      <li key={linkIdx}>
+                        <a
+                          href={link.href || '#'}
+                          className="hover:text-[#224F9F] transition-colors"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-
-            {/* International Patients */}
-            <div>
-              <h4 className="text-[15px] sm:text-[16px] font-bold text-[#224F9F] mb-3">
-                International Patients
-              </h4>
-              <ul className="space-y-2 text-xs sm:text-[13px] text-[#666666]">
-                <li><a href="#specialties" className="hover:text-[#224F9F] transition-colors">Specialities</a></li>
-                <li><a href="#doctors" className="hover:text-[#224F9F] transition-colors">Our Doctors</a></li>
-                <li><a href="#patient-stories" className="hover:text-[#224F9F] transition-colors">Patient Stories</a></li>
-                <li><a href="#international" className="hover:text-[#224F9F] transition-colors">International Patient Process</a></li>
-              </ul>
-            </div>
-
-            {/* Research and Academics */}
-            <div>
-              <h4 className="text-[15px] sm:text-[16px] font-bold text-[#224F9F] mb-3">
-                Research and Academics
-              </h4>
-              <ul className="space-y-2 text-xs sm:text-[13px] text-[#666666]">
-                <li><a href="#research" className="hover:text-[#224F9F] transition-colors">DNB/FNB Programmes</a></li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Column 2: About Us, Legal */}
-          <div className="space-y-6 sm:space-y-8">
-            {/* About Us */}
-            <div>
-              <h4 className="text-[15px] sm:text-[16px] font-bold text-[#224F9F] mb-3">
-                About Us
-              </h4>
-              <ul className="space-y-2 text-xs sm:text-[13px] text-[#666666]">
-                <li><a href="#doctors" className="hover:text-[#224F9F] transition-colors">Find A Doctor</a></li>
-                <li><a href="#patient-stories" className="hover:text-[#224F9F] transition-colors">Patient Testimonials</a></li>
-                <li><a href="#doctor-bytes" className="hover:text-[#224F9F] transition-colors">Doctor Bytes</a></li>
-              </ul>
-            </div>
-
-            {/* Legal */}
-            <div>
-              <h4 className="text-[15px] sm:text-[16px] font-bold text-[#224F9F] mb-3">
-                Legal
-              </h4>
-              <ul className="space-y-2 text-xs sm:text-[13px] text-[#666666]">
-                <li><a href="#privacy" className="hover:text-[#224F9F] transition-colors">Privacy Policy</a></li>
-                <li><a href="#terms" className="hover:text-[#224F9F] transition-colors">Terms And Conditions</a></li>
-                <li><a href="#disclaimer" className="hover:text-[#224F9F] transition-colors">Disclaimer</a></li>
-                <li><a href="#dpdp" className="hover:text-[#224F9F] transition-colors">DPDP Act</a></li>
-                <li><a href="#legal" className="hover:text-[#224F9F] transition-colors">Legal Entities</a></li>
-                <li><a href="#compliance" className="hover:text-[#224F9F] transition-colors">Environment Compliance</a></li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Column 3: Marengo Asia Updates, Get in Touch */}
-          <div className="space-y-6 sm:space-y-8">
-            {/* Marengo Asia Updates */}
-            <div>
-              <h4 className="text-[15px] sm:text-[16px] font-bold text-[#224F9F] mb-3">
-                Marengo Asia Updates
-              </h4>
-              <ul className="space-y-2 text-xs sm:text-[13px] text-[#666666]">
-                <li><a href="#print" className="hover:text-[#224F9F] transition-colors">Print</a></li>
-                <li><a href="#digital" className="hover:text-[#224F9F] transition-colors">Digital</a></li>
-                <li><a href="#electronic" className="hover:text-[#224F9F] transition-colors">Electronic</a></li>
-                <li><a href="#events" className="hover:text-[#224F9F] transition-colors">Event</a></li>
-                <li><a href="#blogs" className="hover:text-[#224F9F] transition-colors">Blogs</a></li>
-              </ul>
-            </div>
-
-            {/* Get in Touch */}
-            <div>
-              <h4 className="text-[15px] sm:text-[16px] font-bold text-[#224F9F] mb-3">
-                Get in Touch
-              </h4>
-              <ul className="space-y-2 text-xs sm:text-[13px] text-[#666666]">
-                <li><a href="#query" className="hover:text-[#224F9F] transition-colors">Post A Query</a></li>
-                <li><a href="#contact" className="hover:text-[#224F9F] transition-colors">Contact Us</a></li>
-                <li><a href="#appointment" className="hover:text-[#224F9F] transition-colors">Book An Appointment</a></li>
-                <li><a href="#careers" className="hover:text-[#224F9F] transition-colors">Careers</a></li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Column 4: Our Hospitals */}
-          <div>
-            <h4 className="text-[15px] sm:text-[16px] font-bold text-[#224F9F] mb-3">
-              Our Hospitals
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-[13px] text-[#666666]">
-              <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">Marengo CIMS Hospital, Ahmedabad</a></li>
-              <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">Marengo Asia Hospitals, Gurugram</a></li>
-              <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">Marengo Asia Hospitals, Faridabad</a></li>
-              <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">Marengo Asia Hospital, Surat</a></li>
-              <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">Marengo Asia Hospital, Vadodara</a></li>
-              <li><a href="#hospitals" className="hover:text-[#224F9F] transition-colors">Marengo Asia Hospital, Saudi Arabia</a></li>
-            </ul>
-          </div>
+          ))}
         </div>
 
         {/* Divider Line */}
         <div className="w-full h-px bg-[#D0E2EE] my-4" />
 
         {/* Bottom Bar Row: Humane by Practice, App Stores, Social, Contact */}
-        <div className="py-6 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 text-center lg:text-left">
+        <div className="py-0 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 text-center lg:text-left">
           {/* 1. Humane By Practice */}
           <div className="shrink-0">
             <h3 className="text-base sm:text-lg font-bold text-[#224F9F] leading-tight tracking-tight">
@@ -142,30 +55,18 @@ export const Footer = () => {
             <div className="flex items-center gap-2">
               {/* Google Play */}
               <a
-                href="#download-app"
-                className="inline-flex items-center gap-2 bg-black text-white px-2.5 py-1.5 rounded-md hover:bg-neutral-800 transition-colors shadow-2xs"
+                href="https://play.google.com/store/search?q=marengo+asia+hospital&c=apps&hl=en-IN"
+                className="inline-flex items-center w-30"
               >
-                <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
-                  <path d="M3.609 1.814L13.792 12 3.61 22.186a2.03 2.03 0 0 1-.61-.954V2.768c0-.368.223-.715.609-.954zm11.235 11.238l2.08 2.08-11.89 6.84 9.81-8.92zm2.977-1.052l2.366 1.36a1.36 1.36 0 0 1 0 2.36l-2.366 1.36-2.03-2.03 2.03-2.05zm-2.977-3.136l-9.81-8.92 11.89 6.84-2.08 2.08z" />
-                </svg>
-                <div className="flex flex-col text-left leading-none">
-                  <span className="text-[7.5px] tracking-wider text-slate-300 uppercase">GET IT ON</span>
-                  <span className="text-[10.5px] font-bold text-white tracking-tight">Google Play</span>
-                </div>
+                <img src={IMAGES.footer.googlePlay} width={50} height={50} className='w-full h-full object-cover' alt="Google Play" />
               </a>
 
               {/* App Store */}
               <a
-                href="#download-app"
-                className="inline-flex items-center gap-2 bg-black text-white px-2.5 py-1.5 rounded-md hover:bg-neutral-800 transition-colors shadow-2xs"
+                href="https://apps.apple.com/in/app/marengoasiahospitals/id1457825055"
+                className="inline-flex items-center w-30"
               >
-                <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.85-.9.04-2 .6-2.65 1.35-.58.67-1.09 1.74-.96 2.77 1 .08 2.04-.51 2.69-1.27z"/>
-                </svg>
-                <div className="flex flex-col text-left leading-none">
-                  <span className="text-[7.5px] tracking-wider text-slate-300">Download on the</span>
-                  <span className="text-[10.5px] font-bold text-white tracking-tight">App Store</span>
-                </div>
+                <img src={IMAGES.footer.apple} width={50} height={50} className='w-full h-full object-cover' alt="Apple" />
               </a>
             </div>
           </div>
@@ -178,7 +79,7 @@ export const Footer = () => {
             <div className="flex items-center gap-2">
               {/* Instagram */}
               <a
-                href="#"
+                href="https://www.instagram.com/marengoasiahospitals/"
                 className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white flex items-center justify-center hover:opacity-90 transition-opacity shadow-xs"
                 aria-label="Instagram"
               >
@@ -189,7 +90,7 @@ export const Footer = () => {
 
               {/* YouTube */}
               <a
-                href="#"
+                href="https://www.youtube.com/@MarengoAsiaHospitals"
                 className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#E62117] text-white flex items-center justify-center hover:opacity-90 transition-opacity shadow-xs"
                 aria-label="YouTube"
               >
@@ -200,7 +101,7 @@ export const Footer = () => {
 
               {/* X / Twitter */}
               <a
-                href="#"
+                href="https://mobile.twitter.com/marengoasia"
                 className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-black text-white flex items-center justify-center hover:opacity-90 transition-opacity shadow-xs"
                 aria-label="X"
               >
@@ -211,7 +112,7 @@ export const Footer = () => {
 
               {/* Facebook */}
               <a
-                href="#"
+                href="https://mobile.twitter.com/marengoasia"
                 className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:opacity-90 transition-opacity shadow-xs"
                 aria-label="Facebook"
               >
@@ -222,7 +123,7 @@ export const Footer = () => {
 
               {/* LinkedIn */}
               <a
-                href="#"
+                href="https://www.linkedin.com/company/marengo-asia-hospitals/"
                 className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:opacity-90 transition-opacity shadow-xs"
                 aria-label="LinkedIn"
               >

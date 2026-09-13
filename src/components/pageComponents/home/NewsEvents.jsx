@@ -25,8 +25,8 @@ export const NewsEvents = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Desktop shows 4 in a slide (2x2), mobile shows 2 in a slide
-  const chunkSize = isMobile ? 1 : 4;
+  // Desktop shows 4 in a slide (2x2), mobile shows 2 in a slide (1x2 side by side)
+  const chunkSize = isMobile ? 2 : 4;
   const slides = [];
   for (let i = 0; i < sideNews.length; i += chunkSize) {
     slides.push(sideNews.slice(i, i + chunkSize));
@@ -103,7 +103,7 @@ export const NewsEvents = () => {
             </div>
           </div>
 
-          {/* Right Column: 4-Box Slide (2x2 Grid per slide) */}
+          {/* Right Column: 4-Box Slide on Desktop (2x2 Grid) / 2-Box Slide on Mobile (1x2 Grid) */}
           <div className="lg:col-span-7 xl:col-span-6 flex flex-col justify-between">
             <Swiper
               modules={[Pagination, Autoplay]}
@@ -120,7 +120,7 @@ export const NewsEvents = () => {
             >
               {renderSlides.map((slideItems, slideIdx) => (
                 <SwiperSlide key={`${chunkSize}-${slideIdx}`}>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                  <div className="grid grid-cols-2 gap-2.5 sm:gap-5">
                     {slideItems.map((item) => (
                       <div
                         key={item.id}
@@ -135,16 +135,14 @@ export const NewsEvents = () => {
                           />
 
                           {/* Stepped Blue Bottom Overlay Shape */}
-                          <div className="absolute inset-x-1.5 bottom-10 flex flex-col justify-end p-2.5 sm:p-3 z-10">
-
-
+                          <div className="absolute inset-x-1 sm:inset-x-1.5 bottom-3 flex flex-col justify-end px-1.5 sm:px-2.5 md:px-3 sm:pb-5 pb-3 z-10">
                             {/* Content inside Blue Shape */}
-                            <div className="relative z-10 text-white pl-1 sm:pl-2 pr-1 sm:pr-2">
-                              <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-sky-100 mb-0.5">
-                                <Calendar className="w-3 h-3 text-sky-200" />
+                            <div className="relative z-10 text-white">
+                              <div className="flex items-center gap-1 text-[9px] sm:text-[10px] md:text-[11px] font-medium text-sky-100 mb-0.5">
+                                <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-sky-200" />
                                 <span>{item.date}</span>
                               </div>
-                              <h4 className="text-xs sm:text-[13px] font-bold text-white line-clamp-2 leading-tight">
+                              <h4 className="text-[10.5px] sm:text-xs md:text-[13px] font-bold text-white line-clamp-2 leading-tight">
                                 {item.title}
                               </h4>
                             </div>
@@ -152,9 +150,9 @@ export const NewsEvents = () => {
                         </div>
 
                         {/* Read More Action Link on Right */}
-                        <div className="flex items-center justify-end -mt-8 py-3 pr-3 text-xs font-semibold text-[#0258B9] group-hover:text-[#003B73] gap-1 transition-colors">
+                        <div className="flex items-center justify-end -mt-6 sm:-mt-8 py-2 sm:py-3 pr-2 sm:pr-3 text-[10px] sm:text-xs font-semibold text-[#0258B9] group-hover:text-[#003B73] gap-1 transition-colors">
                           <span>Read More</span>
-                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-1 transition-transform" />
                         </div>
                       </div>
                     ))}

@@ -23,7 +23,7 @@ export const PackageCard = ({ packageItem, onClick, className = '' }) => {
       {/* 2. Text Content & Book Now Button */}
       <div className="flex flex-col text-left pt-3.5 sm:pt-4 px-1">
         {/* Package Title */}
-        <h4 className="text-[17px] sm:text-[18px] md:text-[19px] font-bold text-[#224F9F] group-hover:text-[#003B73] transition-colors leading-snug">
+        <h4 className="text-[14px] sm:text-[16px] md:text-[18px] font-bold text-[#224F9F] group-hover:text-[#003B73] transition-colors leading-snug">
           {packageItem.title}
         </h4>
 

@@ -279,12 +279,18 @@ export const Header = ({ onOpenAppointment }) => {
                         </p>
                       </div>
                       <div className="pt-1">
-                        <button
+                        {/* <button
                           onClick={() => onOpenAppointment()}
                           className="inline-flex items-center justify-center px-6 py-2.5 bg-[#005BAA] hover:bg-[#00427A] text-white text-xs font-bold rounded-full transition-colors shadow-sm cursor-pointer hover:shadow-md active:scale-95"
                         >
                           {HOSPITAL_MEGA_MENU.ctaColumn.appointment.buttonText}
-                        </button>
+                        </button> */}
+                        <a
+                          href={HOSPITAL_MEGA_MENU.ctaColumn.appointment.href}
+                          className="inline-flex items-center justify-center px-6 py-2.5 bg-[#005BAA] hover:bg-[#00427A] text-white text-xs font-bold rounded-full transition-colors shadow-sm cursor-pointer hover:shadow-md active:scale-95"
+                        >
+                          {HOSPITAL_MEGA_MENU.ctaColumn.appointment.buttonText}
+                        </a>
                       </div>
                     </div>
 
@@ -421,14 +427,15 @@ export const Header = ({ onOpenAppointment }) => {
                       Connect with our top specialists across India or book a personalized consultation today.
                     </p>
                     <div className="pt-2 space-y-2.5">
-                      <button
-                        onClick={() => onOpenAppointment()}
+
+                      <a
+                        href="https://marengoasiahospitals.com/bookanappointment"
                         className="w-full inline-flex items-center justify-center px-5 py-2.5 bg-[#005BAA] hover:bg-[#00427A] text-white text-xs font-bold rounded-full transition-colors shadow-sm cursor-pointer"
                       >
                         Book Consultation
-                      </button>
+                      </a>
                       <a
-                        href="#doctors"
+                        href="#specialty-search"
                         className="w-full inline-flex items-center justify-center px-5 py-2.5 bg-sky-50 hover:bg-sky-100 text-[#005BAA] text-xs font-bold rounded-full transition-colors border border-sky-100 cursor-pointer"
                       >
                         Find a Doctor

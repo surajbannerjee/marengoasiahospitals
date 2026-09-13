@@ -30,7 +30,7 @@ export const BlogCard = ({ blog, onClick, className = '' }) => {
       {/* Text & Link Area Below the Notched Box */}
       <div className="flex flex-col text-left pt-2 sm:pt-5 px-1">
         {/* Blog Title */}
-        <h4 className="text-[17px] sm:text-[18px] md:text-[19px] font-bold text-[#224F9F] group-hover:text-[#003B73] transition-colors leading-snug line-clamp-1">
+        <h4 className="text-[14px] sm:text-[16px] md:text-[18px] font-bold text-[#224F9F] group-hover:text-[#003B73] transition-colors leading-snug line-clamp-1">
           {blog.title}
         </h4>
 

@@ -60,22 +60,25 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
       className="py-10 sm:py-14 md:py-16 lg:py-20 bg-[#EEF2F6] relative overflow-hidden"
     >
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 xl:gap-14 items-center">
 
-          {/* LEFT COLUMN: Headings, 10 Country Flags Automatic Carousel, Action Buttons & Visa Link */}
-          <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
-            {/* Title */}
-            <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-bold text-[#1E4E98] tracking-tight leading-tight">
-              {INTERNATIONAL_PATIENTS_DATA.heading}
-            </h2>
+          {/* LEFT COLUMN (Desktop) / CONTENTS (Mobile) */}
+          <div className="contents lg:flex lg:flex-col lg:col-span-5 items-center lg:items-start text-center lg:text-left">
+            {/* 1. Headings */}
+            <div className="order-1 lg:order-none flex flex-col items-center lg:items-start text-center lg:text-left w-full">
+              {/* Title */}
+              <h2 className="text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] font-bold text-[#1E4E98] tracking-tight leading-tight">
+                {INTERNATIONAL_PATIENTS_DATA.heading}
+              </h2>
 
-            {/* Description Paragraph */}
-            <p className="text-sm sm:text-base text-[#636466] leading-relaxed max-w-lg mt-3 sm:mt-4">
-              {INTERNATIONAL_PATIENTS_DATA.description}
-            </p>
+              {/* Description Paragraph */}
+              <p className="text-sm sm:text-base text-[#636466] leading-relaxed max-w-lg mt-3 sm:mt-4">
+                {INTERNATIONAL_PATIENTS_DATA.description}
+              </p>
+            </div>
 
-            {/* 10 Country Flags Automatic Carousel with Smooth Hover Tooltips */}
-            <div className="mt-6 sm:mt-8 w-full max-w-[340px] sm:max-w-[420px] lg:max-w-full overflow-hidden">
+            {/* 3. 10 Country Flags Automatic Carousel with Smooth Hover Tooltips */}
+            <div className="order-3 lg:order-none mt-4 sm:mt-6 lg:mt-8 w-full max-w-[340px] sm:max-w-[420px] lg:max-w-full overflow-hidden mx-auto lg:mx-0">
               <Swiper
                 modules={[Autoplay]}
                 loop={true}
@@ -128,45 +131,44 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
               </Swiper>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="mt-8 sm:mt-10 flex flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full max-w-sm lg:max-w-none">
-              {/* Know More Button */}
-              <button
-                type="button"
-                onClick={() => onOpenAppointment && onOpenAppointment('International Patient Services')}
-                className="flex-1 sm:flex-initial min-w-[130px] sm:min-w-[150px] px-6 sm:px-8 py-3 bg-[#1E4E98] hover:bg-[#163B75] text-white font-semibold text-sm sm:text-[15px] rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer text-center"
-              >
-                Know More
-              </button>
+            {/* 5. Action Buttons & VISA Link */}
+            <div className="order-5 lg:order-none mt-6 sm:mt-8 lg:mt-10 flex flex-col items-center lg:items-start w-full">
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 w-full">
+                {/* Know More Button */}
+                <a
+                  href="https://marengoasiahospitals.com/internationalpatient"
+                  className=" sm:flex-initial min-w-[130px] sm:min-w-[150px] px-6 sm:px-8 py-3 bg-[#1E4E98] hover:bg-[#163B75] text-white font-semibold text-sm sm:text-[15px] rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer text-center"
+                >
+                  Know More
+                </a>
 
-              {/* Get An Estimate Button */}
-              <button
-                type="button"
-                onClick={() => onOpenAppointment && onOpenAppointment('Get an Estimate')}
-                className="flex-1 sm:flex-initial min-w-[130px] sm:min-w-[150px] px-6 sm:px-8 py-3 bg-white hover:bg-slate-50 text-[#1E4E98] font-semibold text-sm sm:text-[15px] rounded-lg border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-center"
-              >
-                Get An Estimate
-              </button>
-            </div>
+                {/* Get An Estimate Button */}
+                <a
+                  href="https://marengoasiahospitals.com/bookanappointment"
+                  className="sm:flex-initial min-w-[130px] sm:min-w-[150px] px-6 sm:px-8 py-3 bg-white hover:bg-slate-50 text-[#1E4E98] font-semibold text-sm sm:text-[15px] rounded-lg border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-center"
+                >
+                  Get An Estimate
+                </a>
+              </div>
 
-            {/* VISA Invitation Letter Link */}
-            <div className="mt-6 sm:mt-8 text-xs sm:text-sm text-[#636466]">
-              Request For{' '}
-              <button
-                type="button"
-                onClick={() => onOpenAppointment && onOpenAppointment('VISA Invitation Letter')}
-                className="font-bold text-[#1E4E98] hover:text-[#163B75] underline underline-offset-4 cursor-pointer transition-colors"
-              >
-                VISA Invitation Letter
-              </button>
+              {/* VISA Invitation Letter Link */}
+              <div className="mt-4 sm:mt-6 lg:mt-8 text-xs sm:text-sm text-[#636466] text-center lg:text-left">
+                Request For{' '}
+                <a
+                  href="https://marengoasiahospitals.com/patientstories"
+                  className="font-bold text-[#1E4E98] hover:text-[#163B75] underline underline-offset-4 cursor-pointer transition-colors"
+                >
+                  VISA Invitation Letter
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN: World Map with Location Pins & Bottom Stats Counters */}
-          <div className="lg:col-span-7 flex flex-col items-center">
-
-            {/* World Map Container with Interactive Pins */}
-            <div className="relative w-full aspect-[16/9] max-w-[700px] flex items-center justify-center select-none">
+          {/* RIGHT COLUMN (Desktop) / CONTENTS (Mobile) */}
+          <div className="contents lg:flex lg:flex-col lg:col-span-7 items-center">
+            {/* 2. World Map Container */}
+            <div className="order-2 lg:order-none relative w-full aspect-[16/9] max-w-[700px] flex items-center justify-center select-none mt-2 lg:mt-0">
               {/* World Map SVG Image */}
               <img
                 src={IMAGES.svgs.map}
@@ -175,13 +177,13 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
               />
             </div>
 
-            {/* Bottom 3 Stats Counters with Vertical Divider Bars */}
-            <div className="w-full mt-6 sm:mt-8 pt-6 border-t border-slate-300/80">
-              <div className="grid grid-cols-3 divide-x divide-slate-300 items-center text-center">
+            {/* 4. Bottom 3 Stats Counters with Vertical Divider Bars on sm+ and Clean Stacking on Mobile */}
+            <div className="order-4 lg:order-none w-full mt-4 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-300/80">
+              <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-300 items-center text-center">
                 {INTERNATIONAL_PATIENTS_DATA.stats.map((stat) => (
-                  <div key={stat.label} className="px-2 sm:px-4">
+                  <div key={stat.label} className="py-2.5 sm:py-0 px-2 sm:px-4">
                     {/* Number Counter */}
-                    <div className="text-xl sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[36px] font-extrabold text-[#1E4E98] tracking-tight leading-none">
+                    <div className="text-[20px] sm:text-[22px] md:text-[24px] lg:text-[26px] xl:text-[30px] font-extrabold text-[#1E4E98] tracking-tight leading-none">
                       <AnimatedCounter
                         target={stat.target}
                         suffix={stat.suffix}
@@ -189,14 +191,13 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
                       />
                     </div>
                     {/* Label */}
-                    <div className="text-xs sm:text-sm font-medium text-[#1E4E98]/80 mt-1.5 sm:mt-2">
+                    <div className="text-xs sm:text-sm font-medium text-[#1E4E98]/80 mt-1 sm:mt-2">
                       {stat.label}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-
           </div>
 
         </div>

@@ -78,7 +78,7 @@ export const WhyChooseUs = () => {
           title={WHY_CHOOSE_US_DATA.heading}
           subtitle={WHY_CHOOSE_US_DATA.subtitle}
           align="center"
-          className='mb-5!'
+          className='sm:mb-5! -mb-5!'
         />
       </Container>
 
