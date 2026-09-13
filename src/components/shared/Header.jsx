@@ -78,7 +78,7 @@ export const Header = ({ onOpenAppointment }) => {
                 <img
                   src={IMAGES.logo.main}
                   alt={SITE_CONFIG.name}
-                  className="h-full w-full max-w-[100px] sm:max-w-[120px] lg:max-w-[130px] lg:max-w-[150px] shrink-0 object-contain opacity-100 transition-transform duration-200 hover:opacity-90"
+                  className="h-full w-full max-w-[100px] sm:max-w-[120px] lg:max-w-[120px] 2xl:max-w-[150px] shrink-0 object-contain opacity-100 transition-transform duration-200 hover:opacity-90"
                 />
               </div>
             </a>
@@ -133,10 +133,10 @@ export const Header = ({ onOpenAppointment }) => {
                 {HEADER_NAV_ITEMS.map((item) => (
                   <div
                     key={item.label}
-                        className={`group py-1 cursor-pointer ${item.hasDropdown
-                          ? "relative after:absolute after:content-[''] after:w-full after:h-full after:bg-transparent after:z-1 after:bottom-0 after:left-0 after:right-0"
-                          : ""
-                          }`}
+                    className={`group py-1 cursor-pointer ${item.hasDropdown
+                      ? "relative after:absolute after:content-[''] after:w-full after:h-full after:bg-transparent after:z-1 after:-bottom-5 after:left-0 after:right-0"
+                      : ""
+                      }`}
                     onMouseEnter={() => handleMenuHover(item.hasDropdown ? item.dropdownType : null)}
                     onMouseLeave={handleMenuLeave}
                   >
@@ -225,54 +225,40 @@ export const Header = ({ onOpenAppointment }) => {
             onMouseLeave={handleMenuLeave}
             className="absolute left-0 right-0 top-full w-full bg-white border-t border-slate-100 shadow-2xl z-50 text-slate-800 animate-in fade-in-50 slide-in-from-top-1 duration-200"
           >
-            <div className="max-w-[1920px] 3xl:max-w-[2100px] 4k:max-w-none mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-[72px] 3xl:px-[60px] 4k:px-[72px] py-8 lg:py-10">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 text-left items-start">
+            <div className="max-w-[1920px] 3xl:max-w-[2100px] 4k:max-w-none mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-[72px] py-5 lg:py-7">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 text-left items-start">
 
-                {/* Left Section: 6 Hospital Locations (3 Columns of 2 items) */}
-                <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
-                  {/* Column 1: Ahmedabad & Surat */}
-                  <div className="space-y-6">
-                    {HOSPITAL_MEGA_MENU.column1.map((item) => (
-                      <div key={item.name}>
+                {/* Left Section: 2 Columns (4 items in Column 1, 2 items in Column 2) */}
+                <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+                  {/* Column 1: 4 Hospital Items */}
+                  <div className="space-y-4">
+                    {HOSPITAL_MEGA_MENU.column1.map((hospital) => (
+                      <div key={hospital.name} className="group/item">
                         <a
-                          href={item.href}
-                          className="inline-block group/link py-1 hover:text-[#005BAA] transition-colors"
+                          href={hospital.href}
+                          className="inline-flex items-center gap-2 group/link py-1 hover:text-[#005BAA] transition-all duration-200"
                         >
-                          <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit group-hover/link:translate-x-0.5 transition-transform">
-                            {item.name}
+                          <h4 className="text-[14px] lg:text-[15px] font-bold text-slate-800 group-hover/link:text-[#005BAA] group-hover/link:translate-x-1.5 transition-all duration-200 leading-snug">
+                            {hospital.name}
                           </h4>
+                          <ArrowRight className="w-3.5 h-3.5 text-[#F37023] opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-200 shrink-0" />
                         </a>
                       </div>
                     ))}
                   </div>
 
-                  {/* Column 2: Gurugram & Vadodara */}
-                  <div className="space-y-6">
-                    {HOSPITAL_MEGA_MENU.column2.map((item) => (
-                      <div key={item.name}>
+                  {/* Column 2: 2 Hospital Items */}
+                  <div className="space-y-4">
+                    {HOSPITAL_MEGA_MENU.column2.map((hospital) => (
+                      <div key={hospital.name} className="group/item">
                         <a
-                          href={item.href}
-                          className="inline-block group/link py-1 hover:text-[#005BAA] transition-colors"
+                          href={hospital.href}
+                          className="inline-flex items-center gap-2 group/link py-1 hover:text-[#005BAA] transition-all duration-200"
                         >
-                          <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit group-hover/link:translate-x-0.5 transition-transform">
-                            {item.name}
+                          <h4 className="text-[14px] lg:text-[15px] font-bold text-slate-800 group-hover/link:text-[#005BAA] group-hover/link:translate-x-1.5 transition-all duration-200 leading-snug">
+                            {hospital.name}
                           </h4>
-                        </a>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Column 3: Faridabad & Saudi Arabia */}
-                  <div className="space-y-6">
-                    {HOSPITAL_MEGA_MENU.column3.map((item) => (
-                      <div key={item.name}>
-                        <a
-                          href={item.href}
-                          className="inline-block group/link py-1 hover:text-[#005BAA] transition-colors"
-                        >
-                          <h4 className="text-sm font-extrabold text-[#005BAA] uppercase tracking-wider border-b-2 border-[#F37023] pb-1 w-fit group-hover/link:translate-x-0.5 transition-transform">
-                            {item.name}
-                          </h4>
+                          <ArrowRight className="w-3.5 h-3.5 text-[#F37023] opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-200 shrink-0" />
                         </a>
                       </div>
                     ))}
@@ -280,7 +266,7 @@ export const Header = ({ onOpenAppointment }) => {
                 </div>
 
                 {/* Right Section: 2 CTA Boxes Side-by-Side in a Row */}
-                <div className="lg:col-span-7 border-t lg:border-t-0 lg:border-l border-slate-200/80 pt-6 lg:pt-0 lg:pl-10">
+                <div className="lg:col-span-6 border-t lg:border-t-0 lg:border-l border-slate-200/80 pt-6 lg:pt-0 lg:pl-10">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-start">
                     {/* Box 1: BOOK AN APPOINTMENT */}
                     <div className="flex flex-col justify-between h-full space-y-4">
@@ -338,7 +324,7 @@ export const Header = ({ onOpenAppointment }) => {
             onMouseLeave={handleMenuLeave}
             className="absolute left-0 right-0 top-full w-full bg-white border-t border-slate-100 shadow-2xl z-50 text-slate-800 animate-in fade-in-50 slide-in-from-top-1 duration-200"
           >
-            <div className="max-w-[1920px] 3xl:max-w-[2100px] 4k:max-w-none mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-[72px] 3xl:px-[60px] 4k:px-[72px] py-8 lg:py-10 text-left">
+            <div className="max-w-[1920px] 3xl:max-w-[2100px] 4k:max-w-none mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-[72px] py-5 lg:py-7 text-left">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
 
                 {/* Column 1: CENTRE OF EXCELLENCE */}

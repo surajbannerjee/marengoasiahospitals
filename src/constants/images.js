@@ -29,14 +29,13 @@ export const IMAGES = {
 
   },
   hospitals: {
-    ahmedabad: '/images/hospitals/ahmedabad.svg',
-    gurgaon: '/images/hospitals/gurgaon.svg',
-    faridabad: '/images/hospitals/faridabad.svg',
-    surat: '/images/hospitals/surat.svg',
-    kolkata: '/images/hospitals/kolkata.svg',
-    noida: '/images/hospitals/noida.svg',
-    mumbai: '/images/hospitals/mumbai.svg',
-    delhi: '/images/hospitals/delhi.svg',
+    ahmedabad: '/images/hospitals/Ahmedabad.svg',
+    gurugram: '/images/hospitals/Gurugram.svg',
+    faridabad: '/images/hospitals/Faridabad.svg',
+    saudiArabia: '/images/hospitals/Saudi-Arabia.svg',
+    surat: '/images/hospitals/Surat.svg',
+    vadodara: '/images/hospitals/Vadodara.svg',
+
   },
   technologies: {
     petCt: '/images/technologies/pet-ct.webp',
@@ -66,9 +65,9 @@ export const IMAGES = {
     news4: '/images/news/news4.png',
   },
   blogs: {
-    cardiac: '/images/blogs/blog-cardiac.svg',
-    robotic: '/images/blogs/blog-robotic.svg',
-    brain: '/images/blogs/blog-brain.svg',
+    blog1: '/images/blogs/blog1.svg',
+    blog2: '/images/blogs/blog2.svg',
+    blog3: '/images/blogs/blog3.svg',
   },
   countries: {
     bd: '/images/countries/bd.svg',
@@ -96,4 +95,20 @@ export const IMAGES = {
   common: {
     worldMap: '/images/common/world-map.svg',
   },
+  menusIcon: {
+    BariatricSurgeryIcon: "/images/menusIcon/BariatricSurgeryIcon.svg",
+    BoneMarrowIcon: "/images/menusIcon/BoneMarrowIcon.svg",
+    CancerCareIcon: "/images/menusIcon/CancerCareIcon.svg",
+    CardiacSciencesIcon: "/images/menusIcon/CardiacSciencesIcon.svg",
+    ClinicalPsychologyIcon: "/images/menusIcon/ClinicalPsychologyIcon.svg",
+    DentalIcon: "/images/menusIcon/DentalIcon.svg",
+    DermatologyIcon: "/images/menusIcon/DermatologyIcon.svg",
+    DiabeticFootIcon: "/images/menusIcon/DiabeticFootIcon.svg",
+    GastroenterologyIcon: "/images/menusIcon/GastroenterologyIcon.svg",
+    LiverTransplantIcon: "/images/menusIcon/LiverTransplantIcon.svg",
+    NeurosciencesIcon: "/images/menusIcon/NeurosciencesIcon.svg",
+    OrthopaedicsIcon: "/images/menusIcon/OrthopaedicsIcon.svg",
+    RenalSciencesIcon: "/images/menusIcon/RenalSciencesIcon.svg",
+    RheumatologyIcon: "/images/menusIcon/RheumatologyIcon.svg",
+  }
 };

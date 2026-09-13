@@ -54,12 +54,12 @@ export const CentersOfExcellence = ({ onSelectSpecialty }) => {
             pagination={{ clickable: true, dynamicBullets: true }}
             autoplay={{ delay: 4500, disableOnInteraction: false }}
             breakpoints={{
-              420: {
+              330: {
                 slidesPerView: 2,
                 spaceBetween: 20,
               },
-              640: {
-                slidesPerView: 2,
+              768: {
+                slidesPerView: 3,
                 spaceBetween: 20,
               },
               1024: {

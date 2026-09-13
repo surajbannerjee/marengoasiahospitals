@@ -263,7 +263,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
           </div>
 
           {/* Cards Grid Container - Mapped Buttons with SVG Backgrounds */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
             {[
               {
                 id: 'cardiology',
@@ -296,14 +296,6 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                 specialty: 'Orthopaedics',
                 svgType: 'middle',
                 icon: IMAGES.svgs.orthopedic1,
-              },
-              {
-                id: 'gastroenterology',
-                title: 'Gastroenterology',
-                query: 'Gastroenterology',
-                specialty: 'Gastroenterology',
-                svgType: 'last',
-                icon: IMAGES.svgs.gastroenterology1,
               },
             ].map((item, index) => (
               <button
@@ -391,8 +383,8 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                 {/* Inner Content Area - z-10 */}
                 <div className="relative z-10 flex items-center gap-2.5 sm:gap-3 w-full">
                   {/* Left Blue Icon Badge */}
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-[#1A549F] flex items-center justify-center text-white shrink-0">
-                    <img src={item.icon} className='w-5 h-5 sm:w-7 sm:h-7 md:w-10 md:h-10' alt={item.title} />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-[#1A549F] flex items-center justify-center text-white shrink-0">
+                    <img src={item.icon} className='w-5 h-5 sm:w-7 sm:h-7' alt={item.title} />
                   </div>
 
                   {/* Text Label */}

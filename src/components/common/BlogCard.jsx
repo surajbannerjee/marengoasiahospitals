@@ -13,11 +13,11 @@ export const BlogCard = ({ blog, onClick, className = '' }) => {
     >
 
       {/* Blog Image Inside */}
-      <div className="w-full h-full flex items-center justify-center overflow-hidden">
+      <div className="aspect-square">
         <img
           src={blog.image}
           alt={blog.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
 

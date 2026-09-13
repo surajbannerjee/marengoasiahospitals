@@ -78,11 +78,12 @@ export const WhyChooseUs = () => {
           title={WHY_CHOOSE_US_DATA.heading}
           subtitle={WHY_CHOOSE_US_DATA.subtitle}
           align="center"
+          className='mb-5!'
         />
       </Container>
 
       {/* Infinite Continuous Rail Marquee Slider */}
-      <div className="relative w-full mt-4 sm:mt-6 select-none">
+      <div className="relative w-full select-none">
 
 
         {/* Marquee Track (Repeats segments to create seamless infinite scrolling) */}

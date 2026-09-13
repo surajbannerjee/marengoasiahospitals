@@ -16,14 +16,14 @@ export const HospitalCard = ({ hospital, onClick, className = '' }) => {
         <img
           src={hospital.image}
           alt={hospital.name || hospital.city}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
 
       {/* Card Bottom Area: View More on Left & City Name on Right */}
       <div className="flex items-center justify-between pl-10">
         {/* Left: View More */}
-        <div className="flex items-center gap-1 text-xs sm:text-[13px] text-[#636466] group-hover:text-[#003B73] transition-colors">
+        <div className="flex items-center gap-1 text-xs sm:text-[13px] text-[#636466] font-bold group-hover:text-[#003B73] transition-colors">
           <span>View More</span>
           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
         </div>
