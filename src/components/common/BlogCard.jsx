@@ -13,7 +13,7 @@ export const BlogCard = ({ blog, onClick, className = '' }) => {
     >
 
       {/* Blog Image Inside */}
-      <div className="aspect-square">
+      <div className="w-full h-full aspect-square">
         <img
           src={blog.image}
           alt={blog.title}
@@ -22,8 +22,8 @@ export const BlogCard = ({ blog, onClick, className = '' }) => {
       </div>
 
       {/* Date situated in the bottom-right notch step */}
-      <div className="flex justify-end items-center -mt-3 sm:-mt-3 lg:-mt-7 mb-0 pr-2 text-xs sm:text-[13px] text-[#2563EB] font-medium gap-1.5">
-        <Calendar className="w-3.5 h-3.5 text-[#2563EB]" />
+      <div className="flex justify-end items-center -mt-3 sm:-mt-3 lg:-mt-7 mb-0 pr-2 text-[10px] sm:text-[13px] text-[#2563EB] font-medium gap-1">
+        <Calendar className="sm:w-3.5 sm:h-3.5 w-3 h-3 text-[#2563EB]" />
         <span>{blog.date}</span>
       </div>
 

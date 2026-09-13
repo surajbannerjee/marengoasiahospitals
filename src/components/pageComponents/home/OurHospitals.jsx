@@ -59,7 +59,7 @@ export const OurHospitals = ({ onSelectHospital }) => {
               },
             }}
             pagination={{ clickable: true, dynamicBullets: true }}
-            className="cardSlider !pb-9 select-none"
+            className="cardSlider sm:pb-9! pb-0! select-none"
           >
             {HOSPITALS_DATA.map((hosp, index) => (
               <SwiperSlide key={`mobile-${hosp.id}-${index}`}>

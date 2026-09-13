@@ -132,13 +132,13 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
             </div>
 
             {/* 5. Action Buttons & VISA Link */}
-            <div className="order-5 lg:order-none mt-6 sm:mt-8 lg:mt-10 flex flex-col items-center lg:items-start w-full">
+            <div className="order-5 lg:order-none mt-2 sm:mt-8 lg:mt-10 flex flex-col items-center lg:items-start w-full">
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 w-full">
+              <div className="flex flex-row flex-wrap items-center flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 w-full">
                 {/* Know More Button */}
                 <a
                   href="https://marengoasiahospitals.com/internationalpatient"
-                  className=" sm:flex-initial min-w-[130px] sm:min-w-[150px] px-6 sm:px-8 py-3 bg-[#1E4E98] hover:bg-[#163B75] text-white font-semibold text-sm sm:text-[15px] rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer text-center"
+                  className=" sm:flex-initial min-w-fit px-3 sm:px-8 py-2 sm:py-3 bg-[#1E4E98] hover:bg-[#163B75] text-white font-semibold text-sm sm:text-[15px] rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer text-center"
                 >
                   Know More
                 </a>
@@ -146,7 +146,7 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
                 {/* Get An Estimate Button */}
                 <a
                   href="https://marengoasiahospitals.com/bookanappointment"
-                  className="sm:flex-initial min-w-[130px] sm:min-w-[150px] px-6 sm:px-8 py-3 bg-white hover:bg-slate-50 text-[#1E4E98] font-semibold text-sm sm:text-[15px] rounded-lg border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-center"
+                  className="sm:flex-initial px-3 sm:px-8 py-2 sm:py-3 bg-white hover:bg-slate-50 text-[#1E4E98] font-semibold text-sm sm:text-[15px] rounded-lg border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-center"
                 >
                   Get An Estimate
                 </a>

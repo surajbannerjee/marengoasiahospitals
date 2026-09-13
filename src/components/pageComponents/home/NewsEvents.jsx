@@ -150,7 +150,7 @@ export const NewsEvents = () => {
                         </div>
 
                         {/* Read More Action Link on Right */}
-                        <div className="flex items-center justify-end -mt-6 sm:-mt-8 py-2 sm:py-3 pr-2 sm:pr-3 text-[10px] sm:text-xs font-semibold text-[#0258B9] group-hover:text-[#003B73] gap-1 transition-colors">
+                        <div className="flex items-center justify-end -mt-4 sm:-mt-8 py-2 sm:py-3 pr-0 sm:pr-3 text-[10px] sm:text-xs font-semibold text-[#0258B9] group-hover:text-[#003B73] gap-0.5 transition-colors">
                           <span>Read More</span>
                           <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-1 transition-transform" />
                         </div>

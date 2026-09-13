@@ -13,7 +13,7 @@ export const TechnologyCard = ({ technology, onClick, className = '' }) => {
     >
 
       {/* Technology Image */}
-      <div className="w-full h-full aspect-square flex items-center justify-center overflow-hidden rounded-xl">
+      <div className="w-full h-full aspect-square">
         <img
           src={technology.image}
           alt={technology.title}
@@ -24,7 +24,7 @@ export const TechnologyCard = ({ technology, onClick, className = '' }) => {
       {/* 2. Text & Link Area Below the Notched Box */}
       <div className="flex flex-col text-left pt-3.5 sm:pt-4 px-1">
         {/* Technology Title */}
-        <h4 className="text-[14px] sm:text-[16px] md:text-[18px] font-bold text-[#224F9F] group-hover:text-[#003B73] transition-colors leading-snug">
+        <h4 className="text-[14px] sm:text-[16px] md:text-[18px] font-bold text-[#224F9F] group-hover:text-[#003B73] transition-colors truncate leading-snug">
           {technology.title}
         </h4>
 

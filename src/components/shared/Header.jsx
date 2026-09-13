@@ -78,7 +78,7 @@ export const Header = ({ onOpenAppointment }) => {
                 <img
                   src={IMAGES.logo.main}
                   alt={SITE_CONFIG.name}
-                  className="h-full w-full max-w-[100px] sm:max-w-[120px] lg:max-w-[120px] 2xl:max-w-[150px] shrink-0 object-contain opacity-100 transition-transform duration-200 hover:opacity-90"
+                  className="h-full w-full max-w-[70px] sm:max-w-[90px] lg:max-w-[120px] 2xl:max-w-[150px] shrink-0 object-contain opacity-100 transition-transform duration-200 hover:opacity-90"
                 />
               </div>
             </a>

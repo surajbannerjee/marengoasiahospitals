@@ -46,7 +46,7 @@ export const CenterCard = ({ center, onClick, className = '' }) => {
         </h3>
 
         {/* Subtitle / Stat Label */}
-          <p className="text-[13px] sm:text-[14px] font-normaltext-[#666666] mt-1">
+          <p className="text-[13px] sm:text-[14px] font-normal text-[#666666] mt-1">
           {center.statLabel || 'Patients treated'}
         </p>
 
@@ -60,8 +60,8 @@ export const CenterCard = ({ center, onClick, className = '' }) => {
       </div>
       </div>
       {/* Read More Link situated in the bottom-right notch */}
-      <div className="flex justify-end items-center mt-[-10px] pr-0.5">
-        <span className="inline-flex items-center gap-1.5 text-xs sm:text-[12px] md:text-[14px] font-medium text-[#2563EB] group-hover:text-[#003B73] transition-colors">
+      <div className="flex justify-end items-center sm:mt-[-10px] mt-[-7px] pr-0.5">
+        <span className="inline-flex items-center gap-1 text-[10px] sm:text-[12px] md:text-[14px] font-medium text-[#2563EB] group-hover:text-[#003B73] transition-colors">
           Read More
           <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
         </span>
