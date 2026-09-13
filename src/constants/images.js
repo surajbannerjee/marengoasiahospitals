@@ -29,11 +29,11 @@ export const IMAGES = {
 
   },
   hospitals: {
-    ahmedabad: '/images/hospitals/Ahmedabad.svg',
+    ahmedabad: '/images/hospitals/ahmedabad.svg',
     gurugram: '/images/hospitals/Gurugram.svg',
-    faridabad: '/images/hospitals/Faridabad.svg',
+    faridabad: '/images/hospitals/faridabad.svg',
     saudiArabia: '/images/hospitals/Saudi-Arabia.svg',
-    Surat: '/images/hospitals/Surat.svg',
+    Surat: '/images/hospitals/surat.svg',
     vadodara: '/images/hospitals/Vadodara.svg',
 
   },
