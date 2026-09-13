@@ -769,7 +769,7 @@ export const HOSPITALS_DATA = [
     beds: '200+ Beds',
     specialties: 'Mother & Child, Gastro Sciences, Dialysis',
     image: IMAGES.hospitals.surat,
-    phone: '+91 261 270 5000',
+    phone: '+91 261 270 5000', 
   },
   {
     id: 'vadodara',
