@@ -11,7 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export const HealthPackages = ({ onOpenAppointment }) => {
+export const HealthPackages = () => {
   const swiperRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -80,10 +80,7 @@ export const HealthPackages = ({ onOpenAppointment }) => {
           >
             {loopCards.map((pkg, index) => (
               <SwiperSlide key={`${pkg.id}-${index}`} className="h-auto">
-                <PackageCard
-                  packageItem={pkg}
-                  onClick={(item) => onOpenAppointment && onOpenAppointment(item?.title || 'Health Check-Up Package')}
-                />
+                <PackageCard packageItem={pkg} />
               </SwiperSlide>
             ))}
           </Swiper>

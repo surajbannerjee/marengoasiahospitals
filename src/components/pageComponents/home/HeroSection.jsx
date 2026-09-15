@@ -2,14 +2,26 @@ import React, { useState } from 'react';
 import { IMAGES } from '../../../constants/images';
 import { Container } from '../../common/Container';
 import { Search } from 'lucide-react';
-import { Button } from '../../common/Button';
 
-export const HeroSection = ({ onOpenAppointment }) => {
+export const HeroSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchQuery);
+    if (!searchQuery.trim()) return;
+    const searchSection = document.getElementById('specialty-search');
+    const searchInput = document.getElementById('specialty-search-input');
+    if (searchSection) {
+      searchSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (searchInput) {
+        setTimeout(() => {
+          searchInput.value = searchQuery;
+          searchInput.focus();
+        }, 400);
+      }
+    } else {
+      window.location.href = `/#specialty-search?q=${encodeURIComponent(searchQuery)}`;
+    }
   };
 
   return (
@@ -49,7 +61,7 @@ export const HeroSection = ({ onOpenAppointment }) => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Find A Doctor, Specialty and Health Check-up Packages..."
-                className="w-full  bg-white text-slate-800 text-sm sm:text-base pl-4 sm:pl-5 pr-11 py-3 sm:py-3.5 rounded-[8px] shadow-xl border border-slate-200/80 focus:outline-none! focus:ring-none! placeholder:text-slate-400 font-medium"
+                className="w-full bg-white text-slate-800 text-sm sm:text-base pl-4 sm:pl-5 pr-11 py-3 sm:py-3.5 rounded-[8px] shadow-xl border border-slate-200/80 focus:outline-none! focus:ring-none! placeholder:text-slate-400 font-medium"
               />
               <button
                 type="submit"
@@ -61,15 +73,12 @@ export const HeroSection = ({ onOpenAppointment }) => {
             </div>
 
             {/* Book Appointment CTA Button */}
-            <Button
-              variant="primary"
-              size="lg"
-              type="button"
-              onClick={onOpenAppointment}
-              className="w-full sm:w-auto font-bold bg-[#224F9F] hover:bg-[#1E40AF] text-white py-3 sm:py-3.5 px-7 sm:px-8 rounded-[8px] shadow-xl text-sm sm:text-base shrink-0 whitespace-nowrap transition-all duration-200 hover:scale-102 cursor-pointer"
+            <a
+              href="https://marengoasiahospitals.com/bookanappointment"
+              className="w-full sm:w-auto font-bold bg-[#224F9F] hover:bg-[#1E40AF] text-white py-3 sm:py-3.5 px-7 sm:px-8 rounded-[8px] shadow-xl text-sm sm:text-base shrink-0 whitespace-nowrap transition-all duration-200 hover:scale-102 cursor-pointer text-center"
             >
               Book Appointment
-            </Button>
+            </a>
           </form>
         </div>
       </Container>

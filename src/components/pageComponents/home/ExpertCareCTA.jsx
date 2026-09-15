@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '../../common/Container';
 
-export const ExpertCareCTA = ({ onOpenAppointment }) => {
+export const ExpertCareCTA = () => {
   return (
     <section className="pb-6 min-[360px]:pb-7 min-[400px]:pb-8 sm:pb-9 md:pb-11 lg:pb-14 xl:pb-16 2xl:pb-[80px] 3xl:pb-[70px] 4k:pb-[85px] bg-white relative">
       <Container>
@@ -18,12 +18,12 @@ export const ExpertCareCTA = ({ onOpenAppointment }) => {
 
           {/* Right Action Buttons */}
           <div className="flex items-center gap-3 sm:gap-2 flex-wrap md:justify-end justify-center">
-            <button
-              onClick={onOpenAppointment}
-              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg border border-[#224F9F] text-[#224F9F] bg-transparent hover:bg-[#224F9F]/5 font-medium text-xs sm:text-sm transition-colors cursor-pointer"
+            <a
+              href="https://marengoasiahospitals.com/bookanappointment"
+              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg border border-[#224F9F] text-[#224F9F] bg-transparent hover:bg-[#224F9F]/5 font-medium text-xs sm:text-sm transition-colors cursor-pointer text-center"
             >
               Book Appointment
-            </button>
+            </a>
 
             <a
               href="#hospitals"

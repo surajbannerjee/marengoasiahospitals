@@ -111,7 +111,9 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
                         whileTap={{ scale: 0.95 }}
                         onHoverStart={() => setHoveredCountry(country.name)}
                         onHoverEnd={() => setHoveredCountry(null)}
-                        onClick={() => onOpenAppointment && onOpenAppointment(`International Patient Desk (${country.name})`)}
+                        onClick={() => {
+                          window.location.href = 'https://marengoasiahospitals.com/internationalpatient';
+                        }}
                         className="w-12 h-12 sm:w-13 sm:h-13 rounded-full cursor-pointer flex items-center justify-center p-0.5 bg-white shadow-sm hover:shadow-md border border-slate-200/80 transition-shadow overflow-hidden"
                       >
                         <img
