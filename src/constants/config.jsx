@@ -16,9 +16,10 @@ export const HEADER_NAV_ITEMS = [
   { label: 'About Us', href: 'https://marengoasiahospitals.com/about-us', dropdownType: null, hasDropdown: false },
   { label: 'Our Hospital', href: '#', dropdownType: 'hospitals', hasDropdown: true },
   { label: 'Specialities', href: '#', dropdownType: 'specialties', hasDropdown: true },
-  { label: 'Find Doctor', href: '#specialty-search', dropdownType: null, hasDropdown: false },
+  { label: 'Find Doctor', href: 'https://marengoasiahospitals.com/doctor', dropdownType: null, hasDropdown: false },
   { label: 'Blogs', href: 'https://marengoasiahospitals.com/blogs', dropdownType: null, hasDropdown: false },
-  { label: 'Health Check-Up', href: '#packages', dropdownType: null, hasDropdown: false },
+  { label: 'Health Check-Up', href: 'https://marengoasiahospitals.com/', dropdownType: null, hasDropdown: false },
+  { label: 'International Patients', href: 'https://marengoasiahospitals.com/internationalpatients', dropdownType: null, hasDropdown: false },
 ];
 
 // Mega Menu for Our Hospital
@@ -239,22 +240,22 @@ export const SPECIALITIES_MEGA_MENU = {
     title: 'PROCEDURES',
     viewAllHref: '',
     items: [
-      { name: 'Medical Oncology', href: '#specialties' },
-      { name: 'Surgical Oncology', href: '#specialties' },
-      { name: 'Hematology Oncology', href: '#specialties' },
-      { name: 'Gynecologic Oncology', href: '#specialties' },
-      { name: 'Pediatric Oncology', href: '#specialties' },
+      { name: 'Medical Oncology', href: 'https://marengoasiahospitals.com/speciality' },
+      { name: 'Surgical Oncology', href: 'https://marengoasiahospitals.com/speciality' },
+      { name: 'Hematology Oncology', href: 'https://marengoasiahospitals.com/speciality' },
+      { name: 'Gynecologic Oncology', href: 'https://marengoasiahospitals.com/speciality' },
+      { name: 'Pediatric Oncology', href: 'https://marengoasiahospitals.com/speciality' },
     ],
   },
 };
 
 export const NAV_LINKS = [
   { label: 'About Us', href: 'https://marengoasiahospitals.com/about-us', hasDropdown: true },
-  { label: 'Specialties', href: '#specialties', hasDropdown: true },
-  { label: 'Hospitals', href: '#hospitals', hasDropdown: true },
+  { label: 'Specialties', href: 'https://marengoasiahospitals.com/speciality', hasDropdown: true },
+  { label: 'Hospitals', href: 'https://marengoasiahospitals.com/', hasDropdown: true },
   { label: 'International Patients', href: 'https://marengoasiahospitals.com/internationalpatients', hasDropdown: false },
-  { label: 'Doctors', href: '#specialty-search', hasDropdown: false },
-  { label: 'Academics & Research', href: '#research', hasDropdown: true },
+  { label: 'Doctors', href: 'https://marengoasiahospitals.com/doctor', hasDropdown: false },
+  { label: 'Academics & Research', href: 'https://marengoasiahospitals.com/', hasDropdown: true },
 ];
 
 export const QUICK_ACTIONS = [
@@ -265,7 +266,7 @@ export const QUICK_ACTIONS = [
     icon: 'UserCheck',
     color: 'bg-[#F37023] hover:bg-[#E05D10]',
     textColor: 'text-white',
-    href: '#specialty-search',
+    href: 'https://marengoasiahospitals.com/doctor',
   },
   {
     id: 'specialties',
@@ -274,7 +275,7 @@ export const QUICK_ACTIONS = [
     icon: 'Stethoscope',
     color: 'bg-[#003B73] hover:bg-[#002D59]',
     textColor: 'text-white',
-    href: '#specialties',
+    href: 'https://marengoasiahospitals.com/speciality',
   },
   {
     id: 'health-checkup',
@@ -283,7 +284,7 @@ export const QUICK_ACTIONS = [
     icon: 'ClipboardCheck',
     color: 'bg-[#5B7B12] hover:bg-[#4E6A0F]',
     textColor: 'text-white',
-    href: '#packages',
+    href: 'https://marengoasiahospitals.com/',
   },
   {
     id: 'hospitals',
@@ -292,7 +293,7 @@ export const QUICK_ACTIONS = [
     icon: 'Building2',
     color: 'bg-[#64748B] hover:bg-[#475569]',
     textColor: 'text-white',
-    href: '#hospitals',
+    href: 'https://marengoasiahospitals.com/',
   },
 ];
 
@@ -586,7 +587,7 @@ export const PATIENT_STORIES = [
     rating: 5,
     quote: '"From the moment we arrived, the entire team made us feel comfortable and cared for. The doctors took the time to explain every step of the treatment, while the nursing staff was kind, attentive and supportive throughout."',
     patientName: 'Shibnath Das',
-    badgeIcon: IMAGES.testimonials.patient3,
+    badgeIcon: IMAGES.testimonials.doublesmiling,
   },
   {
     id: 'video-3',

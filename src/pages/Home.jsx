@@ -1,5 +1,4 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
 
 // Home Page Section Components
 import HeroSection from '../components/pageComponents/home/HeroSection';
@@ -17,31 +16,28 @@ import OurHospitals from '../components/pageComponents/home/OurHospitals';
 import ExpertCareCTA from '../components/pageComponents/home/ExpertCareCTA';
 
 export const Home = () => {
-  const context = useOutletContext();
-  const handleOpenAppointment = context?.handleOpenAppointment || (() => { });
-
   return (
     <>
       {/* 1. Hero Section */}
-      <HeroSection onOpenAppointment={() => handleOpenAppointment()} />
+      <HeroSection />
 
       {/* 2. Quick Action Buttons */}
-      <QuickActions onOpenAppointment={() => handleOpenAppointment()} />
+      <QuickActions />
 
       {/* 3. Centers of Excellence */}
-      <CentersOfExcellence onSelectSpecialty={(spec) => handleOpenAppointment(spec)} />
+      <CentersOfExcellence />
 
       {/* 4. Search by Specialty / Condition */}
-      <SpecialtySearch onSelectCondition={(cond) => handleOpenAppointment(cond)} />
+      <SpecialtySearch />
 
       {/* 5. Our Technologies */}
       <Technologies />
 
       {/* 6. International Patients */}
-      <InternationalPatients onOpenAppointment={() => handleOpenAppointment('International Patient Desk')} />
+      <InternationalPatients />
 
       {/* 7. Health Check-Up Packages */}
-      <HealthPackages onOpenAppointment={() => handleOpenAppointment('Health Check-Up Package')} />
+      <HealthPackages />
 
       {/* 8. Why Choose Us */}
       <WhyChooseUs />
@@ -59,7 +55,7 @@ export const Home = () => {
       <OurHospitals />
 
       {/* 13. Expert Medical Care CTA */}
-      <ExpertCareCTA onOpenAppointment={() => handleOpenAppointment()} />
+      <ExpertCareCTA />
     </>
   );
 };

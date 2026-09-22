@@ -26,7 +26,7 @@ export const ExpertCareCTA = () => {
             </a>
 
             <a
-              href="#hospitals"
+              href="https://marengoasiahospitals.com/"
               className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg bg-[#224F9F] hover:bg-[#1B3F80] text-white font-medium text-xs sm:text-sm transition-colors cursor-pointer shadow-xs text-center"
             >
               Find Our Hospital

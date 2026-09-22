@@ -3,13 +3,28 @@ import { ArrowRight } from 'lucide-react';
 import { cn } from '../../util/cn';
 import { IMAGES } from '../../constants/images';
 
-export const CenterCard = ({ center, onClick, className = '' }) => {
+export const CenterCard = ({ center, className = '' }) => {
   const iconSrc = IMAGES.svgs[center.icon] || IMAGES.svgs.Cardiac;
+
+  const centerUrls = {
+    'cardiac': 'https://marengoasiahospitals.com/speciality/cardiac-sciences',
+    'neuro': 'https://marengoasiahospitals.com/speciality/neurology',
+    'cancer': 'https://marengoasiahospitals.com/speciality/medical-oncology',
+    'ortho': 'https://marengoasiahospitals.com/speciality/orthopaedics-and-joint-replacement',
+  };
+
+  const handleCardClick = () => {
+    const url = centerUrls[center.id];
+
+    if (url) {
+      window.location.href = url;
+    }
+  };
 
   return (
     <div>
     <div
-      onClick={() => onClick && onClick(center.title)}
+      onClick={handleCardClick}
       className={cn(
         'group relative aspect-square flex justify-between items-center w-full  pt-7 pb-7 md:pt-10 md:pb-10 lg:pt-15  lg:pb-15 md:px-6 px-4 select-none cursor-pointer',
         className

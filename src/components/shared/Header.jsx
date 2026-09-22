@@ -10,7 +10,7 @@ import { IMAGES } from '../../constants/images';
 import { Button } from '../common/Button';
 import { MobileMenu } from './MobileMenu';
 
-export const Header = ({ onOpenAppointment }) => {
+export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -73,7 +73,7 @@ export const Header = ({ onOpenAppointment }) => {
         <div className="flex w-full max-w-[1920px] 3xl:max-w-[2100px] 4k:max-w-none items-center justify-between px-3 min-[360px]:px-4 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-[72px] 3xl:px-[60px] 4k:px-[72px] mx-auto">
           <div className="w-full flex items-center justify-between">
             {/* Left: Brand Logo */}
-            <a href="#" className="flex items-center shrink-0 group">
+            <a href="https://marengoasiahospitals.com/" className="flex items-center shrink-0 group">
               <div className="max-w-[150px] w-full">
                 <img
                   src={IMAGES.logo.main}
@@ -86,11 +86,11 @@ export const Header = ({ onOpenAppointment }) => {
             {/* Desktop Navigation Structure: 2 Tiers */}
             <div className="hidden lg:flex flex-col items-end gap-1.5">
               {/* Top Tier: Emergency, Helpline, Search, Login */}
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4 xl:gap-6">
                 {/* 24/7 Emergency */}
                 <a
                   href={`tel:18003099999`}
-                  className="flex items-center gap-1.5 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors text-[#FF3333] hover:text-[#E60000] cursor-pointer"
+                  className="flex items-center gap-1.5 text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors text-[#FF3333] hover:text-[#E60000] cursor-pointer"
                 >
                   <Siren className="w-4 h-4 text-[#FF3333] animate-pulse" />
                   <span className="uppercase tracking-wider">24/7 Emergency</span>
@@ -99,7 +99,7 @@ export const Header = ({ onOpenAppointment }) => {
                 {/* Helpline Phone */}
                 <a
                   href={`tel:18003099999`}
-                  className={`flex items-center gap-1.5 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
+                  className={`flex items-center gap-1.5 text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
                     }`}
                 >
                   <Phone className="w-3.5 h-3.5 text-[#38BDF8]" />
@@ -110,7 +110,7 @@ export const Header = ({ onOpenAppointment }) => {
                 <button
                   type="button"
                   onClick={handleSearchClick}
-                  className={`flex items-center gap-1.5 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
+                  className={`flex items-center gap-1.5 text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
                     }`}
                 >
                   <Search className="w-3.5 h-3.5" />
@@ -119,8 +119,8 @@ export const Header = ({ onOpenAppointment }) => {
 
                 {/* Login */}
                 <a
-                  href="#login"
-                  className={`flex items-center gap-1.5 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
+                  href="https://marengoasiahospitals.com/login"
+                  className={`flex items-center gap-1.5 text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors cursor-pointer ${isScrolled ? 'text-slate-700 hover:text-[#003B73]' : 'text-slate-100 hover:text-white'
                     }`}
                 >
                   <User className="w-3.5 h-3.5" />
@@ -129,7 +129,7 @@ export const Header = ({ onOpenAppointment }) => {
               </div>
 
               {/* Bottom Tier: Nav Links with Mapped Dropdowns */}
-              <nav className="flex relative items-center gap-5 xl:gap-7 pt-0.5">
+              <nav className="flex relative items-center gap-3.5 xl:gap-5 2xl:gap-7 pt-0.5">
                 {HEADER_NAV_ITEMS.map((item) => (
                   <div
                     key={item.label}
@@ -142,7 +142,7 @@ export const Header = ({ onOpenAppointment }) => {
                   >
                     <a
                       href={item.href}
-                      className={`flex items-center gap-1 text-[14px] lg:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors ${isScrolled
+                      className={`flex items-center gap-1 text-[13px] lg:text-[14px] xl:text-[16px] 2xl:text-[18px] font-semibold leading-normal tracking-[0%] whitespace-nowrap transition-colors ${isScrolled
                         ? 'text-slate-700 hover:text-[#003B73]'
                         : 'text-slate-100 hover:text-white drop-shadow-sm'
                         }`}
@@ -195,7 +195,7 @@ export const Header = ({ onOpenAppointment }) => {
 
               {/* User Login */}
               <a
-                href="#login"
+                href="https://marengoasiahospitals.com/login"
                 aria-label="Login"
                 className={`p-1.5 transition-colors cursor-pointer ${isScrolled ? 'text-slate-700' : 'text-white'
                   }`}
@@ -435,7 +435,7 @@ export const Header = ({ onOpenAppointment }) => {
                         Book Consultation
                       </a>
                       <a
-                        href="#specialty-search"
+                        href="https://marengoasiahospitals.com/doctor"
                         className="w-full inline-flex items-center justify-center px-5 py-2.5 bg-sky-50 hover:bg-sky-100 text-[#005BAA] text-xs font-bold rounded-full transition-colors border border-sky-100 cursor-pointer"
                       >
                         Find a Doctor
@@ -461,7 +461,6 @@ export const Header = ({ onOpenAppointment }) => {
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
-        onOpenAppointment={onOpenAppointment}
       />
     </>
   );

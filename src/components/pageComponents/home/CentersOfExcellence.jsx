@@ -12,7 +12,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export const CentersOfExcellence = ({ onSelectSpecialty }) => {
+export const CentersOfExcellence = () => {
   const swiperRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
@@ -77,7 +77,6 @@ export const CentersOfExcellence = ({ onSelectSpecialty }) => {
               <SwiperSlide key={`${center.id}-${index}`} className="h-auto">
                 <CenterCard
                   center={center}
-                  onClick={onSelectSpecialty}
                 />
               </SwiperSlide>
             ))}

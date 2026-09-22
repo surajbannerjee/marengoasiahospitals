@@ -1,16 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, ChevronRight, X } from 'lucide-react';
+import { Search, ChevronRight, X, Delete } from 'lucide-react';
 import { Container } from '../../common/Container';
-import { SPECIALTY_SEARCH_DATA } from '../../../constants/config';
 import { cn } from '../../../util/cn';
 import { IMAGES } from '../../../constants/images';
+import { SPECIALTY_SEARCH_DATA } from '../../../constants/config';
 
 export const SpecialtySearch = ({ onSelectCondition }) => {
   const [selectedLetter, setSelectedLetter] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [specialtyResults, setSpecialtyResults] = useState([]);
+  const [selectedSpecialtySlug, setSelectedSpecialtySlug] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
   const containerRef = useRef(null);
   const inputRef = useRef(null);
+  const searchTimeout = useRef(null);
 
   // Close dropdown and empty input when clicking outside
   useEffect(() => {
@@ -25,10 +29,163 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Live Marengo API specialty search
+  useEffect(() => {
+    const query = searchQuery.trim();
+
+    if (searchTimeout.current) {
+      clearTimeout(searchTimeout.current);
+    }
+
+    if (query.length < 1) {
+      setSpecialtyResults([]);
+      setIsSearching(false);
+      return;
+    }
+
+    searchTimeout.current = setTimeout(async () => {
+      try {
+        setIsSearching(true);
+
+        const response = await fetch(
+          `/api/search/getsearchbystring?searchQuery=${encodeURIComponent(query)}`
+        );
+
+        if (!response.ok) {
+          throw new Error('Search request failed');
+        }
+
+        const result = await response.json();
+
+        if (result.success && result.data) {
+          // Collect specialties from the main speciality list
+          // and from doctors' nested doctorSpeciality data,
+          // matching the existing Marengo search behavior.
+          const specialties = [
+            ...(result.data.speciality || []),
+            ...(result.data.doctors || []).flatMap(
+              (doctor) => doctor?.doctorSpeciality || []
+            ),
+          ]
+            .filter((item) => item && item.title)
+            .map((item) => ({
+              ...item,
+              type: 'specialty',
+              title: item.title,
+              slug: item.slug || '',
+            }));
+
+          const procedures = (result.data.procedures || [])
+            .filter((item) => item && item.title)
+            .map((item) => ({
+              ...item,
+              type: 'procedure',
+              title: item.title,
+              slug: item.slug || '',
+            }));
+
+          // Show both specialties and treatments/procedures.
+          // Filter keyboard/API results by the beginning of the search query.
+          const combinedResults = [...specialties, ...procedures];
+
+          const normalizedQuery = query.toLowerCase();
+
+          const filteredResults = combinedResults
+            .filter((item) => item.title.toLowerCase().includes(normalizedQuery))
+            .sort((a, b) => {
+              const aStarts = a.title.toLowerCase().startsWith(normalizedQuery);
+              const bStarts = b.title.toLowerCase().startsWith(normalizedQuery);
+              if (aStarts && !bStarts) return -1;
+              if (!aStarts && bStarts) return 1;
+              return a.title.localeCompare(b.title);
+            });
+
+          // Remove duplicate results by type + slug/title.
+          const uniqueResults = Array.from(
+            new Map(
+              filteredResults.map((item) => [
+                `${item.type}-${(item.slug || item.title).trim().toLowerCase()}`,
+                item,
+              ])
+            ).values()
+          );
+
+          setSpecialtyResults(uniqueResults);
+        } else {
+          setSpecialtyResults([]);
+        }
+      } catch (error) {
+        console.error('Error fetching specialty search results:', error);
+        // Fallback to local dictionary & doctors from SPECIALTY_SEARCH_DATA
+        const queryLower = query.toLowerCase();
+        const dictItems = Object.values(SPECIALTY_SEARCH_DATA?.dictionary || {})
+          .flat()
+          .filter((title) => title.toLowerCase().includes(queryLower))
+          .map((title) => ({
+            title,
+            slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+            type: 'specialty',
+          }));
+
+        const docItems = (SPECIALTY_SEARCH_DATA?.doctors || [])
+          .filter(
+            (d) =>
+              d.name.toLowerCase().includes(queryLower) ||
+              d.specialty.toLowerCase().includes(queryLower)
+          )
+          .map((d) => ({
+            title: `${d.name} (${d.specialty})`,
+            slug: d.specialty.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+            type: 'doctor',
+          }));
+
+        setSpecialtyResults([...dictItems, ...docItems]);
+      } finally {
+        setIsSearching(false);
+      }
+    }, 400);
+
+    return () => {
+      if (searchTimeout.current) {
+        clearTimeout(searchTimeout.current);
+      }
+    };
+  }, [searchQuery]);
+
   // Handle typing via virtual keyboard buttons (appends letter to form full words or names)
   const handleKeyClick = (letter) => {
     setSelectedLetter(letter);
     setSearchQuery((prev) => prev + letter);
+    setSelectedSpecialtySlug('');
+    setIsDropdownOpen(true);
+
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const handleBackspace = () => {
+    setSearchQuery((prev) => {
+      const next = prev.slice(0, -1);
+      if (next.length === 0) {
+        setIsDropdownOpen(false);
+        setSelectedLetter('');
+      } else {
+        const lastChar = next[next.length - 1];
+        setSelectedLetter(lastChar ? lastChar.toUpperCase() : '');
+      }
+      return next;
+    });
+    setSelectedSpecialtySlug('');
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const handleSpace = () => {
+    setSearchQuery((prev) => prev + ' ');
+    setSelectedLetter('');
+    setSelectedSpecialtySlug('');
     setIsDropdownOpen(true);
     if (inputRef.current) {
       inputRef.current.focus();
@@ -42,8 +199,8 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
 
     if (val.trim().length > 0) {
       setIsDropdownOpen(true);
-      const firstChar = val.trim()[0].toUpperCase();
-      setSelectedLetter(firstChar);
+      const lastChar = val[val.length - 1];
+      setSelectedLetter(lastChar ? lastChar.toUpperCase() : '');
     } else {
       setIsDropdownOpen(false);
       setSelectedLetter('');
@@ -68,40 +225,54 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
   };
 
   const handleSelectSpecialty = (item) => {
-    if (onSelectCondition) {
-      onSelectCondition(item);
-    }
-    setSearchQuery(item);
+    const title = typeof item === 'string' ? item : item?.title || '';
+    const slug = typeof item === 'object' ? item?.slug || '' : '';
+    const type = typeof item === 'object' ? item?.type || 'specialty' : 'specialty';
+
+    setSearchQuery(title);
+    setSelectedSpecialtySlug(
+      slug ? `${type}:${slug}` : ''
+    );
     setIsDropdownOpen(false);
   };
 
-  // Filter Doctors and Specialties dynamically based on searchQuery
-  const cleanQuery = searchQuery.trim().toLowerCase();
+  const handleSearchClick = () => {
+    const query = searchQuery.trim();
 
-  const filteredDoctors = cleanQuery
-    ? (SPECIALTY_SEARCH_DATA.doctors || []).filter((doc) => {
-      return (
-        doc.name.toLowerCase().includes(cleanQuery) ||
-        doc.specialty.toLowerCase().includes(cleanQuery) ||
-        doc.department.toLowerCase().includes(cleanQuery) ||
-        doc.hospital.toLowerCase().includes(cleanQuery)
-      );
-    })
-    : [];
+    if (selectedSpecialtySlug) {
+      const [type, slug] = selectedSpecialtySlug.split(':');
 
-  const filteredSpecialties = cleanQuery
-    ? Object.entries(SPECIALTY_SEARCH_DATA.dictionary).flatMap(([letter, list]) =>
-      list.filter((item) => item.toLowerCase().includes(cleanQuery))
-    )
-    : [];
+      if (slug) {
+        window.location.href =
+          type === 'procedure'
+            ? `/procedure/${slug}`
+            : `/speciality/${slug}`;
+      }
 
-  const hasResults = filteredDoctors.length > 0 || filteredSpecialties.length > 0;
+      return;
+    }
 
-  // Exact 3 rows x 8 columns keyboard layout matching the reference design
+    if (query.length >= 1 && specialtyResults.length > 0) {
+      const firstResult = specialtyResults[0];
+
+      if (firstResult?.slug) {
+        window.location.href =
+          firstResult.type === 'procedure'
+            ? `/procedure/${firstResult.slug}`
+            : `/speciality/${firstResult.slug}`;
+      }
+    }
+  };
+
+  // Results are now fetched live from the Marengo search API
+  const hasResults = specialtyResults.length > 0;
+
+  // 4 rows x 8 columns keyboard layout covering all A-Z letters + Space & Backspace
   const keyboardRows = [
     ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
     ['I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'],
     ['Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X'],
+    ['Y', 'Z', 'SPACE', 'BACKSPACE'],
   ];
 
   return (
@@ -139,7 +310,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                         setIsDropdownOpen(true);
                       }
                     }}
-                    placeholder="Search for doctors, specialties..."
+                    placeholder="Search for specialties, treatments and procedures..."
                     className="w-full bg-white text-slate-800 text-sm sm:text-base pl-4 sm:pl-5 pr-11 py-3 sm:py-3.5 rounded-[8px] shadow-none border-none focus:outline-none! focus:ring-none! placeholder:text-slate-400 font-medium"
                   />
                   {searchQuery ? (
@@ -152,7 +323,15 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                       <X className="w-4 h-4" />
                     </button>
                   ) : null}
-                  <Search className="w-5 h-5 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <button
+                    type="button"
+                    onClick={handleSearchClick}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-slate-400 hover:text-[#034ea1] cursor-pointer transition-colors"
+                    aria-label="Search"
+                    title="Search"
+                  >
+                    <Search className="w-5 h-5" />
+                  </button>
                 </div>
 
                 {/* Instant Search Dropdown - Opens on top of input on mobile to prevent covering the keyboard, and below input on desktop */}
@@ -160,59 +339,69 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                   <div className="absolute left-0 right-0 bottom-full mb-2 lg:bottom-auto lg:top-full lg:mt-2 bg-white rounded-2xl shadow-2xl border border-slate-100 z-50 overflow-hidden animate-in fade-in-50 duration-150">
                     <div className="max-h-60 sm:max-h-72 overflow-y-auto divide-y divide-slate-100 py-1">
 
-                      {/* Doctors Section */}
-                      {filteredDoctors.length > 0 && (
+                      {/* API Loading */}
+                      {isSearching && (
+                        <div className="px-5 py-4 text-center text-sm text-slate-500">
+                          Searching specialties...
+                        </div>
+                      )}
+
+                      {/* Specialties Section */}
+                      {specialtyResults.some((item) => item.type === 'specialty') && (
                         <div className="py-2">
-                          <div className="px-5 py-1 text-xs font-bold text-[#0088CC] uppercase tracking-wider">
-                            Doctors
+                          <div className="px-5 py-1 text-xs font-bold text-[#0088CC] uppercase tracking-wider text-center">
+                            Specialties
                           </div>
+
                           <div className="mt-1">
-                            {filteredDoctors.map((doc) => (
-                              <div
-                                key={doc.name}
-                                onClick={() => handleSelectDoctor(doc)}
-                                className="px-5 py-2.5 hover:bg-sky-50/80 cursor-pointer transition-colors duration-150 flex items-center justify-between group"
-                              >
-                                <div>
-                                  <div className="text-sm font-bold text-slate-800 group-hover:text-[#003B73] transition-colors">
-                                    {doc.name}
-                                  </div>
-                                  <div className="text-xs text-slate-500 font-medium">
-                                    {doc.specialty}
-                                  </div>
+                            {specialtyResults
+                              .filter((item) => item.type === 'specialty')
+                              .map((item) => (
+                                <div
+                                  key={`specialty-${item._id || item.slug || item.title}`}
+                                  onClick={() => handleSelectSpecialty(item)}
+                                  className="px-5 py-2.5 hover:bg-sky-50/80 cursor-pointer transition-colors duration-150 flex items-center justify-between group"
+                                >
+                                  <span className="text-sm font-medium text-slate-700 group-hover:text-[#003B73] transition-colors">
+                                    {item.title}
+                                  </span>
+
+                                  <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#0088CC] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
                                 </div>
-                                <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#0088CC] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
-                              </div>
-                            ))}
+                              ))}
                           </div>
                         </div>
                       )}
 
-                      {/* Specialties & Treatments Section */}
-                      {filteredSpecialties.length > 0 && (
+                      {/* Treatments & Procedures Section */}
+                      {specialtyResults.some((item) => item.type === 'procedure') && (
                         <div className="py-2">
-                          <div className="px-5 py-1 text-xs font-bold text-[#0088CC] uppercase tracking-wider">
-                            Specialties & Treatments
+                          <div className="px-5 py-1 text-xs font-bold text-[#0088CC] uppercase tracking-wider text-center">
+                            Treatments & Procedures
                           </div>
+
                           <div className="mt-1">
-                            {filteredSpecialties.map((item) => (
-                              <div
-                                key={item}
-                                onClick={() => handleSelectSpecialty(item)}
-                                className="px-5 py-2.5 hover:bg-sky-50/80 cursor-pointer transition-colors duration-150 flex items-center justify-between group"
-                              >
-                                <span className="text-sm font-medium text-slate-700 group-hover:text-[#003B73] transition-colors">
-                                  {item}
-                                </span>
-                                <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#0088CC] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
-                              </div>
-                            ))}
+                            {specialtyResults
+                              .filter((item) => item.type === 'procedure')
+                              .map((item) => (
+                                <div
+                                  key={`procedure-${item._id || item.slug || item.title}`}
+                                  onClick={() => handleSelectSpecialty(item)}
+                                  className="px-5 py-2.5 hover:bg-sky-50/80 cursor-pointer transition-colors duration-150 flex items-center justify-between group"
+                                >
+                                  <span className="text-sm font-medium text-slate-700 group-hover:text-[#003B73] transition-colors">
+                                    {item.title}
+                                  </span>
+
+                                  <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#0088CC] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
+                                </div>
+                              ))}
                           </div>
                         </div>
                       )}
 
                       {/* No Results Found */}
-                      {!hasResults && (
+                      {!isSearching && !hasResults && (
                         <div className="px-5 py-8 text-center text-sm text-slate-500">
                           <p className="font-semibold text-slate-700">No matches found for "{searchQuery}"</p>
                           <p className="text-xs text-slate-400 mt-1">Try searching another doctor or specialty name.</p>
@@ -226,10 +415,39 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
 
             {/* Right Column: Exact Keyboard Design Matching User Reference Image */}
             <div className="bg-[#1A549F] rounded-lg p-3 sm:p-4 lg:p-6 text-white shadow-lg border border-[#1d5ca8]">
-              <div className="space-y-3 sm:space-y-3.5">
+              <div className="space-y-2.5 sm:space-y-3 md:space-y-3.5">
                 {keyboardRows.map((row, rowIndex) => (
                   <div key={rowIndex} className="grid grid-cols-8 gap-2 sm:gap-2 md:gap-3">
-                    {row.map((letter) => {
+                    {row.map((keyItem) => {
+                      if (keyItem === 'SPACE') {
+                        return (
+                          <button
+                            key="SPACE"
+                            type="button"
+                            onClick={handleSpace}
+                            className="col-span-4 h-full rounded-[8px] md:rounded-xl text-[12px] sm:text-[13px] md:text-[14px] font-bold tracking-wider flex items-center border-2! border-white/40! justify-center transition-all duration-150 cursor-pointer select-none backdrop-blur-sm bg-white/15 hover:bg-white/25 active:scale-95 text-white/90 hover:text-white border border-white/20 shadow-[inset_5px_-5px_15px_rgba(255,255,255,0.35),_5px_5px_5px_rgba(0,0,0,0.12)]"
+                          >
+                            SPACE
+                          </button>
+                        );
+                      }
+
+                      if (keyItem === 'BACKSPACE') {
+                        return (
+                          <button
+                            key="BACKSPACE"
+                            type="button"
+                            onClick={handleBackspace}
+                            className="col-span-2 h-full rounded-[8px] md:rounded-xl flex items-center border-2! border-white/40! justify-center transition-all duration-150 cursor-pointer select-none backdrop-blur-sm bg-white/15 hover:bg-white/25 active:scale-95 text-white border border-white/20 shadow-[inset_5px_-5px_15px_rgba(255,255,255,0.35),_5px_5px_5px_rgba(0,0,0,0.12)]"
+                            aria-label="Backspace"
+                            title="Backspace"
+                          >
+                            <Delete className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                          </button>
+                        );
+                      }
+
+                      const letter = keyItem;
                       const isSelected = selectedLetter === letter;
                       return (
                         <button

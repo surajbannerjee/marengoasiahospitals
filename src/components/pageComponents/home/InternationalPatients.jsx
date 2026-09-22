@@ -48,7 +48,7 @@ const AnimatedCounter = ({ target, suffix = '', isVisible }) => {
   );
 };
 
-export const InternationalPatients = ({ onOpenAppointment }) => {
+export const InternationalPatients = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-50px' });
   const [hoveredCountry, setHoveredCountry] = useState(null);
@@ -111,9 +111,6 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
                         whileTap={{ scale: 0.95 }}
                         onHoverStart={() => setHoveredCountry(country.name)}
                         onHoverEnd={() => setHoveredCountry(null)}
-                        onClick={() => {
-                          window.location.href = 'https://marengoasiahospitals.com/internationalpatient';
-                        }}
                         className="w-12 h-12 sm:w-13 sm:h-13 rounded-full cursor-pointer flex items-center justify-center p-0.5 bg-white shadow-sm hover:shadow-md border border-slate-200/80 transition-shadow overflow-hidden"
                       >
                         <img
@@ -139,7 +136,7 @@ export const InternationalPatients = ({ onOpenAppointment }) => {
               <div className="flex flex-row flex-wrap items-center flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 w-full">
                 {/* Know More Button */}
                 <a
-                  href="https://marengoasiahospitals.com/internationalpatient"
+                  href="https://marengoasiahospitals.com/internationalpatients"
                   className=" sm:flex-initial min-w-fit px-3 sm:px-8 py-2 sm:py-3 bg-[#1E4E98] hover:bg-[#163B75] text-white font-semibold text-sm sm:text-[15px] rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer text-center"
                 >
                   Know More

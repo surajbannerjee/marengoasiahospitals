@@ -5,7 +5,7 @@ import { SITE_CONFIG } from '../../../constants/config';
 import { cn } from '../../../util/cn';
 import { IMAGES } from '../../../constants/images';
 
-export const QuickActions = ({ onOpenAppointment }) => {
+export const QuickActions = () => {
   const tabs = [
     {
       id: 'doctor',
@@ -14,7 +14,7 @@ export const QuickActions = ({ onOpenAppointment }) => {
       fullTitle: 'Find Doctor',
       icon: IMAGES.svgs.findDoctor,
       bg: IMAGES.svgs.shapeOrangeSvg,
-      href: '#doctors',
+      href: 'https://marengoasiahospitals.com/doctor',
       textColor: "text-[#ffffff]",
     },
     {
@@ -25,7 +25,7 @@ export const QuickActions = ({ onOpenAppointment }) => {
       desc: '30+ Super-speciality departments',
       icon: IMAGES.svgs.ourSpecialties,
       bg: IMAGES.svgs.shapeBlueSvg,
-      href: '#specialties',
+      href: 'https://marengoasiahospitals.com/speciality',
       textColor: "text-[#ffffff]",
     },
     {
@@ -36,7 +36,7 @@ export const QuickActions = ({ onOpenAppointment }) => {
       desc: 'Preventive full-body packages',
       bg: IMAGES.svgs.shapeGreenSvg,
       icon: IMAGES.svgs.bookAppointment,
-      href: '#packages',
+      href: 'https://marengoasiahospitals.com/',
       textColor: "text-[#ffffff]",
     },
     {
@@ -46,7 +46,7 @@ export const QuickActions = ({ onOpenAppointment }) => {
       fullTitle: 'Our Hospital Locations',
       icon: IMAGES.svgs.ourHospitalLocations,
       bg: IMAGES.svgs.shapeGraySvg,
-      href: '#hospitals',
+      href: 'https://marengoasiahospitals.com/',
       textColor: "text-[#686868]",
     },
   ];

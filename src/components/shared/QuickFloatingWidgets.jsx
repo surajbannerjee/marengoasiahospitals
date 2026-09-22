@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, MessageCircle, Siren, ArrowUp } from 'lucide-react';
+import { Phone, MessageCircle, Siren, ArrowUp, Calendar } from 'lucide-react';
 import { SITE_CONFIG } from '../../constants/config';
 
-export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
+export const QuickFloatingWidgets = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -107,21 +107,19 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
           {/* Emergency Column */}
           <a
             href="tel:18003099999"
-            className="bg-[#FF3333] active:bg-[#E60000] py-2.5 px-1 flex flex-col items-center justify-center transition-colors cursor-pointer"
+            className="bg-[#FF3333] active:bg-[#E60000] py-3 px-1.5 flex flex-col items-center justify-center transition-colors cursor-pointer"
           >
-            <Siren className="w-4 h-4 text-white animate-pulse mb-0.5" />
-            <span className="text-[11px] font-bold uppercase tracking-wider leading-none">Emergency</span>
-            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight">1800 309 9999</span>
+            <Siren className="w-4.5 h-4.5 text-white animate-pulse mb-1" />
+            <span className="text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-wider leading-none">Emergency</span>
           </a>
 
-          {/* Helpline Support Column */}
+          {/* Book Appointment Column */}
           <a
-            href="tel:18003099999"
-            className="bg-[#1D4ED8] active:bg-[#1E40AF] py-2.5 px-1 flex flex-col items-center justify-center transition-colors cursor-pointer border-x border-white/15"
+            href="https://marengoasiahospitals.com/bookanappointment"
+            className="bg-[#1D4ED8] active:bg-[#1E40AF] py-3 px-1.5 flex flex-col items-center justify-center transition-colors cursor-pointer border-x border-white/15"
           >
-            <Phone className="w-4 h-4 text-white mb-0.5" />
-            <span className="text-[11px] font-bold uppercase tracking-wider leading-none truncate w-full">Helpline Support</span>
-            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight truncate w-full">1800-309-9999</span>
+            <Calendar className="w-4.5 h-4.5 text-white mb-1" />
+            <span className="text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-wider leading-none truncate w-full"> Appointment</span>
           </a>
 
           {/* Chat with Us Column */}
@@ -129,11 +127,10 @@ export const QuickFloatingWidgets = ({ onOpenAppointment }) => {
             href="https://wa.me/9118003099999"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#F97316] active:bg-[#EA580C] py-2.5 px-1 flex flex-col items-center justify-center transition-colors cursor-pointer"
+            className="bg-[#F97316] active:bg-[#EA580C] py-3 px-1.5 flex flex-col items-center justify-center transition-colors cursor-pointer"
           >
-            <MessageCircle className="w-4 h-4 text-white mb-0.5" />
-            <span className="text-[11px] font-bold uppercase tracking-wider leading-none">Chat with Us</span>
-            <span className="text-[10px] font-extrabold mt-0.5 tracking-tight">1800 309 9999</span>
+            <MessageCircle className="w-4.5 h-4.5 text-white mb-1" />
+            <span className="text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-wider leading-none">Chat with Us</span>
           </a>
         </div>
       </div>

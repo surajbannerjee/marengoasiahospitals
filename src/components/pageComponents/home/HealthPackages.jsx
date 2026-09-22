@@ -80,7 +80,9 @@ export const HealthPackages = () => {
           >
             {loopCards.map((pkg, index) => (
               <SwiperSlide key={`${pkg.id}-${index}`} className="h-auto">
-                <PackageCard packageItem={pkg} />
+                <PackageCard
+                  packageItem={pkg}
+                />
               </SwiperSlide>
             ))}
           </Swiper>

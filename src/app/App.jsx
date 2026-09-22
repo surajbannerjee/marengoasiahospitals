@@ -5,7 +5,7 @@ import Home from '../pages/Home';
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/demo">
       <Routes>
         {/* MainLayout provides global Header, Footer, Widgets & Modal to all child pages */}
         <Route path="/" element={<MainLayout />}>
