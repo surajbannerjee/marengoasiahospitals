@@ -455,16 +455,12 @@ export const INTERNATIONAL_PATIENTS_DATA = {
     { target: 1000, prefix: '', suffix: '+', value: '1,000+', label: 'Doctors' },
   ],
   countries: [
+    { code: 'africa', name: 'Africa', image: IMAGES.countries.africa },
     { code: 'bd', name: 'Bangladesh', image: IMAGES.countries.bd },
-    { code: 'np', name: 'Nepal', image: IMAGES.countries.np },
-    { code: 'kz', name: 'Kazakhstan', image: IMAGES.countries.kz },
     { code: 'iq', name: 'Iraq', image: IMAGES.countries.iq },
-    { code: 'om', name: 'Oman', image: IMAGES.countries.om },
-    { code: 'ug', name: 'Uganda', image: IMAGES.countries.ug },
-    { code: 'tj', name: 'Tajikistan', image: IMAGES.countries.tj },
+    { code: 'uz', name: 'Uzbekistan', image: IMAGES.countries.uz },
+    { code: 'kz', name: 'Kazakhstan', image: IMAGES.countries.kz },
     { code: 'mm', name: 'Myanmar', image: IMAGES.countries.mm },
-    { code: 'gb', name: 'United Kingdom', image: IMAGES.countries.gb },
-    { code: 'us', name: 'United States', image: IMAGES.countries.us },
   ],
   features: [
     'Complimentary Medical Opinion & Quotation within 24 Hours',
@@ -570,7 +566,7 @@ export const PATIENT_STORIES = [
     rating: 5,
     quote: '"From the doctors to the nursing staff, everyone at Marengo Asia Hospitals was caring, attentive and professional. The treatment was explained clearly, and we felt supported throughout our journey. We are truly grateful for the compassionate care we received."',
     patientName: 'Dipshita Dhar',
-    badgeIcon: IMAGES.testimonials.doublesmiling,
+    badgeIcon: IMAGES.testimonials.smiling,
   },
   {
     id: 'video-2',
@@ -578,7 +574,7 @@ export const PATIENT_STORIES = [
     image: IMAGES.testimonials.patient2,
     videoUrl: 'https://youtu.be/Bv-J4XSRLx4?si=iGzlpHxM2WtVcvDI',
     hasVideo: true,
-    badgeIcon: IMAGES.testimonials.star,
+    badgeIcon: IMAGES.testimonials.smiling,
   },
   {
     id: 'quote-2',
@@ -587,7 +583,7 @@ export const PATIENT_STORIES = [
     rating: 5,
     quote: '"From the moment we arrived, the entire team made us feel comfortable and cared for. The doctors took the time to explain every step of the treatment, while the nursing staff was kind, attentive and supportive throughout."',
     patientName: 'Shibnath Das',
-    badgeIcon: IMAGES.testimonials.doublesmiling,
+    badgeIcon: IMAGES.testimonials.smiling,
   },
   {
     id: 'video-3',
@@ -604,7 +600,7 @@ export const PATIENT_STORIES = [
     rating: 5,
     quote: '"The precision of the treatment and constant reassurance from the senior doctors gave us complete peace of mind. Recovery was remarkably fast!"',
     patientName: 'Rajendra Prasad',
-    badgeIcon: IMAGES.testimonials.doublesmiling,
+    badgeIcon: IMAGES.testimonials.smiling,
   },
 ];
 
@@ -801,26 +797,20 @@ export const FOOTER_SECTIONS = [
     column: 1,
     sections: [
       {
-        title: 'Patient Care',
+        title: 'For Patients',
         links: [
-          { label: 'Find A Doctor', href: 'https://marengoasiahospitals.com/doctor' },
+          { label: 'Book Appointment', href: 'https://marengoasiahospitals.com/bookanappointment' },
+          { label: 'Find a Doctor', href: 'https://marengoasiahospitals.com/doctor' },
+          { label: 'Specilities', href: 'https://marengoasiahospitals.com/speciality' },
+          { label: 'Treatments', href: 'https://marengoasiahospitals.com/treatment' },
+          { label: 'Procedure', href: 'https://marengoasiahospitals.com/procedure' },
+          { label: 'Disease', href: 'https://marengoasiahospitals.com/disease' },
+          { label: 'Cutting Edge Technologies', href: 'https://marengoasiahospitals.com/technologies' },
+          { label: 'Health Packages', href: 'https://marengoasiahospitals.com/packages' },
           { label: 'Patient Testimonials', href: 'https://marengoasiahospitals.com/patientstories' },
-          { label: 'Doctor Bytes', href: 'https://marengoasiahospitals.com/doctorvideos' },
-        ],
-      },
-      {
-        title: 'International Patients',
-        links: [
-          { label: 'Specialities', href: 'https://marengoasiahospitals.com/speciality' },
-          { label: 'Our Doctors', href: 'https://marengoasiahospitals.com/doctor' },
-          { label: 'Patient Stories', href: 'https://marengoasiahospitals.com/patientstories' },
-          { label: 'International Patient Process', href: 'https://marengoasiahospitals.com/internationalpatient' },
-        ],
-      },
-      {
-        title: 'Research and Academics',
-        links: [
-          { label: 'DNB/FNB Programmes', href: 'https://marengoasiahospitals.com/static/web/img/DNB.pdf' },
+          { label: 'Doctors Videos', href: 'https://marengoasiahospitals.com/doctorvideos' },
+          { label: 'Health Blogs', href: 'https://marengoasiahospitals.com/blogs' },
+          { label: 'News & Events', href: 'https://marengoasiahospitals.com/news-events' },
         ],
       },
     ],
@@ -829,25 +819,18 @@ export const FOOTER_SECTIONS = [
     column: 2,
     sections: [
       {
-        title: 'About Us',
+        title: 'Centres of Excellence',
         links: [
-          { label: 'Know Us', href: 'https://marengoasiahospitals.com/about-us' },
-          { label: 'Marengo Pledge', href: 'https://marengoasiahospitals.com/marengo-pledge' },
-          { label: 'Message from MD desk', href: 'https://marengoasiahospitals.com/md-desk' },
-          { label: 'Marengovation', href: 'https://marengoasiahospitals.com/marengovation' },
-          { label: 'ESG', href: 'https://marengoasiahospitals.com/esg' },
-          { label: 'Foundation', href: 'https://marengoasiahospitals.com/foundation' },
-        ],
-      },
-      {
-        title: 'Legal',
-        links: [
-          { label: 'Privacy Policy', href: 'https://marengoasiahospitals.com/privacypolicy' },
-          { label: 'Terms And Conditions', href: 'https://marengoasiahospitals.com/termsandconditions' },
-          { label: 'Disclaimer', href: 'https://marengoasiahospitals.com/disclaimer' },
-          { label: 'DPDP Act', href: 'https://marengoasiahospitals.com/dpdp-act' },
-          { label: 'Legal Entities', href: 'https://marengoasiahospitals.com/legal-entities' },
-          { label: 'Environment Compliance', href: 'https://marengoasiahospitals.com/environment-compliance' },
+          { label: 'Cardiac Sciences', href: 'https://marengoasiahospitals.com/speciality/cardiac-sciences' },
+          { label: 'Oncosciences', href: 'https://marengoasiahospitals.com/speciality/medical-oncology' },
+          { label: 'Neurosciences', href: 'https://marengoasiahospitals.com/speciality/neurosciences' },
+          { label: 'Gastrosciences', href: 'https://marengoasiahospitals.com/speciality/gastroenterology' },
+          { label: 'Orthopaedics and Joint Replacement', href: 'https://marengoasiahospitals.com/speciality/orthopaedics-and-joint-replacement' },
+          { label: 'Renal Sciences', href: 'https://marengoasiahospitals.com/speciality/renal-sciences' },
+          { label: 'Liver Transplant', href: 'https://marengoasiahospitals.com/speciality/liver-transplant-and-biliary-sciences' },
+          { label: 'Lung Transplant', href: 'https://marengoasiahospitals.com/speciality/lung-transplant' },
+          { label: 'Bone Marrow Transplant', href: 'https://marengoasiahospitals.com/speciality/bone-marrow-transplant' },
+          { label: 'More +', href: 'https://marengoasiahospitals.com/speciality' },
         ],
       },
     ],
@@ -856,22 +839,14 @@ export const FOOTER_SECTIONS = [
     column: 3,
     sections: [
       {
-        title: 'Marengo Asia Updates',
+        title: 'Our Hospitals',
         links: [
-          { label: 'Print', href: 'https://marengoasiahospitals.com/marengoupdates' },
-          { label: 'Digital', href: 'https://marengoasiahospitals.com/marengoupdates' },
-          { label: 'Electronic', href: 'https://marengoasiahospitals.com/marengoupdates' },
-          { label: 'Event', href: 'https://marengoasiahospitals.com/marengoupdates' },
-          { label: 'Blogs', href: 'https://marengoasiahospitals.com/blogs' },
-        ],
-      },
-      {
-        title: 'Get in Touch',
-        links: [
-          { label: 'Post A Query', href: 'https://marengoasiahospitals.com/contactus#contactusPatients' },
-          { label: 'Contact Us', href: 'https://marengoasiahospitals.com/contactus#contactusPatients' },
-          { label: 'Book An Appointment', href: 'https://marengoasiahospitals.com/bookanappointment' },
-          { label: 'Careers', href: 'https://marengoasiahospitals.com/career' },
+          { label: 'Marengo CIMS Hospital, Ahmedabad', href: 'https://marengoasiahospitals.com/hospital/marengo-cims-hospital-ahmedabad' },
+          { label: 'Marengo Asia Hospitals, Faridabad', href: 'https://marengoasiahospitals.com/hospital/marengo-asia-hospital-faridabad' },
+          { label: 'Marengo Asia Hospitals, Gurugram', href: 'https://marengoasiahospitals.com/hospital/marengo-asia-hospitals-gurugram' },
+          { label: 'Marengo Asia Hospital, Surat', href: 'https://marengoasiahospitals.com/hospital/sunshine-global-marengo-asia-hospital' },
+          { label: 'Marengo Asia Hospital, Vadodara', href: 'https://marengoasiahospitals.com/hospital/sunshine-global-hospital-vadodara' },
+          { label: 'Marengo Asia Hospital, Saudi Arabia', href: 'https://marengoasiahospitals.com/hospital/specialized-najran-hospital' },
         ],
       },
     ],
@@ -880,14 +855,50 @@ export const FOOTER_SECTIONS = [
     column: 4,
     sections: [
       {
-        title: 'Our Hospitals',
+        title: 'Quick Links',
         links: [
-          { label: 'Marengo CIMS Hospital, Ahmedabad', href: 'https://marengoasiahospitals.com/hospital/marengo-cims-hospital-ahmedabad' },
-          { label: 'Marengo Asia Hospitals, Gurugram', href: 'https://marengoasiahospitals.com/hospital/marengo-asia-hospitals-gurugram' },
-          { label: 'Marengo Asia Hospitals, Faridabad', href: 'https://marengoasiahospitals.com/hospital/marengo-asia-hospital-faridabad' },
-          { label: 'Marengo Asia Hospital, Surat', href: 'https://marengoasiahospitals.com/hospital/sunshine-global-marengo-asia-hospital' },
-          { label: 'Marengo Asia Hospital, Vadodara', href: 'https://marengoasiahospitals.com/hospital/sunshine-global-hospital-vadodara' },
-          { label: 'Marengo Asia Hospital, Saudi Arabia', href: 'https://marengoasiahospitals.com/hospital/specialized-najran-hospital' },
+          { label: 'About Us', href: 'https://marengoasiahospitals.com/about-us' },
+          { label: 'Contact Us', href: 'https://marengoasiahospitals.com/contactus' },
+          { label: 'Message from MD Desk', href: 'https://marengoasiahospitals.com/md-desk' },
+          { label: 'Marengo Pledge', href: 'https://marengoasiahospitals.com/marengo-pledge' },
+          { label: 'Marengovation', href: 'https://marengoasiahospitals.com/marengovation' },
+          { label: 'Marengo Asia Hospitals Foundation', href: 'https://marengoasiahospitals.com/foundation' },
+          { label: 'ESG', href: 'https://marengoasiahospitals.com/esg' },
+          { label: 'Academics & Research', href: 'https://marengoasiahospitals.com/academics-research' },
+          { label: 'Careers', href: 'https://marengoasiahospitals.com/career' },
+        ],
+      },
+    ],
+  },
+  {
+    column: 5,
+    sections: [
+      {
+        title: 'International Patient',
+        links: [
+          { label: 'International Patient Process', href: 'https://marengoasiahospitals.com/internationalpatient' },
+          { label: 'Key Doctors', href: 'https://marengoasiahospitals.com/doctor' },
+          { label: 'Get Visa Invitation Letter (VIL)', href: 'https://marengoasiahospitals.com/vil-request' },
+        ],
+      },
+    ],
+  },
+  {
+    column: 6,
+    sections: [
+      {
+        title: 'Compliance',
+        links: [
+          { label: 'Privacy Policy', href: 'https://marengoasiahospitals.com/privacypolicy' },
+          { label: 'Terms & Conditions', href: 'https://marengoasiahospitals.com/termsandconditions' },
+          { label: 'Biomedical Waste Report', href: 'https://marengoasiahospitals.com/biomedical-waste-report' },
+          { label: 'NPPA Pricing', href: 'https://marengoasiahospitals.com/nppa-pricing' },
+          { label: 'Refund & Cancellations', href: 'https://marengoasiahospitals.com/refund-cancellation-policy' },
+          { label: 'Transplant', href: 'https://marengoasiahospitals.com/transplant-compliance' },
+          { label: 'Legal', href: 'https://marengoasiahospitals.com/legal-entities' },
+          { label: 'Disclaimer', href: 'https://marengoasiahospitals.com/disclaimer' },
+          { label: 'PCPNDT', href: 'https://marengoasiahospitals.com/pcpndt' },
+          { label: 'DPDP Compliance', href: 'https://marengoasiahospitals.com/dpdp-act' },
         ],
       },
     ],

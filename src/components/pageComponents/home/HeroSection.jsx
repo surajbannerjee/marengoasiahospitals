@@ -264,7 +264,7 @@ export const HeroSection = () => {
         <img
           src={IMAGES.hero.home}
           alt="Trusted Care, Every Step - Marengo Asia Hospitals"
-          className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
+          className="w-full h-full object-cover object-right scale-100 transition-transform duration-1000 ease-out"
         />
       </div>
       <div className="absolute inset-0 z-0 md:hidden block">

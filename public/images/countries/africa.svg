@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <clipPath id="circleClip_africa">
+      <circle cx="32" cy="32" r="30"/>
+    </clipPath>
+    <linearGradient id="africaBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#006633"/>
+      <stop offset="100%" stop-color="#004D26"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="#006633" stroke="#CBD5E1" stroke-width="1.5"/>
+  <g clip-path="url(#circleClip_africa)">
+    <rect width="64" height="64" fill="url(#africaBg)"/>
+    <!-- African Union Style Star / Ray Ring -->
+    <circle cx="32" cy="32" r="22" fill="none" stroke="#FCD116" stroke-width="1" stroke-dasharray="2.5 2.5" opacity="0.8"/>
+    <!-- Stylized Africa Continent Silhouette in Gold -->
+    <path d="M22 16 C25 14 29 13 32 13 C35 13 38 15 41 18 C43 21 44 24 48 27 C46 29 43 31 43 34 C42 37 40 41 39 44 C37 47 35 49 33 50 C31 49 29 45 28 41 C28 37 27 34 25 33 C23 32 19 31 16 28 C15 25 16 22 18 19 C20 17 21 16 22 16 Z" fill="#FCD116"/>
+    <!-- Madagascar Island -->
+    <ellipse cx="43.5" cy="41" rx="1.6" ry="4" transform="rotate(22 43.5 41)" fill="#FCD116"/>
+  </g>
+</svg>

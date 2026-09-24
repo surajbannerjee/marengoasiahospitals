@@ -6,18 +6,18 @@ import { FOOTER_SECTIONS } from '../../constants/config';
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#EAF2F8] text-[#555555] pt-12 sm:pt-14 md:pt-16 pb-6 select-none">
+    <footer className="bg-[#EAF2F8] text-[#555555] pt-6 min-[360px]:pt-7 min-[400px]:pt-8 sm:pt-9 md:pt-11 lg:pt-14 xl:pt-16 2xl:pt-[80px] 3xl:pt-[70px] 4k:pt-[85px] pb-6 select-none">
       <Container>
-        {/* 2 Columns on mobile (left 1 right 1), 4 Columns on desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 sm:gap-x-8 lg:gap-10 gap-y-6 sm:gap-y-8 lg:gap-y-10 pb-8 sm:pb-6 text-left">
+        {/* 2 Columns on mobile, 3 Columns on tablet, 6 Columns on desktop */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 sm:gap-x-6 lg:gap-x-4 xl:gap-x-6 gap-y-6 sm:gap-y-8 pb-8 sm:pb-6 text-left">
           {FOOTER_SECTIONS.map((colGroup, colIdx) => (
             <div key={colIdx} className="space-y-5 sm:space-y-6 lg:space-y-8">
               {colGroup.sections.map((sec, secIdx) => (
                 <div key={secIdx}>
-                  <h4 className="text-[13px] sm:text-[15px] lg:text-[16px] font-bold text-[#224F9F] mb-2 sm:mb-3">
+                  <h4 className="text-[13px] sm:text-[14px] lg:text-[15px] font-bold text-[#224F9F] mb-2 sm:mb-3 leading-snug">
                     {sec.title}
                   </h4>
-                  <ul className="space-y-1.5 sm:space-y-2 text-[11px] sm:text-xs lg:text-[13px] text-[#666666]">
+                  <ul className="space-y-1.5 sm:space-y-2 text-[11px] sm:text-xs lg:text-[12px] xl:text-[13px] text-[#666666] leading-snug">
                     {sec.links.map((link, linkIdx) => (
                       <li key={linkIdx}>
                         <a

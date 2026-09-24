@@ -34,7 +34,7 @@ export const NewsEvents = () => {
   const renderSlides = slides.length === 1 ? [...slides, ...slides] : slides;
 
   return (
-    <section id="news" className="py-8 sm:py-12 md:py-16 lg:py-20 bg-white relative overflow-hidden">
+    <section id="news" className="py-6 min-[360px]:py-7 min-[400px]:py-8 sm:py-9 md:py-11 lg:py-14 xl:py-16 2xl:py-[80px] 3xl:py-[70px] 4k:py-[85px] bg-white relative overflow-hidden">
       <Container>
         {/* Section Header */}
         <div className="flex flex-col items-center justify-center text-center">

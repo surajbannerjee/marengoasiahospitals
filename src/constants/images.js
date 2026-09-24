@@ -91,6 +91,7 @@ export const IMAGES = {
     et: '/demo/images/countries/et.svg',
     rw: '/demo/images/countries/rw.svg',
     cm: '/demo/images/countries/cm.svg',
+    africa: '/demo/images/countries/africa.svg',
   },
   common: {
     worldMap: '/demo/images/common/world-map.svg',

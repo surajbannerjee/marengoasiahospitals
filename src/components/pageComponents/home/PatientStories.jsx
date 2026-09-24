@@ -26,7 +26,7 @@ export const PatientStories = () => {
     : [...PATIENT_STORIES, ...PATIENT_STORIES];
 
   return (
-    <div className='py-20 bg-[#EAEAEA]'>
+    <div className='py-10 bg-[#EAEAEA]'>
       <section id="stories" className="py-6 min-[360px]:py-7 min-[400px]:py-8 sm:py-9 md:py-11 lg:py-14 xl:py-16 2xl:py-[100px] 3xl:py-[100px] 4k:py-[100px] bg-[#EAEAEA] relative">
 
         {/* Central White Backdrop Card Shape */}

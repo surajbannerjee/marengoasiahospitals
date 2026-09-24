@@ -53,11 +53,15 @@ export const InternationalPatients = () => {
   const isInView = useInView(sectionRef, { once: true, margin: '-50px' });
   const [hoveredCountry, setHoveredCountry] = useState(null);
 
+  const countrySlides = INTERNATIONAL_PATIENTS_DATA.countries.length <= 6
+    ? [...INTERNATIONAL_PATIENTS_DATA.countries, ...INTERNATIONAL_PATIENTS_DATA.countries]
+    : INTERNATIONAL_PATIENTS_DATA.countries;
+
   return (
     <section
       id="international"
       ref={sectionRef}
-      className="py-10 sm:py-14 md:py-16 lg:py-20 bg-[#EEF2F6] relative overflow-hidden"
+      className="py-6 min-[360px]:py-7 min-[400px]:py-8 sm:py-9 md:py-11 lg:py-14 xl:py-16 2xl:py-[80px] 3xl:py-[70px] 4k:py-[85px] relative overflow-hidden bg-[#EEF2F6]"
     >
       <Container>
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 xl:gap-14 items-center">
@@ -77,7 +81,7 @@ export const InternationalPatients = () => {
               </p>
             </div>
 
-            {/* 3. 10 Country Flags Automatic Carousel with Smooth Hover Tooltips */}
+            {/* 3. Country Flags Automatic Carousel with Smooth Hover Tooltips */}
             <div className="order-3 lg:order-none mt-4 sm:mt-6 lg:mt-8 w-full max-w-[340px] sm:max-w-[420px] lg:max-w-full overflow-hidden mx-auto lg:mx-0">
               <Swiper
                 modules={[Autoplay]}
@@ -99,7 +103,7 @@ export const InternationalPatients = () => {
                 }}
                 className="w-full py-2 select-none"
               >
-                {INTERNATIONAL_PATIENTS_DATA.countries.map((country, idx) => (
+                {countrySlides.map((country, idx) => (
                   <SwiperSlide key={`flag-${country.code}-${idx}`} className="flex justify-center">
                     <div className="relative group py-1">
                       <motion.div

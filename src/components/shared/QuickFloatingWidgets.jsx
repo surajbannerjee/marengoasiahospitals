@@ -55,7 +55,7 @@ export const QuickFloatingWidgets = () => {
       {/* ========================================================================= */}
       {/* 1. DESKTOP & TABLET: Fixed Right Edge Floating Stack (Slides Out on Hover) */}
       {/* ========================================================================= */}
-      <div className="hidden sm:flex fixed right-0 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-2.5 font-sans pointer-events-none">
+      <div className="hidden sm:flex fixed right-0 top-1/2 -translate-y-1/2 z-70 flex-col items-end gap-2.5 font-sans pointer-events-none">
         {widgets.map((widget) => {
           const Icon = widget.icon;
           return (
@@ -78,9 +78,6 @@ export const QuickFloatingWidgets = () => {
               <div className="flex flex-col justify-center whitespace-nowrap">
                 <span className="text-xs font-bold uppercase tracking-wide leading-tight">
                   {widget.label}
-                </span>
-                <span className="text-xs font-extrabold tracking-wide text-white/95 mt-0.5">
-                  {widget.number}
                 </span>
               </div>
             </a>
