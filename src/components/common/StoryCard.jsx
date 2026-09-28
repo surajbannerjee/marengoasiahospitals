@@ -62,12 +62,12 @@ export const StoryCard = ({ story, onPlay, className = '' }) => {
     return (
       <div
         className={cn(
-          'relative w-full h-[320px] sm:h-[350px] md:h-[370px] rounded-[22px] sm:rounded-3xl overflow-visible select-none group',
+          'TestimonialCard w-full h-[320px] sm:h-[350px] md:h-[370px] rounded-[22px] sm:rounded-3xl overflow-visible select-none group transition-all duration-500 ease-in-out',
           className
         )}
       >
         {/* Main Video / Poster Container */}
-        <div className="relative w-full h-full rounded-[22px] sm:rounded-3xl overflow-hidden shadow-xs border border-slate-200/60 bg-slate-900">
+        <div className=" w-full h-full rounded-[22px] sm:rounded-3xl overflow-hidden shadow-xs border border-slate-200/60 bg-slate-900 ">
           {isPlaying ? (
             <iframe
               src={videoSrc}
@@ -121,7 +121,7 @@ export const StoryCard = ({ story, onPlay, className = '' }) => {
   return (
     <div
       className={cn(
-        'relative w-full h-[320px] sm:h-[350px] md:h-[370px] rounded-[22px] sm:rounded-3xl p-5 sm:p-7 flex flex-col justify-between select-none shadow-xs border border-slate-100/80 transition-shadow',
+        'TestimonialCard w-full h-[320px] sm:h-[350px] md:h-[370px] rounded-[22px] sm:rounded-3xl p-5 sm:p-7 flex flex-col justify-between select-none shadow-xs border border-slate-100/80 transition-shadow transition-all duration-500 ease-in-out',
         className
       )}
       style={{ backgroundColor: story.cardBg || '#FFF9E6' }}

@@ -136,6 +136,7 @@
   width: 22px;
   border-radius: 4px;
 }
+
 /* Continuous Rail Marquee Animation */
 @keyframes continuousRail {
   0% {
@@ -157,3 +158,15 @@
 /* .animate-continuous-rail:hover {
   animation-play-state: paused;
 } */
+.TestimonialCardSlider .swiper-slide .TestimonialCard {
+  scale: 0.9;
+  position: relative;
+}
+.TestimonialCardSlider .swiper-wrapper {
+    padding: 20px 0;
+}
+
+.TestimonialCardSlider .swiper-slide.swiper-slide-active .TestimonialCard {
+  scale: 1;
+  box-shadow: 0px 0px 10px rgba(0, 102, 255, 0.8) !important;
+}

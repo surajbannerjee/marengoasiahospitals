@@ -61,56 +61,44 @@ export const PatientStories = () => {
         <div className="relative z-10 w-full overflow-hidden -mt-4 sm:-mt-6 pb-6 select-none">
 
           <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
+            modules={[Navigation, Pagination,]}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
             loop={true}
-            autoplay={{
-              delay: 4500,
-              disableOnInteraction: false,
-            }}
+            // autoplay={{
+            //   delay: 4500,
+            //   disableOnInteraction: false,
+            // }}
             speed={600}
-            spaceBetween={20}
+            spaceBetween={0}
             slidesPerView={1.2}
             centeredSlides={true}
             pagination={{ clickable: true, dynamicBullets: true }}
             breakpoints={{
               480: {
                 slidesPerView: 1.5,
-                spaceBetween: 20,
-                centeredSlides: true,
               },
               640: {
                 slidesPerView: 2.2,
-                spaceBetween: 20,
-                centeredSlides: false,
               },
               768: {
                 slidesPerView: 2.8,
-                spaceBetween: 20,
-                centeredSlides: false,
               },
               1024: {
                 slidesPerView: 3.6,
-                spaceBetween: 20,
-                centeredSlides: false,
               },
               1280: {
                 slidesPerView: 4.6,
-                spaceBetween: 20,
-                centeredSlides: false,
               },
               1536: {
                 slidesPerView: 5.2,
-                spaceBetween: 20,
-                centeredSlides: false,
               },
             }}
-            className="cardSlider !px-4 sm:!px-7"
+            className="TestimonialCardSlider "
           >
             {loopCards.map((story, index) => (
-              <SwiperSlide key={`${story.id}-${index}`} className="h-auto py-2">
+              <SwiperSlide key={`${story.id}-${index}`} className="h-auto">
                 <StoryCard story={story} onPlay={handleVideoPlay} />
               </SwiperSlide>
             ))}
