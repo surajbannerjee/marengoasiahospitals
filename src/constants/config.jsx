@@ -13,13 +13,13 @@ export const SITE_CONFIG = {
 
 // Main Desktop Header Navigation Items
 export const HEADER_NAV_ITEMS = [
-  { label: 'About Us', href: 'https://marengoasiahospitals.com/about-us', dropdownType: null, hasDropdown: false },
   { label: 'Our Hospital', href: '#', dropdownType: 'hospitals', hasDropdown: true },
   { label: 'Specialities', href: '#', dropdownType: 'specialties', hasDropdown: true },
   { label: 'Find Doctor', href: 'https://marengoasiahospitals.com/doctor', dropdownType: null, hasDropdown: false },
   { label: 'Blogs', href: 'https://marengoasiahospitals.com/blogs', dropdownType: null, hasDropdown: false },
   { label: 'Health Check-Up', href: 'https://marengoasiahospitals.com/', dropdownType: null, hasDropdown: false },
   { label: 'International Patients', href: 'https://marengoasiahospitals.com/internationalpatients', dropdownType: null, hasDropdown: false },
+  { label: 'About Us', href: 'https://marengoasiahospitals.com/about-us', dropdownType: null, hasDropdown: false },
 ];
 
 // Mega Menu for Our Hospital
@@ -455,10 +455,10 @@ export const INTERNATIONAL_PATIENTS_DATA = {
     { target: 1000, prefix: '', suffix: '+', value: '1,000+', label: 'Doctors' },
   ],
   countries: [
-    { code: 'africa', name: 'Africa', image: IMAGES.countries.africa },
     { code: 'bd', name: 'Bangladesh', image: IMAGES.countries.bd },
     { code: 'iq', name: 'Iraq', image: IMAGES.countries.iq },
     { code: 'uz', name: 'Uzbekistan', image: IMAGES.countries.uz },
+    { code: 'africa', name: 'Africa', image: IMAGES.countries.africa },
     { code: 'kz', name: 'Kazakhstan', image: IMAGES.countries.kz },
     { code: 'mm', name: 'Myanmar', image: IMAGES.countries.mm },
   ],
@@ -766,7 +766,7 @@ export const HOSPITALS_DATA = [
     beds: '200+ Beds',
     specialties: 'Mother & Child, Gastro Sciences, Dialysis',
     image: IMAGES.hospitals.Surat,
-    phone: '+91 261 270 5000', 
+    phone: '+91 261 270 5000',
   },
   {
     id: 'vadodara',
