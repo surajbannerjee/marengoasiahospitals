@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '../../util/cn';
 
@@ -11,7 +12,10 @@ export const SliderNavigation = ({
 }) => {
   return (
     <div className={cn('flex items-center gap-2', className)}>
-      <button
+      <motion.button
+        whileHover={isBeginning ? undefined : { scale: 1.1 }}
+        whileTap={isBeginning ? undefined : { scale: 0.92 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
         type="button"
         onClick={onPrev}
         disabled={isBeginning}
@@ -23,9 +27,12 @@ export const SliderNavigation = ({
         )}
       >
         <ChevronLeft className="w-5 h-5" />
-      </button>
+      </motion.button>
 
-      <button
+      <motion.button
+        whileHover={isEnd ? undefined : { scale: 1.1 }}
+        whileTap={isEnd ? undefined : { scale: 0.92 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
         type="button"
         onClick={onNext}
         disabled={isEnd}
@@ -37,7 +44,7 @@ export const SliderNavigation = ({
         )}
       >
         <ChevronRight className="w-5 h-5" />
-      </button>
+      </motion.button>
     </div>
   );
 };

@@ -429,20 +429,26 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                     {row.map((keyItem) => {
                       if (keyItem === 'SPACE') {
                         return (
-                          <button
+                          <motion.button
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.96 }}
+                            transition={{ type: 'spring', stiffness: 500, damping: 20 }}
                             key="SPACE"
                             type="button"
                             onClick={handleSpace}
                             className="col-span-4 h-full rounded-[8px] md:rounded-xl text-[12px] sm:text-[13px] md:text-[14px] font-bold tracking-wider flex items-center border-2! border-white/40! justify-center transition-all duration-150 cursor-pointer select-none backdrop-blur-sm bg-white/15 hover:bg-white/25 active:scale-95 text-white/90 hover:text-white border border-white/20 shadow-[inset_5px_-5px_15px_rgba(255,255,255,0.35),_5px_5px_5px_rgba(0,0,0,0.12)]"
                           >
                             SPACE
-                          </button>
+                          </motion.button>
                         );
                       }
 
                       if (keyItem === 'BACKSPACE') {
                         return (
-                          <button
+                          <motion.button
+                            whileHover={{ scale: 1.04 }}
+                            whileTap={{ scale: 0.94 }}
+                            transition={{ type: 'spring', stiffness: 500, damping: 20 }}
                             key="BACKSPACE"
                             type="button"
                             onClick={handleBackspace}
@@ -451,14 +457,17 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                             title="Backspace"
                           >
                             <Delete className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                          </button>
+                          </motion.button>
                         );
                       }
 
                       const letter = keyItem;
                       const isSelected = selectedLetter === letter;
                       return (
-                        <button
+                        <motion.button
+                          whileHover={{ scale: 1.08 }}
+                          whileTap={{ scale: 0.92 }}
+                          transition={{ type: 'spring', stiffness: 500, damping: 20 }}
                           key={letter}
                           type="button"
                           onClick={() => handleKeyClick(letter)}
@@ -471,7 +480,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                           )}
                         >
                           {letter}
-                        </button>
+                        </motion.button>
                       );
                     })}
                   </div>
@@ -524,7 +533,10 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                 icon: IMAGES.svgs.orthopedic1,
               },
             ].map((item, index) => (
-              <button
+              <motion.button
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                 key={item.id}
                 type="button"
                 onClick={() => {
@@ -532,7 +544,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                   setIsDropdownOpen(true);
                   if (onSelectCondition) onSelectCondition(item.specialty);
                 }}
-                className="group relative flex items-center px-4 sm:px-5 py-3 sm:py-3.5 min-h-[58px] sm:min-h-[64px] transition-all hover:scale-105 duration-200 cursor-pointer text-left"
+                className="group relative flex items-center px-4 sm:px-5 py-3 sm:py-3.5 min-h-[58px] sm:min-h-[64px] transition-all duration-200 cursor-pointer text-left"
               >
                 {/* 1. First SVG Background (Cardiology) */}
                 {item.svgType === 'first' && (
@@ -618,7 +630,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
                     {item.title}
                   </span>
                 </div>
-              </button>
+              </motion.button>
             ))}
           </div>
         </div>

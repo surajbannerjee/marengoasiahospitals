@@ -33,13 +33,16 @@ export const PackageCard = ({ packageItem, className = '' }) => {
         </p>
 
         {/* Book Now - No Popup */}
-        <a
+        <motion.a
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 20 }}
           href="https://www.marengoasiahospitals.com/"
           className="w-full mt-3.5 sm:mt-4 py-2 sm:py-2.5 px-4 rounded-lg border border-[#224F9F] text-[#224F9F] hover:bg-[#224F9F] hover:text-white font-semibold text-xs sm:text-sm flex items-center justify-between transition-all duration-200 cursor-pointer group/btn shadow-2xs"
         >
           <span>Book Now</span>
           <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
-        </a>
+        </motion.a>
       </div>
     </motion.div>
   );

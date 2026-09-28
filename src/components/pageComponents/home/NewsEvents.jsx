@@ -55,8 +55,12 @@ export const NewsEvents = () => {
           className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
         >
           {/* Left Column: 1 Big Featured Story Card */}
-          <div className="lg:col-span-5 xl:col-span-6 flex">
-            <div className="relative w-full flex flex-col justify-between group select-none">
+          <motion.div
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="lg:col-span-5 xl:col-span-6 flex"
+          >
+            <div className="relative w-full flex flex-col justify-between group select-none cursor-pointer">
               {/* Custom SVG Background Shape */}
               <svg
                 viewBox="0 0 663 541"
@@ -108,7 +112,7 @@ export const NewsEvents = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: 4-Box Slide on Desktop (2x2 Grid) / 2-Box Slide on Mobile (1x2 Grid) */}
           <div className="lg:col-span-7 xl:col-span-6 flex flex-col justify-between">
@@ -129,16 +133,18 @@ export const NewsEvents = () => {
                 <SwiperSlide key={`${chunkSize}-${slideIdx}`}>
                   <div className="grid grid-cols-2 gap-2.5 sm:gap-5">
                     {slideItems.map((item) => (
-                      <div
+                      <motion.div
                         key={item.id}
+                        whileHover={{ y: -4 }}
+                        transition={{ duration: 0.25, ease: 'easeOut' }}
                         className="group flex flex-col justify-between cursor-pointer"
                       >
                         {/* News Image Card with Stepped Navy Blue Overlay Shape */}
-                        <div className="relative w-full aspect-[2/1]">
+                        <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg">
                           <img
                             src={item.image}
                             alt={item.title}
-                            className="w-full h-full object-[100% 100%]"
+                            className="w-full h-full object-[100% 100%] group-hover:scale-105 transition-transform duration-500 ease-out"
                           />
 
                           {/* Stepped Blue Bottom Overlay Shape */}
@@ -161,7 +167,7 @@ export const NewsEvents = () => {
                           <span>Read More</span>
                           <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover:translate-x-1 transition-transform" />
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </SwiperSlide>

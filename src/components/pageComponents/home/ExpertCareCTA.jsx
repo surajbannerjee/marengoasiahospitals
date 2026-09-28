@@ -25,19 +25,25 @@ export const ExpertCareCTA = () => {
 
           {/* Right Action Buttons */}
           <div className="flex items-center gap-3 sm:gap-2 flex-wrap md:justify-end justify-center">
-            <a
+            <motion.a
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               href="https://marengoasiahospitals.com/bookanappointment"
               className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg border border-[#224F9F] text-[#224F9F] bg-transparent hover:bg-[#224F9F]/5 font-medium text-xs sm:text-sm transition-colors cursor-pointer text-center"
             >
               Book Appointment
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
               href="https://marengoasiahospitals.com/"
               className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg bg-[#224F9F] hover:bg-[#1B3F80] text-white font-medium text-xs sm:text-sm transition-colors cursor-pointer shadow-xs text-center"
             >
               Find Our Hospital
-            </a>
+            </motion.a>
           </div>
         </motion.div>
       </Container>

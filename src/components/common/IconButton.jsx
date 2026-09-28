@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { cn } from '../../util/cn';
 
 export const IconButton = ({
@@ -26,7 +27,10 @@ export const IconButton = ({
   };
 
   return (
-    <button
+    <motion.button
+      whileHover={disabled ? undefined : { scale: 1.1 }}
+      whileTap={disabled ? undefined : { scale: 0.92 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
       type="button"
       onClick={onClick}
       disabled={disabled}
@@ -40,7 +44,7 @@ export const IconButton = ({
       {...props}
     >
       <Icon className="w-full h-full" />
-    </button>
+    </motion.button>
   );
 };
 

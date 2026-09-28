@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { cn } from '../../util/cn';
 
 export const Button = ({
@@ -53,18 +54,24 @@ export const Button = ({
 
   if (href) {
     return (
-      <a
+      <motion.a
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
         href={href}
         className={cn(baseStyles, variants[variant], sizes[size], className)}
         {...props}
       >
         {content}
-      </a>
+      </motion.a>
     );
   }
 
   return (
-    <button
+    <motion.button
+      whileHover={disabled ? undefined : { scale: 1.02 }}
+      whileTap={disabled ? undefined : { scale: 0.97 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
       type={type}
       onClick={onClick}
       disabled={disabled}
@@ -72,7 +79,7 @@ export const Button = ({
       {...props}
     >
       {content}
-    </button>
+    </motion.button>
   );
 };
 
