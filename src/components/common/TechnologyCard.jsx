@@ -1,10 +1,13 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '../../util/cn';
 
 export const TechnologyCard = ({ technology, onClick, className = '' }) => {
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
       onClick={() => onClick && onClick(technology)}
       className={cn(
         'group flex flex-col justify-between w-full select-none cursor-pointer',
@@ -17,7 +20,7 @@ export const TechnologyCard = ({ technology, onClick, className = '' }) => {
         <img
           src={technology.image}
           alt={technology.title}
-          className="h-full w-full object-contain transition-transform duration-500 ease-out"
+          className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
         />
       </div>
 
@@ -41,7 +44,7 @@ export const TechnologyCard = ({ technology, onClick, className = '' }) => {
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

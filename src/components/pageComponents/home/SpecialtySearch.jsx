@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 import { Search, ChevronRight, X, Delete } from 'lucide-react';
 import { Container } from '../../common/Container';
 import { cn } from '../../../util/cn';
@@ -282,7 +283,14 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
     >
       <Container>
         {/* Main Ice-Blue Search Card */}
-        <div ref={containerRef} className="rounded-[2rem] sm:rounded-3xl bg-[#EEF5FB] border border-sky-100/80 p-3 sm:p-6 md:p-6 xl:p-12 shadow-sm">
+        <motion.div
+          ref={containerRef}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="rounded-[2rem] sm:rounded-3xl bg-[#EEF5FB] border border-sky-100/80 p-3 sm:p-6 md:p-6 xl:p-12 shadow-sm"
+        >
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 
             {/* Left Column: Heading, Subtitle & Search Bar with Bottom Dropdown */}
@@ -472,7 +480,7 @@ export const SpecialtySearch = ({ onSelectCondition }) => {
             </div>
 
           </div>
-        </div>
+        </motion.div>
         {/* What people are searching for area */}
         <div className="mt-8 sm:mt-10 md:mt-12">
           {/* Centered Section Subtitle */}

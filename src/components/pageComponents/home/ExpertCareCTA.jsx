@@ -1,11 +1,18 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Container } from '../../common/Container';
 
 export const ExpertCareCTA = () => {
   return (
     <section className="pb-6 min-[360px]:pb-7 min-[400px]:pb-8 sm:pb-9 md:pb-11 lg:pb-14 xl:pb-16 2xl:pb-[80px] 3xl:pb-[70px] 4k:pb-[85px] bg-white relative">
       <Container>
-        <div className="bg-[#EDEDED] rounded-xl sm:rounded-2xl px-6 py-6 sm:px-7 sm:py-8 lg:px-10 lg:py-9 flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-[#EDEDED] rounded-xl sm:rounded-2xl px-6 py-6 sm:px-7 sm:py-8 lg:px-10 lg:py-9 flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8"
+        >
           {/* Left Text Content */}
           <div className="flex flex-col sm:text-left text-center md:max-w-[50%] max-w-full">
             <h3 className="text-lg sm:text-xl md:text-[22px] lg:text-[23px] font-bold text-[#224F9F] tracking-tight leading-snug">
@@ -32,7 +39,7 @@ export const ExpertCareCTA = () => {
               Find Our Hospital
             </a>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

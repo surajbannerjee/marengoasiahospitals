@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Container } from '../../common/Container';
@@ -35,7 +36,13 @@ export const Blogs = ({ onSelectBlog }) => {
         </div>
 
         {/* Swiper Slider matching Technologies slider and card design */}
-        <div className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-30px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="relative"
+        >
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             onBeforeInit={(swiper) => {
@@ -87,7 +94,7 @@ export const Blogs = ({ onSelectBlog }) => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

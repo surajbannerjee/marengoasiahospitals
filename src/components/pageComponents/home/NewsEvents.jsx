@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { Calendar, ArrowRight, User } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -46,7 +47,13 @@ export const NewsEvents = () => {
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch"
+        >
           {/* Left Column: 1 Big Featured Story Card */}
           <div className="lg:col-span-5 xl:col-span-6 flex">
             <div className="relative w-full flex flex-col justify-between group select-none">
@@ -161,7 +168,7 @@ export const NewsEvents = () => {
               ))}
             </Swiper>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

@@ -1,10 +1,13 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '../../util/cn';
 
 export const PackageCard = ({ packageItem, className = '' }) => {
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
       className={cn(
         'group flex flex-col justify-between w-full select-none',
         className
@@ -15,7 +18,7 @@ export const PackageCard = ({ packageItem, className = '' }) => {
         <img
           src={packageItem.image}
           alt={packageItem.title}
-          className="h-full w-full object-contain transition-transform duration-500 ease-out"
+          className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
         />
       </div>
 
@@ -38,7 +41,7 @@ export const PackageCard = ({ packageItem, className = '' }) => {
           <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

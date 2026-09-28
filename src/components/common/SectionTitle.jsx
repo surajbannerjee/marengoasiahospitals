@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { cn } from '../../util/cn';
 
 export const SectionTitle = ({
@@ -15,8 +16,13 @@ export const SectionTitle = ({
   };
 
   return (
-    <div className={cn('flex flex-col mb-5 sm:mb-10 lg:mb-14 max-w-3xl', alignmentClasses[align], className)}>
-
+    <motion.div
+      initial={{ opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className={cn('flex flex-col mb-5 sm:mb-10 lg:mb-14 max-w-3xl', alignmentClasses[align], className)}
+    >
       <h2
         className={cn(
           'text-[20px] min-[360px]:text-[22px] font-bold leading-tight tracking-[0%] text-[#0258B9] sm:text-[32px] md:text-[36px] lg:text-[38px] xl:text-[42px] 2xl:text-[44px] 3xl:text-[52px] 4k:text-[62px]',
@@ -36,7 +42,7 @@ export const SectionTitle = ({
           {subtitle}
         </p>
       )}
-    </div>
+    </motion.div>
   );
 };
 

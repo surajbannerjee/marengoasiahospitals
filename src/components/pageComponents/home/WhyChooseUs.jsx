@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Container } from '../../common/Container';
 import { SectionTitle } from '../../common/SectionTitle';
 import { WHY_CHOOSE_US_DATA } from '../../../constants/config';
@@ -149,7 +150,13 @@ export const WhyChooseUs = () => {
       </Container>
 
       {/* Infinite Continuous Rail Marquee Slider */}
-      <div className="relative w-full select-none mt-1 sm:mt-0 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className="relative w-full select-none mt-1 sm:mt-0 overflow-hidden"
+      >
         {/* Mobile View: Compact Rail Slider (Only visible on screens < 640px) */}
         <div className="block sm:hidden">
           <div className="animate-continuous-rail">
@@ -169,7 +176,7 @@ export const WhyChooseUs = () => {
             <RailSegment />
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

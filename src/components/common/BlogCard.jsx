@@ -1,10 +1,13 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { cn } from '../../util/cn';
 
 export const BlogCard = ({ blog, onClick, className = '' }) => {
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
       onClick={() => onClick && onClick(blog)}
       className={cn(
         'group flex flex-col justify-between w-full select-none cursor-pointer',
@@ -17,7 +20,7 @@ export const BlogCard = ({ blog, onClick, className = '' }) => {
         <img
           src={blog.image}
           alt={blog.title}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
         />
       </div>
 
@@ -42,7 +45,7 @@ export const BlogCard = ({ blog, onClick, className = '' }) => {
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

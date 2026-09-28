@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { IMAGES } from '../../../constants/images';
 import { Container } from '../../common/Container';
 import { Search } from 'lucide-react';
@@ -288,12 +289,20 @@ export const HeroSection = () => {
       <Container className="relative z-10">
         <div className="flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6">
           {/* Main Centered Headline */}
-          <h1 className="text-center w-full text-[22px] min-[360px]:text-[26px] sm:text-[30px] md:text-[36px] lg:text-[42px] xl:text-[48px] 2xl:text-[68px] 3xl:text-[60px] 4k:text-[64px] font-bold leading-[1.2] text-white [text-shadow:0px_17px_39px_rgba(34,79,159,1)] lg:leading-tight lg:whitespace-nowrap">
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center w-full text-[22px] min-[360px]:text-[26px] sm:text-[30px] md:text-[36px] lg:text-[42px] xl:text-[48px] 2xl:text-[68px] 3xl:text-[60px] 4k:text-[64px] font-bold leading-[1.2] text-white [text-shadow:0px_17px_39px_rgba(34,79,159,1)] lg:leading-tight lg:whitespace-nowrap"
+          >
             Trusted Care, Every Step
-          </h1>
+          </motion.h1>
 
           {/* Search Input and Book Appointment Button Form */}
-          <form
+          <motion.form
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             onSubmit={handleSearchSubmit}
             className="flex w-full max-w-[420px] min-[400px]:max-w-[480px] sm:max-w-[560px] md:max-w-[620px] lg:max-w-[700px] xl:max-w-[780px] 2xl:max-w-[80%] 3xl:max-w-[80%] flex-col items-center justify-center gap-2 sm:gap-2.5 md:gap-3 2xl:gap-5 3xl:gap-6 4k:gap-7 sm:flex-row"
           >
@@ -452,7 +461,7 @@ export const HeroSection = () => {
             >
               Book Appointment
             </Button>
-          </form>
+          </motion.form>
         </div>
       </Container>
     </section>

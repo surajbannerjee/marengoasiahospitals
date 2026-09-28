@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '../../util/cn';
 import { IMAGES } from '../../constants/images';
@@ -22,7 +23,10 @@ export const CenterCard = ({ center, className = '' }) => {
   };
 
   return (
-    <div>
+    <motion.div
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+    >
     <div
       onClick={handleCardClick}
       className={cn(
@@ -81,7 +85,7 @@ export const CenterCard = ({ center, className = '' }) => {
           <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

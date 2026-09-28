@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Mail, Phone } from 'lucide-react';
 import { Container } from '../common/Container';
 import { IMAGES } from '../../constants/images';
@@ -8,8 +9,14 @@ export const Footer = () => {
   return (
     <footer className="bg-[#EAF2F8] text-[#555555] pt-6 min-[360px]:pt-7 min-[400px]:pt-8 sm:pt-9 md:pt-11 lg:pt-14 xl:pt-16 2xl:pt-[80px] 3xl:pt-[70px] 4k:pt-[85px] pb-6 select-none">
       <Container>
-        {/* 2 Columns on mobile, 3 Columns on tablet, 6 Columns on desktop */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 sm:gap-x-6 lg:gap-x-4 xl:gap-x-6 gap-y-6 sm:gap-y-8 pb-8 sm:pb-6 text-left">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {/* 2 Columns on mobile, 3 Columns on tablet, 6 Columns on desktop */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 sm:gap-x-6 lg:gap-x-4 xl:gap-x-6 gap-y-6 sm:gap-y-8 pb-8 sm:pb-6 text-left">
           {FOOTER_SECTIONS.map((colGroup, colIdx) => (
             <div key={colIdx} className="space-y-5 sm:space-y-6 lg:space-y-8">
               {colGroup.sections.map((sec, secIdx) => (
@@ -158,6 +165,7 @@ export const Footer = () => {
         <div className="pt-6 pb-2 text-center text-xs text-[#224F9F] font-medium">
           © {new Date().getFullYear()} Marengo Asia Hospitals. All Rights Reserved. Crafted by Meraki Square
         </div>
+        </motion.div>
       </Container>
     </footer>
   );

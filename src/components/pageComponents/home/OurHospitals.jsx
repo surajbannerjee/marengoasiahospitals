@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { Container } from '../../common/Container';
@@ -25,7 +26,13 @@ export const OurHospitals = ({ onSelectHospital }) => {
         </div>
 
         {/* Mobile View: 1-by-1 Swiper Slider */}
-        <div className="sm:hidden relative">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-30px' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="sm:hidden relative"
+        >
           <Swiper
             modules={[Pagination, Autoplay]}
             loop={true}
@@ -70,10 +77,16 @@ export const OurHospitals = ({ onSelectHospital }) => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </motion.div>
 
         {/* Desktop / Tablet View: 3x2 Grid for 6 Hospitals */}
-        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-30px' }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7"
+        >
           {HOSPITALS_DATA.map((hosp) => (
             <HospitalCard
               key={hosp.id}
@@ -81,7 +94,7 @@ export const OurHospitals = ({ onSelectHospital }) => {
               onClick={onSelectHospital}
             />
           ))}
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

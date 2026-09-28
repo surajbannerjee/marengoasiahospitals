@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { UserCheck, Stethoscope, ShieldCheck, Building2, ChevronRight, Phone, Siren, MessageCircle, HeartPulse, Hospital } from 'lucide-react';
 import { Container } from '../../common/Container';
 import { SITE_CONFIG } from '../../../constants/config';
@@ -59,10 +60,16 @@ export const QuickActions = () => {
           {tabs.map((tab, idx) => {
             const Icon = tab.icon;
             return (
-              <a
+              <motion.a
                 key={tab.id}
                 href={tab.href}
-                className="group relative flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-center gap-2 sm:gap-4 p-3.5 sm:p-5 transition-all duration-300 transform hover:-translate-y-1 text-white cursor-pointer overflow-visible h-[100px] min-[321px]:h-[80px] min-[361px]:h-[70px] min-[401px]:h-[80px] min-[501px]:h-[90px] sm:h-[120px] md:h-[100px] lg:h-[96px] xl:h-[110px] 2xl:h-[121.31px] 3xl:h-[170px] 4k:h-[220px]"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -4, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-center gap-2 sm:gap-4 p-3.5 sm:p-5 transition-all duration-300 text-white cursor-pointer overflow-visible h-[100px] min-[321px]:h-[80px] min-[361px]:h-[70px] min-[401px]:h-[80px] min-[501px]:h-[90px] sm:h-[120px] md:h-[100px] lg:h-[96px] xl:h-[110px] 2xl:h-[121.31px] 3xl:h-[170px] 4k:h-[220px]"
                 style={{ backgroundImage: `url(${tab.bg})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "contain" }}
               >
                 <div className="flex items-center gap-2 min-[360px]:gap-2 sm:gap-2 md:gap-2 lg:gap-3 xl:gap-4 2xl:gap-5 3xl:gap-8 4k:gap-12 px-1 min-[360px]:px-1.5 sm:px-1.5 md:px-2 lg:px-3 xl:px-5 2xl:px-6 3xl:px-10 4k:px-14">
@@ -75,7 +82,7 @@ export const QuickActions = () => {
                     <span className="block sm:inline">{tab.subtitle}</span>
                   </div>
                 </div>
-              </a>
+              </motion.a>
             );
           })}
         </div>

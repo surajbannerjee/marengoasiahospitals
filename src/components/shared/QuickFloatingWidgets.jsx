@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { Phone, MessageCircle, Siren, ArrowUp, Calendar } from 'lucide-react';
 import { SITE_CONFIG } from '../../constants/config';
 
@@ -56,14 +57,17 @@ export const QuickFloatingWidgets = () => {
       {/* 1. DESKTOP & TABLET: Fixed Right Edge Floating Stack (Slides Out on Hover) */}
       {/* ========================================================================= */}
       <div className="hidden sm:flex fixed right-0 top-1/2 -translate-y-1/2 z-70 flex-col items-end gap-2.5 font-sans pointer-events-none">
-        {widgets.map((widget) => {
+        {widgets.map((widget, idx) => {
           const Icon = widget.icon;
           return (
-            <a
+            <motion.a
               key={widget.id}
               href={widget.href}
               target={widget.id === 'chat' ? '_blank' : undefined}
               rel={widget.id === 'chat' ? 'noopener noreferrer' : undefined}
+              initial={{ x: 60, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.3 + idx * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className={`pointer-events-auto flex items-center gap-3.5 pl-4 pr-5 py-3 rounded-l-2xl ${widget.bgColor} ${widget.hoverColor} text-white shadow-2xl transition-all duration-300 ease-out transform lg:translate-x-[calc(100%-70px)] md:translate-x-[calc(100%-60px)] sm:translate-x-[calc(100%-50px)] hover:translate-x-0 cursor-pointer select-none`}
             >
               {/* Icon on Left (always visible in collapsed state) */}
@@ -80,7 +84,7 @@ export const QuickFloatingWidgets = () => {
                   {widget.label}
                 </span>
               </div>
-            </a>
+            </motion.a>
           );
         })}
 
